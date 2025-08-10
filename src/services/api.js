@@ -5,8 +5,8 @@ const stripTrailingSlash = (url) => (url ? url.replace(/\/$/, '') : url);
 // Use CRA dev proxy in development by default (relative /api). If REACT_APP_API_URL is set, use it.
 const isDev = process.env.NODE_ENV !== 'production';
 export const API_BASE_URL = isDev && !process.env.REACT_APP_API_URL
-  ? 'http://localhost:8000'
-  : stripTrailingSlash(process.env.REACT_APP_API_URL) || 'http://localhost:8000';
+  ? 'https://catalyst-career-ai-backend.onrender.com'
+  : stripTrailingSlash(process.env.REACT_APP_API_URL) || 'https://catalyst-career-ai-backend.onrender.com';
 
 export const httpClient = axios.create({
   baseURL: `${API_BASE_URL}/api`,
