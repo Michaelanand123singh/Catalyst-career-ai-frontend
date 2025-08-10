@@ -141,7 +141,7 @@ const Chat = () => {
           <div className="flex items-start gap-2 text-xs text-slate-500">
             <Info className="h-4 w-4 mt-0.5" />
             <div>
-              Backend at http://localhost:8000. Toggle comprehensive to use multi-agent endpoint.
+              Backend at {getApiBaseLabel()}. Toggle comprehensive to use multi-agent endpoint.
             </div>
           </div>
         </div>
@@ -229,5 +229,3 @@ const Chat = () => {
 };
 
 export default Chat;
-
-
