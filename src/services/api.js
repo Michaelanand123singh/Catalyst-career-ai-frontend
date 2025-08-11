@@ -16,6 +16,26 @@ export const httpClient = axios.create({
   },
 });
 
+export const TOKEN_STORAGE_KEY = 'auth_token';
+export const getToken = () => {
+  try { return localStorage.getItem(TOKEN_STORAGE_KEY); } catch { return null; }
+};
+export const setToken = (token) => {
+  try { token ? localStorage.setItem(TOKEN_STORAGE_KEY, token) : localStorage.removeItem(TOKEN_STORAGE_KEY); } catch {}
+};
+export const clearToken = () => {
+  try { localStorage.removeItem(TOKEN_STORAGE_KEY); } catch {}
+};
+
+httpClient.interceptors.request.use((config) => {
+  const token = getToken();
+  if (token) {
+    config.headers = config.headers || {};
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export const getApiBaseLabel = () => {
   return API_BASE_URL === '' ? 'dev proxy (/api → localhost:8000)' : `${API_BASE_URL}/api`;
 };
@@ -74,6 +94,12 @@ const api = {
       })
     );
   },
+
+  // Auth endpoints
+  // Expecting responses: { token, user } for login/signup; { user } for me
+  login: (email, password) => safeRequest(httpClient.post('/auth/login', { email, password })),
+  signup: (name, email, password) => safeRequest(httpClient.post('/auth/signup', { name, email, password })),
+  getMe: () => safeRequest(httpClient.get('/auth/me')),
 };
 
 export default api;
