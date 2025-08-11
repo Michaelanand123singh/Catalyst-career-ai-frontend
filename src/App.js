@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import api from './services/api';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -11,6 +12,10 @@ import RequireAuth from './components/RequireAuth';
 import LoginRedirect from './pages/LoginRedirect';
 
 const App = () => {
+  useEffect(() => {
+    // Warm up the backend to reduce cold-start/CORS edge cases
+    api.getApiStatus();
+  }, []);
   return (
     <BrowserRouter>
       <Routes>

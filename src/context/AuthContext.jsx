@@ -20,7 +20,12 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
-    const [data, err] = await api.login(email, password);
+    // Try login; on CORS/network hiccup, warm up + retry once
+    let [data, err] = await api.login(email, password);
+    if (err && !data) {
+      await api.getApiStatus();
+      [data, err] = await api.login(email, password);
+    }
     if (data?.token) setToken(data.token);
     if (data?.user) setUser(data.user);
     return [data, err];
