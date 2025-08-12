@@ -9,6 +9,7 @@ import {
   Clock,
   BookOpen
 } from 'lucide-react';
+import api from '../services/api';
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -22,15 +23,18 @@ const BlogPost = () => {
 
   const fetchPost = async () => {
     try {
-      const response = await fetch(`/api/blog-posts/${id}`);
-      if (response.ok) {
-        const data = await response.json();
-        setPost(data);
-      } else {
+      console.log('🔍 Fetching blog post:', id);
+      const [data, error] = await api.getBlogPost(id);
+      
+      if (error) {
+        console.error('❌ Failed to fetch blog post:', error);
         setError('Blog post not found');
+      } else {
+        console.log('✅ Blog post fetched successfully:', data);
+        setPost(data);
       }
-    } catch (error) {
-      console.error('Error fetching blog post:', error);
+    } catch (err) {
+      console.error('❌ Error fetching blog post:', err);
       setError('Failed to load blog post');
     } finally {
       setLoading(false);

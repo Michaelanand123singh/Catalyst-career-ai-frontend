@@ -10,6 +10,7 @@ import {
   ArrowRight,
   AlertCircle
 } from 'lucide-react';
+import api from '../services/api';
 
 const Contact = () => {
   const [form, setForm] = useState({ 
@@ -31,27 +32,24 @@ const Contact = () => {
     setError('');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
-      });
+      console.log('📧 Submitting contact form...');
+      const [data, error] = await api.submitContact(form);
 
-      if (!response.ok) {
-        throw new Error('Failed to submit contact form');
+      if (error) {
+        console.error('❌ Contact form submission failed:', error);
+        setError(error.message || 'Failed to submit form. Please try again or contact us directly.');
+      } else {
+        console.log('✅ Contact form submitted successfully:', data);
+        setSubmitted(true);
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setSubmitted(false);
+          setForm({ name: '', email: '', phone: '', subject: '', message: '' });
+        }, 3000);
       }
-
-      setSubmitted(true);
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setSubmitted(false);
-        setForm({ name: '', email: '', phone: '', subject: '', message: '' });
-      }, 3000);
     } catch (err) {
+      console.error('❌ Contact form error:', err);
       setError('Failed to submit form. Please try again or contact us directly.');
-      console.error('Contact form error:', err);
     } finally {
       setLoading(false);
     }

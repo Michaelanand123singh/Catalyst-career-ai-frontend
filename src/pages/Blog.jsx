@@ -10,10 +10,12 @@ import {
   Clock,
   BookOpen
 } from 'lucide-react';
+import api from '../services/api';
 
 const Blog = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTag, setSelectedTag] = useState('all');
 
@@ -23,33 +25,43 @@ const Blog = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('/api/blog-posts');
-      if (response.ok) {
-        const data = await response.json();
-        setPosts(data);
+      setLoading(true);
+      setError('');
+      
+      console.log('🔍 Fetching blog posts...');
+      const [data, error] = await api.getBlogPosts();
+      
+      if (error) {
+        console.error('❌ Failed to fetch blog posts:', error);
+        setError('Failed to load blog posts. Please try again later.');
+        setPosts([]);
       } else {
-        console.error('Failed to fetch blog posts');
+        console.log('✅ Blog posts fetched successfully:', data);
+        setPosts(data || []);
       }
-    } catch (error) {
-      console.error('Error fetching blog posts:', error);
+    } catch (err) {
+      console.error('❌ Error fetching blog posts:', err);
+      setError('Failed to load blog posts. Please try again later.');
+      setPosts([]);
     } finally {
       setLoading(false);
     }
   };
 
   // Extract all unique tags from posts
-  const allTags = [...new Set(posts.flatMap(post => post.tags))];
+  const allTags = [...new Set(posts.flatMap(post => post.tags || []))];
 
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.excerpt?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.author.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesTag = selectedTag === 'all' || post.tags.includes(selectedTag);
+                         (post.excerpt?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
+                         (post.content?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
+                         (post.author?.toLowerCase() || '').includes(searchTerm.toLowerCase());
+    const matchesTag = selectedTag === 'all' || (post.tags || []).includes(selectedTag);
     return matchesSearch && matchesTag;
   });
 
   const formatDate = (dateString) => {
+    if (!dateString) return 'No date';
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
       year: 'numeric', 
@@ -61,7 +73,10 @@ const Blog = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500"></div>
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading blog posts...</p>
+        </div>
       </div>
     );
   }
@@ -123,7 +138,19 @@ const Blog = () => {
       {/* Blog Posts */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {filteredPosts.length > 0 ? (
+          {error ? (
+            <div className="text-center py-12">
+              <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md mx-auto">
+                <p className="text-red-800 mb-4">{error}</p>
+                <button 
+                  onClick={fetchPosts}
+                  className="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors"
+                >
+                  Try Again
+                </button>
+              </div>
+            </div>
+          ) : filteredPosts.length > 0 ? (
             <div className="grid lg:grid-cols-2 gap-8">
               {filteredPosts.map((post) => (
                 <article key={post.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
@@ -146,7 +173,7 @@ const Blog = () => {
                     <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                       <div className="flex items-center">
                         <User className="h-4 w-4 mr-1" />
-                        {post.author}
+                        {post.author || 'Anonymous'}
                       </div>
                       <div className="flex items-center">
                         <Calendar className="h-4 w-4 mr-1" />
@@ -164,7 +191,7 @@ const Blog = () => {
                       </p>
                     )}
 
-                    {post.tags.length > 0 && (
+                    {(post.tags || []).length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-6">
                         {post.tags.map((tag, index) => (
                           <span
@@ -196,7 +223,7 @@ const Blog = () => {
               <p className="text-gray-500">
                 {searchTerm || selectedTag !== 'all' 
                   ? 'Try adjusting your search or filter criteria'
-                  : 'Check back soon for new articles'
+                  : 'No blog posts available yet. Check back soon for new articles!'
                 }
               </p>
             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Users, Target, BookOpen, Star, Calendar, Clock, User } from 'lucide-react';
+import api from '../services/api';
 
 const Home = () => {
   const [recentBlogs, setRecentBlogs] = useState([]);
@@ -9,13 +10,20 @@ const Home = () => {
   useEffect(() => {
     const fetchRecentBlogs = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:8000'}/api/blog-posts?limit=3&status=published`);
-        if (response.ok) {
-          const data = await response.json();
-          setRecentBlogs(data.blog_posts || []);
+        console.log('🔍 Fetching recent blog posts...');
+        const [data, error] = await api.getBlogPosts();
+        
+        if (error) {
+          console.error('❌ Failed to fetch recent blogs:', error);
+          setRecentBlogs([]);
+        } else {
+          console.log('✅ Recent blogs fetched successfully:', data);
+          // Limit to 3 posts for the home page
+          setRecentBlogs((data || []).slice(0, 3));
         }
       } catch (error) {
-        console.error('Error fetching recent blogs:', error);
+        console.error('❌ Error fetching recent blogs:', error);
+        setRecentBlogs([]);
       } finally {
         setLoadingBlogs(false);
       }

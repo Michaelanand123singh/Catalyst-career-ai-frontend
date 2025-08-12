@@ -2,9 +2,28 @@ import axios from 'axios';
 
 const stripTrailingSlash = (url) => (url ? url.replace(/\/$/, '') : url);
 
-// Use cloud backend by default, fallback to local proxy for development
-const isDev = process.env.NODE_ENV !== 'production';
-export const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://catalyst-career-ai-backend.onrender.com';
+// Determine the correct API base URL based on environment
+const getApiBaseUrl = () => {
+  // Check for environment variable first
+  if (process.env.REACT_APP_API_URL) {
+    return process.env.REACT_APP_API_URL;
+  }
+  
+  // Check if we're in development mode
+  if (process.env.NODE_ENV === 'development') {
+    return 'http://localhost:8000';
+  }
+  
+  // Check if we're running on the main domain
+  if (window.location.hostname === 'www.catalystcareers.in' || window.location.hostname === 'catalystcareers.in') {
+    return 'https://catalyst-career-ai-backend.onrender.com';
+  }
+  
+  // Production fallback
+  return 'https://catalyst-career-ai-backend.onrender.com';
+};
+
+export const API_BASE_URL = getApiBaseUrl();
 
 export const httpClient = axios.create({
   baseURL: `${API_BASE_URL}/api`,
@@ -15,9 +34,10 @@ export const httpClient = axios.create({
 });
 
 // Debug logging
-console.log('🔧 API Configuration:', {
+console.log('🔧 Frontend API Configuration:', {
   NODE_ENV: process.env.NODE_ENV,
   REACT_APP_API_URL: process.env.REACT_APP_API_URL,
+  hostname: window.location.hostname,
   API_BASE_URL,
   finalBaseURL: `${API_BASE_URL}/api`
 });
@@ -39,8 +59,23 @@ httpClient.interceptors.request.use((config) => {
     config.headers = config.headers || {};
     config.headers.Authorization = `Bearer ${token}`;
   }
+  
+  // Debug logging for requests
+  console.log('🚀 API Request:', config.method?.toUpperCase(), config.url, 'Base URL:', config.baseURL);
   return config;
 });
+
+// Add response interceptor for debugging
+httpClient.interceptors.response.use(
+  (response) => {
+    console.log('✅ API Response:', response.status, response.config.url);
+    return response;
+  },
+  (error) => {
+    console.error('❌ API Error:', error.response?.status, error.config?.url, error.message);
+    return Promise.reject(error);
+  }
+);
 
 export const getApiBaseLabel = () => {
   return API_BASE_URL === '' ? 'dev proxy (/api → localhost:8000)' : `${API_BASE_URL}/api`;
@@ -148,10 +183,19 @@ const api = {
   // GET /api/admin/users/{user_id}/summary
   getUserSummary: (userId) => safeRequest(httpClient.get(`/admin/users/${userId}/summary`)),
 
-  // Auth endpoints
+  // Blog endpoints
+  // GET /api/blog-posts (public)
+  getBlogPosts: () => safeRequest(httpClient.get('/blog-posts')),
+
+  // GET /api/blog-posts/{post_id} (public)
+  getBlogPost: (postId) => safeRequest(httpClient.get(`/blog-posts/${postId}`)),
+
+  // Contact endpoints
+  // POST /api/contact
+  submitContact: (contactData) => safeRequest(httpClient.post('/contact', contactData)),
+
+  // Auth endpoints (duplicate - keeping for compatibility)
   // Expecting responses: { token, user } for login/signup; { user } for me
-  login: (email, password) => safeRequest(httpClient.post('/auth/login', { email, password })),
-  signup: (name, email, password) => safeRequest(httpClient.post('/auth/signup', { name, email, password })),
   getMe: () => safeRequest(httpClient.get('/auth/me')),
 };
 
