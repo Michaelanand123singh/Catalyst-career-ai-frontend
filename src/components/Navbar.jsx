@@ -13,7 +13,7 @@ const Navbar = () => {
   const toggle = () => setIsOpen((prev) => !prev);
   const close = () => setIsOpen(false);
 
-  const baseLink = 'px-3 py-2 rounded-md text-sm font-medium hover:text-amber-600 hover:bg-amber-50';
+  const baseLink = 'px-2 py-2 rounded-md text-sm font-medium hover:text-amber-600 hover:bg-amber-50';
   const activeClass = 'text-amber-600 bg-amber-50';
 
   return (
@@ -27,26 +27,42 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-0.5">
             <NavLink to="/" end onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
               Home
+            </NavLink>
+            <NavLink to="/about" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              About Us
             </NavLink>
             <NavLink to="/services" onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
               Services
             </NavLink>
-            <NavLink to="/gallery" onClick={close}
+            <NavLink to="/assessment-tests" onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
-              Gallery
+              Assessment Tests
             </NavLink>
-            <NavLink to="/about" onClick={close}
+            <NavLink to="/seminars-workshops" onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
-              About
+              Seminars & Workshops
+            </NavLink>
+            <NavLink to="/upcoming-events" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              Upcoming Events
+            </NavLink>
+            <NavLink to="/resources" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              Resources
+            </NavLink>
+            <NavLink to="/success-stories" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              Success Stories
             </NavLink>
             <NavLink to="/contact" onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
-              Contact
+              Contact Us
             </NavLink>
           </div>
 
@@ -79,21 +95,37 @@ const Navbar = () => {
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
               Home
             </NavLink>
+            <NavLink to="/about" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              About Us
+            </NavLink>
             <NavLink to="/services" onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
               Services
             </NavLink>
-            <NavLink to="/gallery" onClick={close}
+            <NavLink to="/assessment-tests" onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
-              Gallery
+              Assessment Tests
             </NavLink>
-            <NavLink to="/about" onClick={close}
+            <NavLink to="/seminars-workshops" onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
-              About
+              Seminars & Workshops
+            </NavLink>
+            <NavLink to="/upcoming-events" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              Upcoming Events
+            </NavLink>
+            <NavLink to="/resources" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              Resources
+            </NavLink>
+            <NavLink to="/success-stories" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              Success Stories
             </NavLink>
             <NavLink to="/contact" onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
-              Contact
+              Contact Us
             </NavLink>
             <button
               onClick={() => {
