@@ -2,11 +2,9 @@ import axios from 'axios';
 
 const stripTrailingSlash = (url) => (url ? url.replace(/\/$/, '') : url);
 
-// Use CRA dev proxy in development by default (relative /api). If REACT_APP_API_URL is set, use it.
+// Use cloud backend by default, fallback to local proxy for development
 const isDev = process.env.NODE_ENV !== 'production';
-export const API_BASE_URL = isDev && !process.env.REACT_APP_API_URL
-  ? 'https://catalyst-career-ai-backend.onrender.com'
-  : stripTrailingSlash(process.env.REACT_APP_API_URL) || 'https://catalyst-career-ai-backend.onrender.com';
+export const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://catalyst-career-ai-backend.onrender.com';
 
 export const httpClient = axios.create({
   baseURL: `${API_BASE_URL}/api`,
@@ -14,6 +12,14 @@ export const httpClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+});
+
+// Debug logging
+console.log('🔧 API Configuration:', {
+  NODE_ENV: process.env.NODE_ENV,
+  REACT_APP_API_URL: process.env.REACT_APP_API_URL,
+  API_BASE_URL,
+  finalBaseURL: `${API_BASE_URL}/api`
 });
 
 export const TOKEN_STORAGE_KEY = 'auth_token';
@@ -42,9 +48,24 @@ export const getApiBaseLabel = () => {
 
 const safeRequest = async (promise) => {
   try {
+    console.log('🌐 Making API request...');
     const response = await promise;
+    console.log('✅ API response successful:', response.data);
     return [response.data, null];
   } catch (error) {
+    console.error('❌ API request failed:', {
+      message: error?.message,
+      status: error?.response?.status,
+      statusText: error?.response?.statusText,
+      data: error?.response?.data,
+      config: {
+        url: error?.config?.url,
+        method: error?.config?.method,
+        baseURL: error?.config?.baseURL,
+        headers: error?.config?.headers
+      }
+    });
+    
     const message = error?.response?.data?.detail || error?.message || 'Request failed';
     return [null, { message, status: error?.response?.status }];
   }

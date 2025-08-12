@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Send, Paperclip, Sparkles, Info, Loader2 } from 'lucide-react';
-import api, { getApiBaseLabel } from '../services/api';
+import api from '../services/api';
 import Message from './Message';
 import TypingIndicator from './TypingIndicator';
 
@@ -33,52 +33,91 @@ const Chat = () => {
 
   useEffect(() => {
     const bootstrap = async () => {
-      const [[health], [status], [startersResp]] = await Promise.all([
-        api.getHealth(),
-        api.getSystemStatus(),
-        api.getConversationStarters(),
-      ]);
-      if (health) setSystemStatus(health);
-      if (status) setSystemStatus((s) => ({ ...(s || {}), ...status }));
-      if (startersResp?.starters?.length) setStarters(startersResp.starters);
+      try {
+        console.log('🔍 Starting bootstrap...');
+        const [[health], [status], [startersResp]] = await Promise.all([
+          api.getHealth(),
+          api.getSystemStatus(),
+          api.getConversationStarters(),
+        ]);
+        console.log('📊 Bootstrap results:', { health, status, startersResp });
+        
+        if (health) {
+          console.log('✅ Health check successful:', health);
+          setSystemStatus(health);
+        }
+        if (status) {
+          console.log('✅ System status successful:', status);
+          setSystemStatus((s) => ({ ...(s || {}), ...status }));
+        }
+        if (startersResp?.starters?.length) {
+          console.log('✅ Conversation starters loaded:', startersResp.starters);
+          setStarters(startersResp.starters);
+        }
+      } catch (error) {
+        console.error('❌ Bootstrap error:', error);
+        setError('Failed to initialize chat system');
+      }
     };
     bootstrap();
   }, []);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
+    
+    console.log('🚀 Sending message:', input);
+    console.log('🔧 Comprehensive mode:', isComprehensive);
+    console.log('👤 User ID:', userId);
+    
     const userMessage = { role: 'user', content: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
     setError(null);
 
-    const [data, err] = isComprehensive
-      ? await api.comprehensiveChat(userMessage.content, userId)
-      : await api.chat(userMessage.content, userId);
-
-    if (err) {
-      setError(err.message || 'Something went wrong');
+    try {
+      const [data, err] = isComprehensive
+        ? await api.comprehensiveChat(userMessage.content, userId)
+        : await api.chat(userMessage.content, userId);
+      
+      console.log('📨 API response:', { data, err });
+      
+      if (err) {
+        console.error('❌ Chat error:', err);
+        setError(err.message || 'Something went wrong');
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: 'assistant',
+            content: "I'm experiencing some technical difficulties. Please try again later.",
+            meta: { status: 'error' },
+          },
+        ]);
+      } else if (data) {
+        console.log('✅ Chat successful:', data);
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: 'assistant',
+            content: data.response,
+            meta: {
+              agent: data.agent_used,
+              sources: data.sources,
+              status: data.status,
+              contextUsed: data.context_used,
+            },
+          },
+        ]);
+      }
+    } catch (error) {
+      console.error('❌ Unexpected error in sendMessage:', error);
+      setError('An unexpected error occurred');
       setMessages((prev) => [
         ...prev,
         {
           role: 'assistant',
           content: "I'm experiencing some technical difficulties. Please try again later.",
           meta: { status: 'error' },
-        },
-      ]);
-    } else if (data) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: 'assistant',
-          content: data.response,
-          meta: {
-            agent: data.agent_used,
-            sources: data.sources,
-            status: data.status,
-            contextUsed: data.context_used,
-          },
         },
       ]);
     }
@@ -144,6 +183,38 @@ const Chat = () => {
               Toggle comprehensive to use multi-agent endpoint.
             </div>
           </div>
+          <button 
+            onClick={async () => {
+              console.log('🧪 Testing API connection...');
+              const [health] = await api.getHealth();
+              console.log('🧪 Health check result:', health);
+              if (health) {
+                alert(`API is working! Status: ${health.status}`);
+              } else {
+                alert('API connection failed. Check console for details.');
+              }
+            }}
+            className="mt-2 w-full text-xs px-2 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded"
+          >
+            Test API Connection
+          </button>
+          <button 
+            onClick={async () => {
+              console.log('🌐 Testing network connectivity...');
+              try {
+                const response = await fetch('https://catalyst-career-ai-backend.onrender.com/api/health');
+                const data = await response.json();
+                console.log('🌐 Direct fetch result:', data);
+                alert(`Network test: ${response.status} - ${data.status || 'Unknown'}`);
+              } catch (error) {
+                console.error('🌐 Network test failed:', error);
+                alert(`Network test failed: ${error.message}`);
+              }
+            }}
+            className="mt-2 w-full text-xs px-2 py-1 bg-green-100 hover:bg-green-200 text-green-700 rounded"
+          >
+            Test Network
+          </button>
         </div>
       </aside>
 
