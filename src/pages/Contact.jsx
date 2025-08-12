@@ -7,7 +7,8 @@ import {
   Clock, 
   Send,
   CheckCircle,
-  ArrowRight
+  ArrowRight,
+  AlertCircle
 } from 'lucide-react';
 
 const Contact = () => {
@@ -19,17 +20,41 @@ const Contact = () => {
     message: '' 
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-      setForm({ name: '', email: '', phone: '', subject: '', message: '' });
-    }, 3000);
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit contact form');
+      }
+
+      setSubmitted(true);
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+        setForm({ name: '', email: '', phone: '', subject: '', message: '' });
+      }, 3000);
+    } catch (err) {
+      setError('Failed to submit form. Please try again or contact us directly.');
+      console.error('Contact form error:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -206,6 +231,15 @@ const Contact = () => {
             </div>
           ) : (
             <form onSubmit={onSubmit} className="bg-white rounded-2xl shadow-lg p-8 lg:p-12">
+              {error && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <div className="flex items-center">
+                    <AlertCircle className="h-5 w-5 text-red-600 mr-2" />
+                    <p className="text-red-800">{error}</p>
+                  </div>
+                </div>
+              )}
+              
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -218,6 +252,7 @@ const Contact = () => {
                     onChange={onChange}
                     className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     required
+                    disabled={loading}
                   />
                 </div>
                 <div>
@@ -231,6 +266,7 @@ const Contact = () => {
                     onChange={onChange}
                     className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     required
+                    disabled={loading}
                   />
                 </div>
               </div>
@@ -246,6 +282,7 @@ const Contact = () => {
                     value={form.phone}
                     onChange={onChange}
                     className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                    disabled={loading}
                   />
                 </div>
                 <div>
@@ -259,6 +296,7 @@ const Contact = () => {
                     onChange={onChange}
                     className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     required
+                    disabled={loading}
                   />
                 </div>
               </div>
@@ -275,16 +313,31 @@ const Contact = () => {
                   className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent resize-none"
                   placeholder="Tell us about your career guidance needs..."
                   required
+                  disabled={loading}
                 />
               </div>
               
               <div className="text-center">
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors shadow-lg"
+                  disabled={loading}
+                  className={`inline-flex items-center justify-center px-8 py-4 font-semibold rounded-lg transition-colors shadow-lg ${
+                    loading 
+                      ? 'bg-gray-400 text-gray-200 cursor-not-allowed' 
+                      : 'bg-amber-500 text-white hover:bg-amber-600'
+                  }`}
                 >
-                  Send Message
-                  <Send className="ml-2 h-5 w-5" />
+                  {loading ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="ml-2 h-5 w-5" />
+                    </>
+                  )}
                 </button>
               </div>
             </form>

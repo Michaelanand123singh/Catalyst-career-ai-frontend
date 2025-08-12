@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Users, Target, BookOpen, Star, Calendar } from 'lucide-react';
+import { ArrowRight, CheckCircle, Users, Target, BookOpen, Star, Calendar, Clock, User } from 'lucide-react';
 
 const Home = () => {
+  const [recentBlogs, setRecentBlogs] = useState([]);
+  const [loadingBlogs, setLoadingBlogs] = useState(true);
+
+  useEffect(() => {
+    const fetchRecentBlogs = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:8000'}/api/blog-posts?limit=3&status=published`);
+        if (response.ok) {
+          const data = await response.json();
+          setRecentBlogs(data.blog_posts || []);
+        }
+      } catch (error) {
+        console.error('Error fetching recent blogs:', error);
+      } finally {
+        setLoadingBlogs(false);
+      }
+    };
+
+    fetchRecentBlogs();
+  }, []);
+
   const testimonials = [
     {
       name: "Priya Sharma",
@@ -265,6 +286,97 @@ const Home = () => {
                 </ul>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Blogs */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Recent Blog Posts
+            </h2>
+            <p className="text-xl text-gray-600">Stay updated with the latest career insights and guidance</p>
+          </div>
+          
+          {loadingBlogs ? (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500"></div>
+              <p className="mt-4 text-gray-600">Loading recent posts...</p>
+            </div>
+          ) : recentBlogs.length > 0 ? (
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              {recentBlogs.map((blog) => (
+                <div key={blog._id} className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+                  {blog.featured_image && (
+                    <div className="aspect-video overflow-hidden rounded-t-xl">
+                      <img
+                        src={blog.featured_image}
+                        alt={blog.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4" />
+                        {blog.author}
+                      </div>
+                      {blog.published_at && (
+                        <div className="flex items-center gap-1">
+                          <Clock className="h-4 w-4" />
+                          {new Date(blog.published_at).toLocaleDateString()}
+                        </div>
+                      )}
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
+                      {blog.title}
+                    </h3>
+                    {blog.excerpt && (
+                      <p className="text-gray-600 mb-4 line-clamp-3">
+                        {blog.excerpt}
+                      </p>
+                    )}
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-wrap gap-2">
+                        {blog.tags && blog.tags.slice(0, 2).map((tag, index) => (
+                          <span
+                            key={index}
+                            className="px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded-full"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <Link
+                        to={`/blog/${blog._id}`}
+                        className="inline-flex items-center gap-1 text-amber-600 hover:text-amber-700 font-medium text-sm"
+                      >
+                        Read More
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <BookOpen className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+              <p className="text-gray-600">No blog posts available yet.</p>
+            </div>
+          )}
+          
+          <div className="text-center">
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors"
+            >
+              View All Posts
+              <ArrowRight className="h-5 w-5" />
+            </Link>
           </div>
         </div>
       </section>

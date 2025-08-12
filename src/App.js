@@ -11,6 +11,8 @@ import SeminarsWorkshops from './pages/SeminarsWorkshops';
 import UpcomingEvents from './pages/UpcomingEvents';
 import Resources from './pages/Resources';
 import SuccessStories from './pages/SuccessStories';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Chat from './components/Chat';
 import RequireAuth from './components/RequireAuth';
 import LoginRedirect from './pages/LoginRedirect';
@@ -92,6 +94,22 @@ const App = () => {
           element={
             <Layout>
               <SuccessStories />
+            </Layout>
+          }
+        />
+        <Route
+          path="/blog"
+          element={
+            <Layout>
+              <Blog />
+            </Layout>
+          }
+        />
+        <Route
+          path="/blog/:id"
+          element={
+            <Layout>
+              <BlogPost />
             </Layout>
           }
         />

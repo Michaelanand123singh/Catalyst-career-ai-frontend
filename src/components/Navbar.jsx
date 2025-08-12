@@ -117,6 +117,10 @@ const Navbar = () => {
               </div>
             ))}
             
+            <NavLink to="/blog" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              Blog
+            </NavLink>
             <NavLink to="/contact" onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
               Contact Us
@@ -197,6 +201,10 @@ const Navbar = () => {
               </NavLink>
             </div>
             
+            <NavLink to="/blog" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              Blog
+            </NavLink>
             <NavLink to="/contact" onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
               Contact Us

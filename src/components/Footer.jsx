@@ -34,7 +34,7 @@ const Footer = () => {
   ];
 
   const resources = [
-    { name: "Blog & Articles", path: "/resources" },
+    { name: "Blog & Articles", path: "/blog" },
     { name: "Career Guides", path: "/resources" },
     { name: "Study Materials", path: "/resources" },
     { name: "FAQs", path: "/resources" },
