@@ -95,6 +95,38 @@ const api = {
     );
   },
 
+  // POST /api/auth/login
+  login: (email, password) =>
+    safeRequest(
+      httpClient.post('/auth/login', {
+        email: email,
+        password: password,
+      })
+    ),
+
+  // POST /api/auth/signup
+  signup: (name, email, password) =>
+    safeRequest(
+      httpClient.post('/auth/signup', {
+        name: name,
+        email: email,
+        password: password,
+      })
+    ),
+
+  // GET /api/auth/me
+  getCurrentUser: () => safeRequest(httpClient.get('/auth/me')),
+
+  // Admin endpoints
+  // GET /api/admin/users
+  getUsers: () => safeRequest(httpClient.get('/admin/users')),
+
+  // GET /api/admin/activity
+  getActivity: (limit = 100) => safeRequest(httpClient.get(`/admin/activity?limit=${limit}`)),
+
+  // GET /api/admin/users/{user_id}/summary
+  getUserSummary: (userId) => safeRequest(httpClient.get(`/admin/users/${userId}/summary`)),
+
   // Auth endpoints
   // Expecting responses: { token, user } for login/signup; { user } for me
   login: (email, password) => safeRequest(httpClient.post('/auth/login', { email, password })),
