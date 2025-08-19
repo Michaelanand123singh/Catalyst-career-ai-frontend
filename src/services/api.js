@@ -16,11 +16,11 @@ const getApiBaseUrl = () => {
   
   // Check if we're running on the main domain
   if (window.location.hostname === 'www.catalystcareers.in' || window.location.hostname === 'catalystcareers.in') {
-    return 'https://catalyst-career-ai-backend.onrender.com';
+    return 'https://catalyst-career-ai-backend-147549542423.asia-southeast1.run.app';
   }
   
   // Production fallback
-  return 'https://catalyst-career-ai-backend.onrender.com';
+  return 'https://catalyst-career-ai-backend-147549542423.asia-southeast1.run.app';
 };
 
 export const API_BASE_URL = getApiBaseUrl();
