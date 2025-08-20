@@ -33,7 +33,17 @@ const Blog = () => {
       
       if (error) {
         console.error('❌ Failed to fetch blog posts:', error);
-        setError('Failed to load blog posts. Please try again later.');
+        
+        // Provide more specific error messages based on the error type
+        if (error.message?.includes('timeout')) {
+          setError('The server is taking too long to respond. This might be due to high traffic or server maintenance. Please try again in a few minutes.');
+        } else if (error.status === 503) {
+          setError('The blog service is temporarily unavailable. Please try again later.');
+        } else if (error.status === 500) {
+          setError('There was a server error. Our team has been notified and is working to fix this issue.');
+        } else {
+          setError('Failed to load blog posts. Please try again later.');
+        }
         setPosts([]);
       } else {
         console.log('✅ Blog posts fetched successfully:', data);
@@ -41,7 +51,7 @@ const Blog = () => {
       }
     } catch (err) {
       console.error('❌ Error fetching blog posts:', err);
-      setError('Failed to load blog posts. Please try again later.');
+      setError('An unexpected error occurred. Please try refreshing the page.');
       setPosts([]);
     } finally {
       setLoading(false);
@@ -140,14 +150,28 @@ const Blog = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {error ? (
             <div className="text-center py-12">
-              <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md mx-auto">
-                <p className="text-red-800 mb-4">{error}</p>
-                <button 
-                  onClick={fetchPosts}
-                  className="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors"
-                >
-                  Try Again
-                </button>
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-8 max-w-lg mx-auto">
+                <div className="mb-4">
+                  <svg className="h-12 w-12 text-amber-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Unable to Load Blog Posts</h3>
+                <p className="text-gray-600 mb-6">{error}</p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <button 
+                    onClick={fetchPosts}
+                    className="px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors font-medium"
+                  >
+                    Try Again
+                  </button>
+                  <button 
+                    onClick={() => window.location.reload()}
+                    className="px-6 py-3 border border-amber-300 text-amber-700 rounded-lg hover:bg-amber-50 transition-colors font-medium"
+                  >
+                    Refresh Page
+                  </button>
+                </div>
               </div>
             </div>
           ) : filteredPosts.length > 0 ? (

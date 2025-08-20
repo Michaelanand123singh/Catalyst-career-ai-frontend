@@ -15,6 +15,7 @@ const Home = () => {
         
         if (error) {
           console.error('❌ Failed to fetch recent blogs:', error);
+          // Don't show error on home page, just silently fail
           setRecentBlogs([]);
         } else {
           console.log('✅ Recent blogs fetched successfully:', data);
@@ -23,6 +24,7 @@ const Home = () => {
         }
       } catch (error) {
         console.error('❌ Error fetching recent blogs:', error);
+        // Don't show error on home page, just silently fail
         setRecentBlogs([]);
       } finally {
         setLoadingBlogs(false);
