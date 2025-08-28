@@ -9,9 +9,33 @@ import {
   Facebook,
   Linkedin,
   Youtube,
-  ArrowRight
+  ArrowRight,
+  Star
 } from 'lucide-react';
 
+const testimonials = [
+  {
+    name: "Priya Sharma",
+    role: "Student, Class 12",
+    content: "Catalyst helped me discover my passion for psychology. The assessment was incredibly accurate!",
+    rating: 5,
+    photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    name: "Rajesh Kumar",
+    role: "Parent",
+    content: "As a parent, I was worried about my son's career choice. Catalyst provided clear guidance and peace of mind.",
+    rating: 5,
+    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    name: "Anjali Patel",
+    role: "College Student",
+    content: "The personalized career roadmap helped me choose the right subjects and now I'm confident about my future.",
+    rating: 5,
+    photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+  }
+];
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -25,21 +49,25 @@ const Footer = () => {
     { name: "Contact Us", path: "/contact" }
   ];
 
-  const services = [
-    { name: "SPCAT Assessment", path: "/assessment-tests" },
-    { name: "Academic Building Program", path: "/services" },
-    { name: "Career Building Program", path: "/services" },
-    { name: "School & College Programs", path: "/services" },
-    { name: "1-on-1 Counseling", path: "/contact" }
-  ];
+  // Services - updated as per screenshot
+const services = [
+  { name: "Subject Selection", path: "/services" },
+  { name: "Career Selection", path: "/services" },
+  { name: "Engineering Branch Selection", path: "/services" },
+  { name: "Career Cluster Analysis", path: "/services" },
+  { name: "1-1 Counselling", path: "/contact" },
+  { name: "Vocational Training", path: "/services" },
+  { name: "AI Career Assistant", path: "/services" },
+  { name: "AI Job Search", path: "/services" }
+];
 
-  const resources = [
-    { name: "Blog & Articles", path: "/blog" },
-    { name: "Career Guides", path: "/resources" },
-    { name: "Study Materials", path: "/resources" },
-    { name: "FAQs", path: "/resources" },
-    { name: "Success Stories", path: "/success-stories" }
-  ];
+// Resources - removed Career Guides & FAQs
+const resources = [
+  { name: "Blog & Articles", path: "/blog" },
+  { name: "Study Materials", path: "/resources" },
+  { name: "Success Stories", path: "/success-stories" }
+];
+
 
   const socialLinks = [
     { 
@@ -69,6 +97,34 @@ const Footer = () => {
   ];
 
   return (
+    <>
+     <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">What Our Users Say</h2>
+            <p className="text-xl text-gray-600">Real stories from students and parents who transformed their careers</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-amber-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
+                <div className="flex items-center">
+                  <img src={testimonial.photo} alt={testimonial.name} className="w-12 h-12 rounded-full mr-4" />
+                  <div>
+                    <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                    <div className="text-sm text-gray-600">{testimonial.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     <footer className="bg-gray-900 text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -96,10 +152,7 @@ const Footer = () => {
                   yug@careerwithcatalyst.com
                 </a>
               </div>
-              <div className="flex items-center text-gray-300 text-sm">
-                <MapPin className="h-4 w-4 mr-3 text-amber-500" />
-                <span>Gandhidham, Kutch, Gujarat</span>
-              </div>
+           
               <div className="flex items-center text-gray-300 text-sm">
                 <MessageCircle className="h-4 w-4 mr-3 text-amber-500" />
                 <a href="https://wa.me/917277277477" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">
@@ -253,6 +306,8 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    
+    </>
   );
 };
 

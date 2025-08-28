@@ -146,34 +146,38 @@ const Navbar = () => {
   const activeClass = 'text-amber-600 bg-amber-50';
 
   const megaMenuItems = {
-    services: {
-      title: 'Services',
-      icon: <Lightbulb className="h-5 w-5" />,
-      items: [
-        { name: 'Career Counseling', path: '/services', description: 'Professional career guidance' },
-        { name: 'Assessment Tests', path: '/assessment-tests', description: 'Discover your potential' },
-        { name: 'Resume Building', path: '/services', description: 'Professional resume creation' },
-        { name: 'Interview Prep', path: '/services', description: 'Ace your interviews' }
-      ]
-    },
-    learning: {
-      title: 'Learning',
+      Assessment: {
+      title: 'Assessment Test',
       icon: <BookOpen className="h-5 w-5" />,
       items: [
-        { name: 'Seminars & Workshops', path: '/seminars-workshops', description: 'Interactive learning sessions' },
-        { name: 'Resources', path: '/resources', description: 'Career development tools' },
-        { name: 'Success Stories', path: '/success-stories', description: 'Inspiring transformations' }
+        { name: 'Subject Selection', path: '/subject-selection', description: 'Professional career guidance' },
+        { name: 'Career Selection', path: '/career-selection', description: 'Discover your potential' },
+        { name: 'Engineering Branch Selection', path: '/eng-branch-selection', description: 'Professional resume creation' },
+        { name: 'Career Cluster Analysis ', path: '/career-cluster-selection', description: 'Ace your interviews' },
+        { name: '1-1 Counselling ', path: '/couseling-one', description: 'Ace your interviews' },
+        { name: 'Vocation Training', path: '/vocational-training', description: 'Ace your interviews' }
       ]
     },
-    events: {
-      title: 'Events',
-      icon: <Calendar className="h-5 w-5" />,
+    services: {
+      title: 'Additional Services',
+      icon: <Lightbulb className="h-5 w-5" />,
       items: [
-        { name: 'Upcoming Events', path: '/upcoming-events', description: 'Career development events' },
-        { name: 'Webinars', path: '/upcoming-events', description: 'Online learning sessions' },
-        { name: 'Networking Events', path: '/upcoming-events', description: 'Connect with professionals' }
+        { name: 'AI Career Assistant', path: '/ai-career', description: 'Professional career guidance' },
+        { name: 'AI Job Searh', path: '/ai-job', description: 'Discover your potential' },
+     
       ]
-    }
+    },
+  
+    // learning: {
+    //   title: 'Learning',
+    //   icon: <BookOpen className="h-5 w-5" />,
+    //   items: [
+    //     { name: 'Seminars & Workshops', path: '/seminars-workshops', description: 'Interactive learning sessions' },
+    //     { name: 'Resources', path: '/resources', description: 'Career development tools' },
+    //     { name: 'Success Stories', path: '/success-stories', description: 'Inspiring transformations' }
+    //   ]
+    // },
+    
   };
 
   const handleMegaMenuEnter = (menuKey) => {
@@ -185,6 +189,32 @@ const Navbar = () => {
   };
 
   return (
+    <>
+   <div className="relative w-full bg-gradient-to-r from-amber-400 via-red-500 to-pink-500 text-white shadow-md">
+  <div className="flex items-center justify-between px-6 py-3">
+    {/* Left side - icon + message */}
+    <div className="flex items-center space-x-3">
+      <span className="animate-pulse">
+        📢
+      </span>
+      <p className="font-semibold text-lg sm:text-xl md:text-2xl tracking-wide">
+        Direct Appointment: <span className="font-bold">+91 7277277477</span>
+      </p>
+    </div>
+
+    {/* Right side - Call button */}
+    <a
+      href="tel:+917277277477"
+      className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-red-600 font-semibold shadow hover:bg-gray-100 transition"
+    >
+      📞 Call Now
+    </a>
+  </div>
+
+  {/* Optional bottom glow effect */}
+  <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-yellow-300 via-pink-400 to-red-500 animate-pulse"></div>
+</div>
+
     <nav className="border-b bg-white relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
@@ -244,6 +274,15 @@ const Navbar = () => {
                 )}
               </div>
             ))}
+         
+            <NavLink to="/upcoming-events" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+               Events
+            </NavLink>
+            <NavLink to="/success-stories" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+               Success Stories
+            </NavLink>
             
             <NavLink to="/blog" onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
@@ -353,12 +392,23 @@ const Navbar = () => {
             ) : (
               // User is not logged in - show login button
               <button
-                onClick={() => setAuthOpen(true)}
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-amber-500 text-white text-sm font-semibold hover:bg-amber-600 transition-colors"
-              >
-                <Sparkles className="h-4 w-4" />
-                Career AI
-              </button>
+  onClick={() => setAuthOpen(true)}
+  className="relative inline-flex items-center gap-2 px-4 py-2 rounded-md 
+             bg-gradient-to-r from-pink-500 via-orange-500 to-rose-500 
+             text-white text-sm font-semibold 
+             shadow-lg hover:shadow-2xl 
+             animate-pulse transition-all duration-300"
+>
+  {/* Rainbow Glow Effect */}
+  <span className="absolute -inset-1 rounded-md bg-gradient-to-r from-pink-400 via-orange-400 to-indigo-400 opacity-75 blur-md animate-pulse"></span>
+
+  {/* Actual button content (above glow) */}
+  <span className="relative flex items-center gap-2">
+    <Sparkles className="h-4 w-4 animate-bounce" />
+    Catalyst AI
+  </span>
+</button>
+
             )}
             
             <button onClick={toggle} className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-md border text-slate-700">
@@ -405,10 +455,7 @@ const Navbar = () => {
                 className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
                 Resources
               </NavLink>
-              <NavLink to="/success-stories" onClick={close}
-                className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
-                Success Stories
-              </NavLink>
+              
             </div>
             
             {/* Mobile Events Section */}
@@ -419,7 +466,12 @@ const Navbar = () => {
                 Upcoming Events
               </NavLink>
             </div>
+     
             
+            <NavLink to="/success-stories" onClick={close}
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+               Success Stories
+            </NavLink>
             <NavLink to="/blog" onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
               Blog
@@ -473,15 +525,16 @@ const Navbar = () => {
               </div>
             ) : (
               <button
-                onClick={() => {
-                  setAuthOpen(true);
-                  close();
-                }}
-                className="mt-1 inline-flex items-center gap-2 px-3 py-2 rounded-md bg-amber-500 text-white text-sm font-semibold hover:bg-amber-600"
-              >
-                <Sparkles className="h-4 w-4" />
-                Career AI
-              </button>
+  onClick={() => {
+    setAuthOpen(true);
+    close();
+  }}
+  className="mt-1 inline-flex items-center gap-2 px-3 py-2 rounded-md bg-amber-500 text-white text-sm font-semibold hover:bg-amber-600 transition-colors animate-glow"
+>
+  <Sparkles className="h-4 w-4" />
+  Career AI
+</button>
+
             )}
           </div>
         </div>
@@ -495,6 +548,7 @@ const Navbar = () => {
         }}
       />
     </nav>
+    </>
   );
 };
 

@@ -58,13 +58,70 @@ const App = () => {
           }
         />
         <Route
-          path="/assessment-tests"
+          path="/subject-selection"
           element={
             <Layout>
               <AssessmentTests />
             </Layout>
           }
         />
+        <Route
+          path="/career-selection"
+          element={
+            <Layout>
+              <AssessmentTests />
+            </Layout>
+          }
+        />
+        <Route
+          path="/eng-branch-selection"
+          element={
+            <Layout>
+              <AssessmentTests />
+            </Layout>
+          }
+        />
+        <Route
+          path="/career-cluster-selection"
+          element={
+            <Layout>
+              <AssessmentTests />
+            </Layout>
+          }
+        />
+        <Route
+          path="/couseling-one"
+          element={
+            <Layout>
+              <AssessmentTests />
+            </Layout>
+          }
+        />
+        <Route
+          path="/vocational-training"
+          element={
+            <Layout>
+              <AssessmentTests />
+            </Layout>
+          }
+        />
+        <Route
+          path="/ai-career"
+          element={
+            <Layout>
+              <Services />
+            </Layout>
+          }
+        />
+        <Route
+          path="/ai-job"
+          element={
+            <Layout>
+              <Services />
+            </Layout>
+          }
+        />
+        
         <Route
           path="/seminars-workshops"
           element={
