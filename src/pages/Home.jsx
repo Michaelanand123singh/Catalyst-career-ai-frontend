@@ -205,14 +205,14 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/assessment-tests"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 text-white font-semibold rounded-3xl hover:bg-amber-600 transition-colors shadow-lg"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-[#25483f] text-white font-semibold rounded-3xl hover:bg-[#3d5f56] hover:font-bold transition-colors shadow-lg"
                 >
                   Take the Test
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
 
                 <button
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-amber-500 text-amber-600 font-semibold rounded-3xl hover:bg-amber-50 transition-colors animate-blink"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#25483f] text-[25483f] font-semibold rounded-3xl hover:bg-amber-50 transition-colors animate-blink"
                 >
                   <Calendar className="mr-2 h-5 w-5" />
                   Book Your 1-1 Counselling
@@ -439,24 +439,24 @@ const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl font-bold text-amber-600">1</span>
+              <div className="w-20 h-20 bg-[#25483f] rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl font-bold text-white">1</span>
               </div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">Assess</h3>
               <p className="text-gray-600">Take our Scientific Psychometric Career Assessment Test.</p>
             </div>
 
             <div className="text-center">
-              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl font-bold text-blue-600">2</span>
+              <div className="w-20 h-20 bg-[#25483f] rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl font-bold text-white">2</span>
               </div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">Analyse</h3>
               <p className="text-gray-600">Get personalised reports with clear guidance.</p>
             </div>
 
             <div className="text-center">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl font-bold text-green-600">3</span>
+              <div className="w-20 h-20 bg-[#25483f] rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl font-bold text-white">3</span>
               </div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">Achieve</h3>
               <p className="text-gray-600">Follow your customised career roadmap.</p>
@@ -478,11 +478,11 @@ const Home = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {features.map((feature, index) => (
               <div key={index} className="text-center p-6">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-[#25483f] rounded-full flex items-center justify-center mx-auto mb-4 text-white">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                <p className="text-gray-700 text-sm">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -493,19 +493,19 @@ const Home = () => {
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Additional Benefits</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
                     1-on-1 academic & career counselling
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
                     Proven success stories
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
                     Personalized, Scientific Career Assessment
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
                     Hands-On Practical Learning Approach
                   </li>
                 </ul>
@@ -513,19 +513,19 @@ const Home = () => {
               <div>
                 <ul className="space-y-3">
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
                     Expert Support from Experienced Educators
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
                     Experienced mentors & renowned speakers
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
                     Empowering Students, Parents, and Teachers
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
                     NEP-aligned guidance
                   </li>
                 </ul>
@@ -589,7 +589,7 @@ const Home = () => {
                         {blog.tags && blog.tags.slice(0, 2).map((tag, index) => (
                           <span
                             key={index}
-                            className="px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded-full"
+                            className="px-2 py-1 bg-amber-200 text-amber-700 text-xs rounded-full"
                           >
                             {tag}
                           </span>

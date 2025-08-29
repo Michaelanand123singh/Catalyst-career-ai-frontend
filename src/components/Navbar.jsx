@@ -142,8 +142,8 @@ const Navbar = () => {
     };
   }, [userDropdownOpen]);
 
-  const baseLink = 'px-2 py-2 rounded-md text-sm font-medium hover:text-amber-600 hover:bg-amber-50';
-  const activeClass = 'text-amber-600 bg-amber-50';
+  const baseLink = 'px-2 py-2 rounded-full text-md font-medium hover:text-white hover:bg-[#395f56] hover:font-bold hover:px-2';
+  const activeClass = 'text-white bg-[#395f56] font-bold text-lg px-2';
 
   const megaMenuItems = {
       Assessment: {
@@ -190,34 +190,29 @@ const Navbar = () => {
 
   return (
     <>
-   <div className="relative w-full bg-gradient-to-r from-amber-400 via-red-500 to-pink-500 text-white shadow-md">
-  <div className="flex items-center justify-between px-6 py-3">
+  <div className="relative w-full bg-white text-[#2d4d45] shadow-md">
+    <div className="flex items-center justify-end  px-6 py-3">
     {/* Left side - icon + message */}
-    <div className="flex items-center space-x-3">
-      <span className="animate-pulse">
-        📢
-      </span>
-      <p className="font-semibold text-lg sm:text-xl md:text-2xl tracking-wide">
-        Direct Appointment: <span className="font-bold">+91 7277277477</span>
-      </p>
-    </div>
+      <div className="flex items-center space-x-4">
+
+       <i className="font-semibold text-lg sm:text-xl md:text-2xl tracking-wide text-[#25483f]">
+        Quries: <span className="font-bold text-md">help@catalystcareers.in</span>
+        </i>
+        <i className="font-semibold text-lg sm:text-xl md:text-2xl tracking-wide text-[#25483f]">
+        Direct Appointment: <span className="font-bold text-md">+91 7277277477</span>
+        </i>
+      
+      </div>
 
     {/* Right side - Call button */}
-    <a
-      href="tel:+917277277477"
-      className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-red-600 font-semibold shadow hover:bg-gray-100 transition"
-    >
-      📞 Call Now
-    </a>
+    </div>
+
   </div>
 
-  {/* Optional bottom glow effect */}
-  <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-yellow-300 via-pink-400 to-red-500 animate-pulse"></div>
-</div>
 
-    <nav className="border-b bg-white relative">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+    <nav className="border-2 border-t-[#25483f] bg-white relative p-2">
+      <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 content-center">
+        <div className="flex h-16 items-center justify-around ">
           <div className="flex items-center gap-3">
             <Link to="/" className="flex items-center gap-2" onClick={close}>
               <div className="h-8 w-8 grid place-items-center rounded-md bg-amber-500 text-white font-bold">C</div>
@@ -225,13 +220,13 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1 bg-[#25483f] border rounded-full p-2 px-4 text-white ">
             <NavLink to="/" end onClick={close}
-              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
               Home
             </NavLink>
             <NavLink to="/about" onClick={close}
-              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
               About Us
             </NavLink>
             
@@ -243,18 +238,18 @@ const Navbar = () => {
                 onMouseEnter={() => handleMegaMenuEnter(key)}
                 onMouseLeave={handleMegaMenuLeave}
               >
-                <button className={`${baseLink} flex items-center gap-1 text-slate-700`}>
+                <button className={`${baseLink} flex items-center gap-1 text-white`}>
                   {menu.icon}
                   {menu.title}
                   <ChevronDown className="h-4 w-4" />
                 </button>
                 
                 {activeMegaMenu === key && (
-                  <div className="absolute top-full left-0 w-80 bg-white border border-gray-200 rounded-lg shadow-xl z-50 mt-1">
+                  <div className="absolute top-full left-0 w-80 rounded-lg  text-md font-medium hover:text-white bg-[#25483f] hover:font-bold hover:px-2  shadow-xl z-50 mt-1">
                     <div className="p-4">
                       <div className="flex items-center gap-2 mb-3 pb-2 border-b border-gray-100">
                         {menu.icon}
-                        <h3 className="font-semibold text-gray-900">{menu.title}</h3>
+                        <h3 className="font-semibold text-white">{menu.title}</h3>
                       </div>
                       <div className="space-y-2">
                         {menu.items.map((item, index) => (
@@ -262,10 +257,10 @@ const Navbar = () => {
                             key={index}
                             to={item.path}
                             onClick={close}
-                            className="block p-3 rounded-md hover:bg-amber-50 transition-colors"
+                            className="block p-3 rounded-lg text-md font-medium hover:text-white hover:bg-[#395f56] hover:font-bold hover:px-2  transition-colors"
                           >
-                            <div className="font-medium text-gray-900">{item.name}</div>
-                            <div className="text-sm text-gray-600">{item.description}</div>
+                            <div className="font-medium text-white">{item.name}</div>
+                            <div className="text-lg text-gray-200">{item.description}</div>
                           </Link>
                         ))}
                       </div>
@@ -276,20 +271,20 @@ const Navbar = () => {
             ))}
          
             <NavLink to="/upcoming-events" onClick={close}
-              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
                Events
             </NavLink>
             <NavLink to="/success-stories" onClick={close}
-              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
                Success Stories
             </NavLink>
             
             <NavLink to="/blog" onClick={close}
-              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
               Blog
             </NavLink>
             <NavLink to="/contact" onClick={close}
-              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
               Contact Us
             </NavLink>
           </div>
@@ -301,7 +296,7 @@ const Navbar = () => {
                 <button
                   id="user-menu-button"
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-amber-500 text-white text-sm font-semibold hover:bg-amber-600 transition-colors"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-amber-500 text-white text-lg font-semibold hover:bg-amber-600 transition-colors"
                   aria-expanded={userDropdownOpen}
                   aria-haspopup="true"
                   aria-label={`User menu for ${user.name || user.email || 'User'}`}
@@ -331,10 +326,10 @@ const Navbar = () => {
                     <div className="py-2">
                       {/* User Info */}
                       <div className="px-4 py-3 border-b border-gray-100">
-                        <div className="text-sm font-medium text-gray-900">
+                        <div className="text-lg font-medium text-gray-900">
                           {user.name || 'User'}
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-lg text-gray-500">
                           {user.email}
                         </div>
                       </div>
@@ -347,7 +342,7 @@ const Navbar = () => {
                             close();
                             navigate('/chat');
                           }}
-                          className="w-full flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 focus:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-inset transition-colors"
+                          className="w-full flex items-center gap-3 px-4 py-2 text-lg text-gray-700 hover:bg-amber-50 focus:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-inset transition-colors"
                           role="menuitem"
                           tabIndex={0}
                           aria-label="Open Career AI Chat"
@@ -362,7 +357,7 @@ const Navbar = () => {
                             close();
                             // Add profile page navigation here when available
                           }}
-                          className="w-full flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 focus:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-inset transition-colors"
+                          className="w-full flex items-center gap-3 px-4 py-2 text-lg text-gray-700 hover:bg-amber-50 focus:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-inset transition-colors"
                           role="menuitem"
                           tabIndex={0}
                           aria-label="Open Profile Settings"
@@ -376,7 +371,7 @@ const Navbar = () => {
                         <button
                           onClick={handleLogout}
                           disabled={isLoggingOut}
-                          className="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 focus:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-inset transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="w-full flex items-center gap-3 px-4 py-2 text-lg text-red-600 hover:bg-red-50 focus:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-inset transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                           role="menuitem"
                           tabIndex={0}
                           aria-label={isLoggingOut ? 'Signing out...' : 'Sign out of your account'}
@@ -393,25 +388,25 @@ const Navbar = () => {
               // User is not logged in - show login button
               <button
   onClick={() => setAuthOpen(true)}
-  className="relative inline-flex items-center gap-2 px-4 py-2 rounded-md 
-             bg-gradient-to-r from-pink-500 via-orange-500 to-rose-500 
-             text-white text-sm font-semibold 
+  className="relative inline-flex items-center gap-2 px-4 py-3 rounded-full 
+             bg-gradient-to-r to-[#25483f] from-green-900 via-[#25483f]
+             text-white text-lg font-semibold 
              shadow-lg hover:shadow-2xl 
-             animate-pulse transition-all duration-300"
+             animate-pulse transition-all duration-900"
 >
   {/* Rainbow Glow Effect */}
-  <span className="absolute -inset-1 rounded-md bg-gradient-to-r from-pink-400 via-orange-400 to-indigo-400 opacity-75 blur-md animate-pulse"></span>
+  <span className="absolute -inset-1 rounded-md bg-gradient-to-r from-green-800 via-[#25483f] to-green-800 opacity-75 blur-md animate-pulse py-4"></span>
 
   {/* Actual button content (above glow) */}
   <span className="relative flex items-center gap-2">
-    <Sparkles className="h-4 w-4 animate-bounce" />
+    <Sparkles className="h-6 w-6 animate-bounce" />
     Catalyst AI
   </span>
 </button>
 
             )}
             
-            <button onClick={toggle} className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-md border text-slate-700">
+            <button onClick={toggle} className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-md border text-white">
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
@@ -423,11 +418,11 @@ const Navbar = () => {
         <div className="lg:hidden border-t bg-white">
           <div className="px-4 py-3 flex flex-col gap-1">
             <NavLink to="/" end onClick={close}
-              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
               Home
             </NavLink>
             <NavLink to="/about" onClick={close}
-              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
               About Us
             </NavLink>
             
@@ -435,11 +430,11 @@ const Navbar = () => {
             <div className="border-l-2 border-amber-200 pl-3 ml-2">
               <div className="text-xs font-medium text-amber-600 mb-2">SERVICES</div>
               <NavLink to="/services" onClick={close}
-                className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+                className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
                 Career Counseling
               </NavLink>
               <NavLink to="/assessment-tests" onClick={close}
-                className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+                className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
                 Assessment Tests
               </NavLink>
             </div>
@@ -448,11 +443,11 @@ const Navbar = () => {
             <div className="border-l-2 border-amber-200 pl-3 ml-2">
               <div className="text-xs font-medium text-amber-600 mb-2">LEARNING</div>
               <NavLink to="/seminars-workshops" onClick={close}
-                className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+                className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
                 Seminars & Workshops
               </NavLink>
               <NavLink to="/resources" onClick={close}
-                className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+                className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
                 Resources
               </NavLink>
               
@@ -462,22 +457,22 @@ const Navbar = () => {
             <div className="border-l-2 border-amber-200 pl-3 ml-2">
               <div className="text-xs font-medium text-amber-600 mb-2">EVENTS</div>
               <NavLink to="/upcoming-events" onClick={close}
-                className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+                className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
                 Upcoming Events
               </NavLink>
             </div>
      
             
             <NavLink to="/success-stories" onClick={close}
-              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
                Success Stories
             </NavLink>
             <NavLink to="/blog" onClick={close}
-              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
               Blog
             </NavLink>
             <NavLink to="/contact" onClick={close}
-              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-slate-700'}`}>
+              className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
               Contact Us
             </NavLink>
             
@@ -485,7 +480,7 @@ const Navbar = () => {
             {user ? (
               <div className="border-t border-gray-200 pt-3 mt-2">
                 <div className="text-xs font-medium text-amber-600 mb-2">ACCOUNT</div>
-                <div className="px-3 py-2 text-sm text-gray-700">
+                <div className="px-3 py-2 text-md text-gray-700">
                   <div className="flex items-center gap-2">
                     <div className="h-8 w-8 rounded-full bg-amber-500 flex items-center justify-center text-xs font-bold text-white">
                       {user.profile_picture ? (
@@ -509,7 +504,7 @@ const Navbar = () => {
                     close();
                     navigate('/chat');
                   }}
-                  className="w-full mt-2 inline-flex items-center gap-2 px-3 py-2 rounded-md bg-amber-500 text-white text-sm font-semibold hover:bg-amber-600"
+                  className="w-full mt-2 inline-flex items-center gap-2 px-3 py-2 rounded-md bg-amber-500 text-white text-md font-semibold hover:bg-amber-600"
                 >
                   <Sparkles className="h-4 w-4" />
                   Career AI Chat
@@ -517,7 +512,7 @@ const Navbar = () => {
                 <button
                   onClick={handleLogout}
                   disabled={isLoggingOut}
-                  className="w-full mt-2 inline-flex items-center gap-2 px-3 py-2 rounded-md border border-red-300 text-red-600 text-sm font-semibold hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full mt-2 inline-flex items-center gap-2 px-3 py-2 rounded-md border border-red-300 text-red-600 text-md font-semibold hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <LogOut className="h-4 w-4" />
                   {isLoggingOut ? 'Signing out...' : 'Sign Out'}
@@ -529,7 +524,7 @@ const Navbar = () => {
     setAuthOpen(true);
     close();
   }}
-  className="mt-1 inline-flex items-center gap-2 px-3 py-2 rounded-md bg-amber-500 text-white text-sm font-semibold hover:bg-amber-600 transition-colors animate-glow"
+  className="mt-1 inline-flex items-center gap-2 px-3 py-2 rounded-md bg-amber-500 text-white text-md font-semibold hover:bg-amber-600 transition-colors animate-glow"
 >
   <Sparkles className="h-4 w-4" />
   Career AI
