@@ -183,6 +183,67 @@ const Home = () => {
       badge: 'HOT'
     }
   ];
+  const cards = [
+    {
+      id: 1,
+      category: "Subject Selection",
+      title: "Which subject is best for me?",
+      description: "for school students currently studying in Class Xth",
+      buttonText: "Start Your Assessment"
+    },
+    {
+      id: 2,
+      category: "Career Selection",
+      title: "Which career is best for me?",
+      description: "for school students",
+      buttonText: "Start Your Assessment"
+    },
+    {
+      id: 3,
+      category: "Engineering Branch Selection",
+      title: "Which branch of Engineering is best for me?",
+      description: "for engineering education aspirants",
+      buttonText: "Start Your Assessment"
+    },
+    {
+      id: 4,
+      category: "Creer Cluster Analysis",
+      title: "Identify the best Career Cluster",
+      description: "for school students currently studying in Class 7th / 8th / 9th",
+      buttonText: "Start Your Assessment"
+    },
+    {
+      id: 5,
+      category: "1-1 Counselling",
+      title: "1-1 Counselling Session",
+      description: "Meet our expert for Quick discussion of your career related dilemma",
+      buttonText: "Book Your 1-1 Counselling"
+    },
+    {
+      id: 6,
+      category: "Vocational Training",
+      title: "Vocational Trade Selector",
+      description: "For Skill Development Courses selection",
+      buttonText: "Book Your 1-1 Counselling"
+    }
+  ];
+  const cards1 = [
+    {
+      id: 1,
+      category: "AI Career Assistant",
+      title: "Looking for Personal Career assiatnt?",
+      description: "ask anything & anytime to scale-up your career",
+      buttonText: "Chat Now"
+    },
+    {
+      id: 2,
+      category: "AI Job Search",
+      title: "So many hiring websites, so many confusing job descriptions?",
+      description: "find the best opportunities in market currently available as per your resume",
+      buttonText: "Search Now"
+    },
+ 
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -283,146 +344,114 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Problem-Solution Grid */}
-   <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-32 w-96 h-96 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full opacity-20 blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-32 w-96 h-96 bg-gradient-to-br from-pink-200 to-rose-200 rounded-full opacity-20 blur-3xl"></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Enhanced Heading */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <Award className="w-4 h-4 mr-2" />
-            Trusted by 50,000+ Students
-          </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-            Career Problem-Solution
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Grid</span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Identify the best career, subject, and clusters that align with your skills.
-            From subject choice to counselling, everything in one place with AI-powered insights.
+      {/* Academic Problem-Solution Grid */}
+  <div className="min-h-screen bg-white p-8">
+      <div className="max-w-8xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+            Academic Career Problem-Solution Gird
+          </h1>
+          <p className="text-lg text-gray-600 mb-2">
+            Identify the best career, subject, and career clusters that align with you
           </p>
-          
-          {/* Stats */}
-          <div className="flex justify-center items-center gap-8 mt-8 text-sm text-gray-600">
-            <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-green-500" />
-              <span>98% Success Rate</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-blue-500" />
-              <span>Expert Counsellors</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 text-yellow-500" />
-              <span>4.9/5 Rating</span>
-            </div>
-          </div>
+          <p className="text-base text-gray-500">
+            Struggling to decide between which engineering<br />
+            path is the right fit for you?
+          </p>
         </div>
 
-        {/* Enhanced Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            const isHovered = hoveredCard === service.id;
-            
-            return (
-              <div
-                key={service.id}
-                className={`bg-gradient-to-br ${service.bgGradient} p-6 rounded-3xl text-center shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer relative overflow-hidden group ${
-                  isHovered ? 'scale-105' : ''
-                }`}
-                onMouseEnter={() => setHoveredCard(service.id)}
-                onMouseLeave={() => setHoveredCard(null)}
-                style={{
-                  animationDelay: `${index * 100}ms`
-                }}
-              >
-                {/* Badge */}
-                {service.badge && (
-                  <div className="absolute top-3 right-3 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-pulse">
-                    {service.badge}
-                  </div>
-                )}
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 mb-12">
+          {cards.map((card) => (
+            <div key={card.id} className="flex flex-col items-center">
+              {/* Category Tag */}
+              <div className="mb-4 content-center w-full text-center">
+                <span className="inline-block bg-[#25483f] text-white px-4 py-2 rounded-full text-sm font-medium w-full">
+                  {card.category}
+                </span>
+              </div>
+              
+              {/* Card */}
+              <div className="bg-[#25483f] text-white rounded-3xl p-6 flex-1 flex flex-col justify-between min-h-[250px] text-center items-end">
+              
+                  <h3 className="text-xl font-bold mb-4 leading-tight">
+                    {card.title}
+                  </h3>
+                  <p className="text-red-100 text-sm mb-6 text-center">
+                    {card.description}
+                  </p>
                 
-                {/* Popularity indicator */}
-                <div className="absolute top-3 left-3 flex items-center gap-1 text-xs text-gray-600">
-                  <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                  <span>{service.popularity}</span>
-                </div>
-
-                {/* Icon */}
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${service.gradient} flex items-center justify-center transform transition-transform duration-300 ${
-                  isHovered ? 'rotate-6 scale-110' : ''
-                }`}>
-                  <Icon className="w-8 h-8 text-white" />
-                </div>
-
-                {/* Content */}
-                <h3 className="text-lg font-bold text-gray-800 mb-3 group-hover:text-gray-900 transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-gray-700 mb-2 font-medium leading-snug">
-                  {service.description}
-                </p>
-                <p className="text-sm text-gray-500 mb-4">
-                  {service.subtitle}
-                </p>
-
-                {/* Features - Show on hover */}
-                <div className={`transition-all duration-300 overflow-hidden ${
-                  isHovered ? 'max-h-20 opacity-100 mb-4' : 'max-h-0 opacity-0'
-                }`}>
-                  <div className="flex flex-wrap gap-1 justify-center">
-                    {service.features.map((feature, idx) => (
-                      <span key={idx} className="text-xs bg-white bg-opacity-50 px-2 py-1 rounded-full text-gray-600">
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Button */}
-                <button className={`px-6 py-3 bg-gradient-to-r ${service.gradient} text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2 mx-auto group/btn`}>
-                  {service.buttonText}
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                </button>
-
-                {/* Hover effect overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-3xl"></div>
+                
               </div>
-            );
-          })}
+                <button className="bg-[#25483f] hover:bg-[#346256] text-white font-semibold p-3 rounded-full transition-colors duration-200 mt-5 w-full">
+                  {card.buttonText}
+                </button>
+            </div>
+          ))}
         </div>
 
-        {/* Enhanced Footer */}
+        {/* Bottom Text */}
         <div className="text-center">
-          <div className="bg-white bg-opacity-60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white border-opacity-20">
-            <div className="flex justify-center mb-4">
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-            </div>
-            <p className="text-gray-700 text-lg max-w-3xl mx-auto mb-4 font-medium">
-              Get matched with careers that offer long-term stability and growth through our 
-              <span className="font-bold text-blue-600"> Advanced Psychometric Assessment</span>.
-            </p>
-            <p className="text-sm text-gray-500">
-              Join thousands of students who have found their perfect career path with our guidance.
-            </p>
-          </div>
+          <p className="text-gray-600 text-lg">
+            Get matched with Careers that offer long-term stability and growth through our Advanced Psychometric Assessment
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+    {/* Problem-Solution Grid */}
+  <div className="min-h-screen bg-white p-8">
+      <div className="max-w-8xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+Professional Career Scale Problem-Solution Gird          </h1>
+          <p className="text-lg text-gray-600 mb-2">
+Identify the best career that align with you 
+          </p>
+          <p className="text-base text-gray-500">
+            Struggling to decide best opportunity for you?
+          </p>
+        </div>
 
+        {/* Cards Grid */}
+        <div className="flex justify-center items-center gap-6">
+          {cards1.map((card) => (
+            <div key={card.id} className="flex flex-col items-center max-w-[250px]">
+              {/* Category Tag */}
+              <div className="mb-4 content-center w-full text-center">
+                <span className="inline-block bg-[#25483f] text-white px-4 py-2 rounded-full text-sm font-medium w-full">
+                  {card.category}
+                </span>
+              </div>
+              
+              {/* Card */}
+              <div className="bg-[#25483f] text-white rounded-3xl p-6 flex-1 flex flex-col justify-between min-h-[250px] text-center items-end">
+              
+                  <h3 className="text-xl font-bold mb-4 leading-tight">
+                    {card.title}
+                  </h3>
+                  <p className="text-red-100 text-sm mb-6 text-center">
+                    {card.description}
+                  </p>
+                
+                
+              </div>
+                <button className="bg-[#25483f] hover:bg-[#346256] text-white font-semibold p-3 rounded-full transition-colors duration-200 mt-5 w-full">
+                  {card.buttonText}
+                </button>
+            </div>
+          ))}
+        </div>
 
-
+        {/* Bottom Text */}
+        <div className="text-center">
+          <p className="text-gray-600 text-lg mt-20">
+       Get matched with Careers offering long-term stability and growth
+          </p>
+        </div>
+      </div>
+    </div>
 
 
       {/* How Catalyst Works */}
