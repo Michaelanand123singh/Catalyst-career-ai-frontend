@@ -266,14 +266,14 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/assessment-tests"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-[#25483f] text-white font-semibold rounded-3xl hover:bg-[#3d5f56] hover:font-bold transition-colors shadow-lg"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-[#20433C] text-white font-semibold rounded-3xl hover:bg-[#3d5f56] hover:font-bold transition-colors shadow-lg"
                 >
                   Take the Test
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
 
                 <button
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#25483f] text-[25483f] font-semibold rounded-3xl hover:bg-amber-50 transition-colors animate-blink"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#20433C] text-[20433C] font-semibold rounded-3xl hover:bg-amber-50 transition-colors animate-blink"
                 >
                   <Calendar className="mr-2 h-5 w-5" />
                   Book Your 1-1 Counselling
@@ -367,13 +367,13 @@ const Home = () => {
             <div key={card.id} className="flex flex-col items-center">
               {/* Category Tag */}
               <div className="mb-4 content-center w-full text-center">
-                <span className="inline-block bg-[#25483f] text-white px-4 py-2 rounded-full text-sm font-medium w-full">
+                <span className="inline-block bg-[#20433C] text-white px-4 py-2 rounded-full text-sm font-medium w-full">
                   {card.category}
                 </span>
               </div>
               
               {/* Card */}
-              <div className="bg-[#25483f] text-white rounded-3xl p-6 flex-1 flex flex-col justify-between min-h-[250px] text-center items-end">
+              <div className="bg-[#20433C] text-white rounded-3xl p-6 flex-1 flex flex-col justify-between min-h-[250px] text-center items-end">
               
                   <h3 className="text-xl font-bold mb-4 leading-tight">
                     {card.title}
@@ -384,7 +384,7 @@ const Home = () => {
                 
                 
               </div>
-                <button className="bg-[#25483f] hover:bg-[#346256] text-white font-semibold p-3 rounded-full transition-colors duration-200 mt-5 w-full">
+                <button className="bg-[#20433C] hover:bg-[#346256] text-white font-semibold p-3 rounded-full transition-colors duration-200 mt-5 w-full">
                   {card.buttonText}
                 </button>
             </div>
@@ -420,13 +420,13 @@ Identify the best career that align with you
             <div key={card.id} className="flex flex-col items-center max-w-[250px]">
               {/* Category Tag */}
               <div className="mb-4 content-center w-full text-center">
-                <span className="inline-block bg-[#25483f] text-white px-4 py-2 rounded-full text-sm font-medium w-full">
+                <span className="inline-block bg-[#20433C] text-white px-4 py-2 rounded-full text-sm font-medium w-full">
                   {card.category}
                 </span>
               </div>
               
               {/* Card */}
-              <div className="bg-[#25483f] text-white rounded-3xl p-6 flex-1 flex flex-col justify-between min-h-[250px] text-center items-end">
+              <div className="bg-[#20433C] text-white rounded-3xl p-6 flex-1 flex flex-col justify-between min-h-[250px] text-center items-end">
               
                   <h3 className="text-xl font-bold mb-4 leading-tight">
                     {card.title}
@@ -437,7 +437,7 @@ Identify the best career that align with you
                 
                 
               </div>
-                <button className="bg-[#25483f] hover:bg-[#346256] text-white font-semibold p-3 rounded-full transition-colors duration-200 mt-5 w-full">
+                <button className="bg-[#20433C] hover:bg-[#346256] text-white font-semibold p-3 rounded-full transition-colors duration-200 mt-5 w-full">
                   {card.buttonText}
                 </button>
             </div>
@@ -468,7 +468,7 @@ Identify the best career that align with you
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-20 h-20 bg-[#25483f] rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-[#20433C] rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl font-bold text-white">1</span>
               </div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">Assess</h3>
@@ -476,7 +476,7 @@ Identify the best career that align with you
             </div>
 
             <div className="text-center">
-              <div className="w-20 h-20 bg-[#25483f] rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-[#20433C] rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl font-bold text-white">2</span>
               </div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">Analyse</h3>
@@ -484,7 +484,7 @@ Identify the best career that align with you
             </div>
 
             <div className="text-center">
-              <div className="w-20 h-20 bg-[#25483f] rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-[#20433C] rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl font-bold text-white">3</span>
               </div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">Achieve</h3>
@@ -507,7 +507,7 @@ Identify the best career that align with you
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {features.map((feature, index) => (
               <div key={index} className="text-center p-6">
-                <div className="w-16 h-16 bg-[#25483f] rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+                <div className="w-16 h-16 bg-[#20433C] rounded-full flex items-center justify-center mx-auto mb-4 text-white">
                   {feature.icon}
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
@@ -522,19 +522,19 @@ Identify the best career that align with you
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Additional Benefits</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433C] mr-3" />
                     1-on-1 academic & career counselling
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433C] mr-3" />
                     Proven success stories
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433C] mr-3" />
                     Personalized, Scientific Career Assessment
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433C] mr-3" />
                     Hands-On Practical Learning Approach
                   </li>
                 </ul>
@@ -542,19 +542,19 @@ Identify the best career that align with you
               <div>
                 <ul className="space-y-3">
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433C] mr-3" />
                     Expert Support from Experienced Educators
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433C] mr-3" />
                     Experienced mentors & renowned speakers
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433C] mr-3" />
                     Empowering Students, Parents, and Teachers
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#25483f] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433C] mr-3" />
                     NEP-aligned guidance
                   </li>
                 </ul>

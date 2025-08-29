@@ -195,10 +195,10 @@ const Navbar = () => {
     {/* Left side - icon + message */}
       <div className="flex items-center space-x-4">
 
-       <i className="font-semibold text-lg sm:text-xl md:text-2xl tracking-wide text-[#25483f]">
+       <i className="font-semibold text-lg sm:text-xl md:text-2xl tracking-wide text-[#20433C]">
         Quries: <span className="font-bold text-md">help@catalystcareers.in</span>
         </i>
-        <i className="font-semibold text-lg sm:text-xl md:text-2xl tracking-wide text-[#25483f]">
+        <i className="font-semibold text-lg sm:text-xl md:text-2xl tracking-wide text-[#20433C]">
         Direct Appointment: <span className="font-bold text-md">+91 7277277477</span>
         </i>
       
@@ -210,7 +210,7 @@ const Navbar = () => {
   </div>
 
 
-    <nav className="border-2 border-t-[#25483f] bg-white relative p-2">
+    <nav className="border-2 border-t-[#20433C] bg-white relative p-2">
       <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 content-center">
         <div className="flex h-16 items-center justify-around ">
           <div className="flex items-center gap-3">
@@ -220,7 +220,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="hidden lg:flex items-center gap-1 bg-[#25483f] border rounded-full p-2 px-4 text-white ">
+          <div className="hidden lg:flex items-center gap-1 bg-[#20433C] border rounded-full p-2 px-4 text-white ">
             <NavLink to="/" end onClick={close}
               className={({ isActive }) => `${baseLink} ${isActive ? activeClass : 'text-white'}`}>
               Home
@@ -245,7 +245,7 @@ const Navbar = () => {
                 </button>
                 
                 {activeMegaMenu === key && (
-                  <div className="absolute top-full left-0 w-80 rounded-lg  text-md font-medium hover:text-white bg-[#25483f] hover:font-bold hover:px-2  shadow-xl z-50 mt-1">
+                  <div className="absolute top-full left-0 w-80 rounded-lg  text-md font-medium hover:text-white bg-[#20433C] hover:font-bold hover:px-2  shadow-xl z-50 mt-1">
                     <div className="p-4">
                       <div className="flex items-center gap-2 mb-3 pb-2 border-b border-gray-100">
                         {menu.icon}
@@ -389,13 +389,13 @@ const Navbar = () => {
               <button
   onClick={() => setAuthOpen(true)}
   className="relative inline-flex items-center gap-2 px-4 py-3 rounded-full 
-             bg-gradient-to-r to-[#25483f] from-green-900 via-[#25483f]
+             bg-gradient-to-r to-[#20433C] from-green-900 via-[#20433C]
              text-white text-lg font-semibold 
              shadow-lg hover:shadow-2xl 
              animate-pulse transition-all duration-900"
 >
   {/* Rainbow Glow Effect */}
-  <span className="absolute -inset-1 rounded-md bg-gradient-to-r from-green-800 via-[#25483f] to-green-800 opacity-75 blur-md animate-pulse py-4"></span>
+  <span className="absolute -inset-1 rounded-md bg-gradient-to-r from-green-800 via-[#20433C] to-green-800 opacity-75 blur-md animate-pulse py-4"></span>
 
   {/* Actual button content (above glow) */}
   <span className="relative flex items-center gap-2">
