@@ -237,27 +237,7 @@ const resources = [
         </div>
       </div>
 
-      {/* Newsletter Section */}
-      <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center">
-            <h3 className="text-xl font-semibold mb-4">Stay Updated</h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Subscribe to our newsletter for the latest career guidance tips, upcoming events, and success stories.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-              />
-              <button className="px-6 py-3 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+    
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
