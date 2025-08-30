@@ -131,13 +131,6 @@ const AssessmentTests = () => {
                   {data.buttonText}
                 </button>
             </div>
-
-
-              
-                 
-                 
-                 
-                  
                   
                 </div>
 
