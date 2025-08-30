@@ -17,7 +17,7 @@ import {
   Zap
 } from 'lucide-react';
 
-
+import bg from "../images/bg.png"
 const About = () => {
   const values = [
     {
@@ -73,7 +73,7 @@ const About = () => {
       <section className="relative bg-gradient-to-br from-amber-50 via-white to-blue-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center px-4 py-2 bg-[#20433c]-100 text-amber-700 rounded-full text-sm font-medium mb-6">
               <Award className="h-4 w-4 mr-2" />
               Founded in 2019
             </div>
@@ -90,12 +90,12 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/assessment-tests"
-                className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 text-white font-semibold rounded-3xl hover:bg-amber-600 transition-colors shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 bg-[#20433c] text-white font-semibold rounded-3xl hover:bg-[#20433c] transition-colors shadow-lg"
               >
                 Take Our Assessment
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
-              <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-amber-500 text-amber-600 font-semibold rounded-3xl hover:bg-amber-50 transition-colors">
+              <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#20433c] text-[#20433c] font-semibold rounded-3xl hover:bg-[#20433c] transition-colors">
                 <Calendar className="mr-2 h-5 w-5" />
                 Book Consultation
               </button>
@@ -109,65 +109,48 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
       <div className="absolute top-10 right-10 w-32 h-32 bg-blue-200 rounded-full opacity-30"></div>
       <div className="absolute top-32 right-32 w-24 h-24 bg-white rounded-full opacity-60"></div>
       <div className="absolute top-20 right-20 w-16 h-16 bg-blue-300 rounded-full opacity-40"></div>
+    
       
-      <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-green-400 via-green-300 to-transparent opacity-80"></div>
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-green-500 to-transparent opacity-60"></div>
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-green-600 to-transparent opacity-80"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex  gap-2 items-center justify-center ">
           {/* Text Content */}
-          <div className="space-y-6">
+          <div className="space-y-6 w-1/2 p-3">
             <div className="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium">
               <Award className="h-4 w-4 mr-2" />
               Founded in 2019
             </div>
+         
             
-            <div className="space-y-6">
-              <p className="text-lg text-gray-700 leading-relaxed">
-                In 2019, <span className="font-semibold text-amber-600">Haryug Singh</span> — an NIT Surat alumnus with dual MBAs, one in 
-                Product and Brand Management from IIM Rohtak and another in 
-                Business Management from Narsee Monjee Institute of Management 
-                Studies, Mumbai — Catalyst was built on a mission to ensure no child 
-                ever suffers from the lack of proper guidance. Backed by years of 
-                experience in teaching, mentoring, and educational leadership, our 
-                platform <span className="font-semibold">careerwithcatalyst.in</span> offers the Scientific Psychometric 
-                Career Assessment Test (SPCAT), designed to help students discover 
-                their true strengths, interests, and ideal career pathways.
+            <div className="space-y-6  items-center flex justify-center flex-col">
+              <p className="text-lg text-gray-700 leading-relaxed ">
+                 <span className="font-semibold text-amber-600">Haryug Singh</span>  —  with dual MBAs, one in Product and Brand Management from IIM Rohtak and another in Business Management from Narsee Monjee Institute of Management Studies, Mumbai — Catalyst was built on a mission to ensure no child ever suffers from the lack of proper guidance. Backed by years of experience in teaching, mentoring, and educational leadership, our platform careerwithcatalyst.in offers the Scientific Psychometric Career Assessment Test (SPCAT), designed to help students discover their true strengths, interests, and ideal career pathways.
               </p>
-              
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <div className=' mt-2 max-w-[550px] text-center'>
+
+              <p className="text-md text-gray-700 leading-relaxed mb-4">
                 But we don't stop at assessment. We provide personalised reports, one-on-one counselling sessions, and actionable career roadmaps that balance what 
                 students love with what will last.
               </p>
-              
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Over the years, Catalyst has partnered with leading schools, conducted 
+              <p className="text-md text-gray-700 leading-relaxed">
+                 Over the years, Catalyst has partnered with leading schools, conducted 
                 impactful seminars, and guided hundreds of families toward informed career 
                 decisions — creating a generation of confident, future-ready individuals.
               </p>
+              </div>
+              
+              
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 text-white font-semibold rounded-3xl hover:bg-amber-600 transition-colors shadow-lg">
-                Take Our Assessment
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
-              <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-amber-500 text-amber-600 font-semibold rounded-3xl hover:bg-amber-50 transition-colors">
-                <Calendar className="mr-2 h-5 w-5" />
-                Book Consultation
-              </button>
-            </div>
+     
           </div>
           
           {/* Quote Section */}
-          <div className="relative">
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg relative z-10">
-              <blockquote className="text-2xl lg:text-3xl font-bold text-gray-800 text-center leading-tight">
+          <div className="relative w-1/2 items-center content-center flex flex-col">
+            <img src={bg} alt="" srcset="" className='w-90 h-90 mb-10'/>
+              <blockquote className="text-md lg:text-lg font-bold text-gray-800 text-center leading-tight">
                 "Because at Catalyst, your future isn't a guess — it's a{' '}
                 <span className="text-amber-600">guided journey</span>"
               </blockquote>
-            </div>
             
             {/* Decorative elements around quote */}
             <div className="absolute -top-4 -left-4 w-20 h-20 bg-blue-200 rounded-full opacity-60"></div>
@@ -333,11 +316,11 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
             Join thousands of students who have discovered their true potential with Catalyst
           </p>
          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 text-white  rounded-3xl hover:bg-amber-600 transition-colors shadow-lg border-white border-2 font-bold">
+              <button className="inline-flex items-center justify-center px-8 py-4 bg-[#20433c] text-white  rounded-3xl hover:bg-amber-600 transition-colors shadow-lg  font-bold">
                 Take Our Assessment
                 <ArrowRight className="ml-2 h-5 w-5" />
               </button>
-              <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-amber-500 text-amber-600 font-semibold rounded-3xl hover:bg-amber-50 transition-colors bg-white">
+              <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#20433c] text-[#20433c] font-semibold rounded-3xl hover:bg-green-700 transition-colors  hover:text-white ">
                 <Calendar className="mr-2 h-5 w-5" />
                 Book Consultation
               </button>

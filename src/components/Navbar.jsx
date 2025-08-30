@@ -142,8 +142,8 @@ const Navbar = () => {
     };
   }, [userDropdownOpen]);
 
-  const baseLink = 'px-2 py-2 rounded-full text-md font-medium hover:text-white hover:bg-[#395f56] hover:font-bold hover:px-2';
-  const activeClass = 'text-white bg-[#395f56] font-bold text-lg px-2';
+  const baseLink = 'px-2 py-1 rounded-full text-sm  hover:text-white hover:bg-[#395f56] hover:font-bold hover:px-2';
+  const activeClass = 'text-white bg-[#395f56] font-bold text-md px-1';
 
   const megaMenuItems = {
       Assessment: {
@@ -190,33 +190,31 @@ const Navbar = () => {
 
   return (
     <>
-  <div className="relative w-full bg-white text-[#2d4d45] shadow-md">
+  <div className="relative w-full bg-white text-[#2d4d45] shadow-lg">
     <div className="flex items-center justify-end  px-6 py-3">
-    {/* Left side - icon + message */}
       <div className="flex items-center space-x-4">
 
-       <i className="font-semibold text-lg sm:text-xl md:text-2xl tracking-wide text-[#20433C]">
+       <i className="font-semibold text-md sm:text-xl md:text-2xl tracking-wide text-[#20433C]">
         Quries: <span className="font-bold text-md">help@catalystcareers.in</span>
         </i>
-        <i className="font-semibold text-lg sm:text-xl md:text-2xl tracking-wide text-[#20433C]">
+        <i className="font-semibold text-md sm:text-xl md:text-2xl tracking-wide text-[#20433C]">
         Direct Appointment: <span className="font-bold text-md">+91 7277277477</span>
         </i>
       
       </div>
 
-    {/* Right side - Call button */}
     </div>
 
   </div>
 
 
-    <nav className="border-2 border-t-[#20433C] bg-white relative p-2">
+    <nav className="border-2  relative p-1">
       <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 content-center">
-        <div className="flex h-16 items-center justify-around ">
-          <div className="flex items-center gap-3">
+        <div className="flex  items-center justify-around ">
+          <div className="flex items-center gap-3 font-bold">
             <Link to="/" className="flex items-center gap-2" onClick={close}>
               <div className="h-8 w-8 grid place-items-center rounded-md bg-amber-500 text-white font-bold">C</div>
-              <div className="font-semibold tracking-tight">CATALYST</div>
+              <div className=" font-sans tracking-tight text-lg">CATALYST</div>
             </Link>
           </div>
 
@@ -245,7 +243,7 @@ const Navbar = () => {
                 </button>
                 
                 {activeMegaMenu === key && (
-                  <div className="absolute top-full left-0 w-80 rounded-lg  text-md font-medium hover:text-white bg-[#20433C] hover:font-bold hover:px-2  shadow-xl z-50 mt-1">
+                  <div className="absolute top-full left-0 w-80 rounded-lg  text-sm font-medium hover:text-white bg-[#20433C] hover:font-bold hover:px-2  shadow-xl z-50 mt-1">
                     <div className="p-4">
                       <div className="flex items-center gap-2 mb-3 pb-2 border-b border-gray-100">
                         {menu.icon}
@@ -257,10 +255,10 @@ const Navbar = () => {
                             key={index}
                             to={item.path}
                             onClick={close}
-                            className="block p-3 rounded-lg text-md font-medium hover:text-white hover:bg-[#395f56] hover:font-bold hover:px-2  transition-colors"
+                            className="block p-3 rounded-lg text-sm font-medium hover:text-white hover:bg-[#395f56] hover:font-bold hover:px-2  transition-colors"
                           >
                             <div className="font-medium text-white">{item.name}</div>
-                            <div className="text-lg text-gray-200">{item.description}</div>
+                            <div className="text-sm text-gray-200">{item.description}</div>
                           </Link>
                         ))}
                       </div>
@@ -329,7 +327,7 @@ const Navbar = () => {
                         <div className="text-lg font-medium text-gray-900">
                           {user.name || 'User'}
                         </div>
-                        <div className="text-lg text-gray-500">
+                        <div className="text-md text-gray-500">
                           {user.email}
                         </div>
                       </div>
@@ -342,7 +340,7 @@ const Navbar = () => {
                             close();
                             navigate('/chat');
                           }}
-                          className="w-full flex items-center gap-3 px-4 py-2 text-lg text-gray-700 hover:bg-amber-50 focus:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-inset transition-colors"
+                          className="w-full flex items-center gap-3 px-4 py-2 text-md text-gray-700 hover:bg-amber-50 focus:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-inset transition-colors"
                           role="menuitem"
                           tabIndex={0}
                           aria-label="Open Career AI Chat"
@@ -357,7 +355,7 @@ const Navbar = () => {
                             close();
                             // Add profile page navigation here when available
                           }}
-                          className="w-full flex items-center gap-3 px-4 py-2 text-lg text-gray-700 hover:bg-amber-50 focus:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-inset transition-colors"
+                          className="w-full flex items-center gap-3 px-4 py-2 text-md text-gray-700 hover:bg-amber-50 focus:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-inset transition-colors"
                           role="menuitem"
                           tabIndex={0}
                           aria-label="Open Profile Settings"
@@ -371,7 +369,7 @@ const Navbar = () => {
                         <button
                           onClick={handleLogout}
                           disabled={isLoggingOut}
-                          className="w-full flex items-center gap-3 px-4 py-2 text-lg text-red-600 hover:bg-red-50 focus:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-inset transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="w-full flex items-center gap-3 px-4 py-2 text-md text-red-600 hover:bg-red-50 focus:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-inset transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                           role="menuitem"
                           tabIndex={0}
                           aria-label={isLoggingOut ? 'Signing out...' : 'Sign out of your account'}
@@ -390,7 +388,7 @@ const Navbar = () => {
   onClick={() => setAuthOpen(true)}
   className="relative inline-flex items-center gap-2 px-4 py-3 rounded-full 
              bg-gradient-to-r to-[#20433C] from-green-900 via-[#20433C]
-             text-white text-lg font-semibold 
+             text-white text-md font-semibold 
              shadow-lg hover:shadow-2xl 
              animate-pulse transition-all duration-900"
 >
