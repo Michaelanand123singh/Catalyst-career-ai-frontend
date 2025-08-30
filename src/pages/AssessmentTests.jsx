@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from "react-router-dom";
 import { Star } from 'lucide-react';
+import bigb from "../images/bigb.png"
 
 const assessments = {
   "/subject-selection": {
@@ -10,9 +11,9 @@ const assessments = {
     buttonText: "Start Your Assessment",
     
     description: [
-      "For students In Classes 9 and 10, choosing the right subjects for higher studles is the most crucial turning point in their academic Journey. As highlighted in the National Education Policy (NEP), subject cholces should reflect a student's Aptitude, Personality and Interest, and -not Just peer pressure or guesswork.",
-      "UUnfortunately, many students make this vital decision in confusion, often leading to mismatched career paths and frustration later In life. To address this,  <strong> Catalyst's Scientific Psychometric Career Assessment (SPCAT)  </strong>provides a clear, research-backed roadmap to help students and parents take the right decision at the right time. Unfortunately, many students make this vital decision in confusion...",
-      "By Identifying natural strengths and allgning them with suitable subject options, SPCAT ensures that when a student enters Class XI, they are confident, focused, and future-ready.",
+      "For students in Classes 9 and 10, choosing the right subjects for higher studies is the most crucial turning point in their academic journey. As highlighted in the National Education Policy (NEP), subject choices should reflect a student’s Aptitude, Personality and Interest, and —not just peer pressure or guesswork.",
+      "Unfortunately, many students make this vital decision in confusion, often leading to mismatched career paths and frustration later in life. To address this, Catalyst’s Scientific Psychometric Career Assessment (SPCAT) provides a clear, research-backed roadmap to help students and parents take the right decision at the right time.",
+      "By identifying natural strengths and aligning them with suitable subject options, SPCAT ensures that when a student enters Class XI, they are confident, focused, and future-ready.",
     ],
     featureDesc: "Choosing the right subjects after Class 10 is one of the most important decisions in a student's life - yet most make it in confusion or under pressure. The Catalyst Scientific Psychometric Career Assessment (SPCAT) removes this guesswork. Helps students discover their true strengths and interests, aligns subject choices with NEP guidelines for future flexibility, prevents wrong turns in career planning, gives parents clarity and confidence in their child's decisions<br/>With one test, students gain a clear roadmap for Class XI subject selection and beyond ensuring every step ahead is confident, purposeful, and future-ready.",
     
@@ -94,67 +95,42 @@ const AssessmentTests = () => {
           {/* First Section - Hero */}
           <div className="min-h-screen relative overflow-hidden font-sans">
             {/* Sky + clouds */}
-            <div className="absolute inset-0 bg-gradient-to-b from-blue-300 via-blue-100 to-green-200">
-              {/* Clouds with floating animation */}
-              <div className="absolute top-20 left-20 w-24 h-16 bg-white rounded-full opacity-80 animate-pulse"></div>
-              <div className="absolute top-16 left-16 w-16 h-12 bg-white rounded-full opacity-60 animate-pulse delay-200"></div>
-              <div className="absolute top-32 left-80 w-20 h-14 bg-white rounded-full opacity-70 animate-pulse delay-500"></div>
-              <div className="absolute top-28 left-76 w-14 h-10 bg-white rounded-full opacity-50 animate-pulse delay-700"></div>
-              <div className="absolute top-24 right-80 w-28 h-18 bg-white rounded-full opacity-75 animate-pulse delay-300"></div>
-              <div className="absolute top-20 right-76 w-18 h-14 bg-white rounded-full opacity-55 animate-pulse delay-600"></div>
-              <div className="absolute top-40 right-40 w-32 h-20 bg-white rounded-full opacity-80 animate-pulse"></div>
-              <div className="absolute top-36 right-36 w-20 h-16 bg-white rounded-full opacity-60 animate-pulse delay-400"></div>
-              <div className="absolute top-28 right-20 w-24 h-16 bg-white rounded-full opacity-70 animate-pulse delay-800"></div>
-              <div className="absolute top-24 right-16 w-16 h-12 bg-white rounded-full opacity-50 animate-pulse delay-1000"></div>
-            </div>
+          
 
-            {/* Rolling hills */}
-            <div className="absolute bottom-0 w-full">
-              <svg
-                className="absolute bottom-0 w-full h-48 animate-bounce-slow"
-                viewBox="0 0 1200 200"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0,100 C200,60 400,140 600,80 C800,20 1000,120 1200,60 L1200,200 L0,200 Z"
-                  fill="#8fbc8f"
-                  opacity="0.6"
-                />
-              </svg>
-              <svg
-                className="absolute bottom-0 w-full h-40"
-                viewBox="0 0 1200 160"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0,80 C300,20 600,100 900,40 C1050,60 1150,20 1200,40 L1200,160 L0,160 Z"
-                  fill="#6b8e23"
-                />
-              </svg>
-            </div>
+          
 
             {/* Content */}
-            <div className="relative z-10  top-0 bottom-0  px-6 py-16">
-              <div className="max-w-8xl flex justify-between items-center ">
+            <div className="relative z-10  top-0 bottom-0    h-full justify-center content-center">
+              <img src={bigb} alt="" srcset="" className='h-full w-full mb-6 '/>
+              <div className=" flex justify-between items-center px-6">
                 {/* Left side - Assessment card */}
-                <div className="flex justify-center">
+                <div className="flex justify-center w-1/4">
                   
-                  <div className="bg-gradient-to-br from-amber-400 via-red-500 to-pink-500 rounded-3xl p-5 text-white text-center shadow-2xl max-w-sm w-full transform hover:scale-105 hover:rotate-1 transition-transform duration-500 h-auto">
-                    <div className="mb-2">
-                      <div className="text-sm font-medium bg-green-500/90 rounded-full px-5 py-2 inline-block mb-2 shadow-md">
-                        {data.tag}
-                      </div>
-                    </div>
-                    <h2 className="text-2xl font-bold mb-2 drop-shadow-md">
-                      {data.title}
-                    </h2>
-                    <p className="text-blue-100 text-sm mb-4 leading-relaxed">
-                      {data.subtitle}
-                    </p>
-                    <button className="bg-white text-green-700 hover:bg-blue-100 font-semibold py-3 px-10 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1">
-                      {data.buttonText}
-                    </button>
-                  </div>
+                 
+                  <div key={data.id} className="flex flex-col items-center max-w-[250px] hover:rotate-1 transition-transform duration-500 ">
+              {/* Category Tag */}
+              <div className="mb-4 content-center w-full text-center">
+                <span className="inline-block bg-[#20433C] text-white px-4 py-2 rounded-full text-sm font-medium w-full">
+                  {data.tag}
+                </span>
+              </div>
+              
+              {/* Card */}
+              <div className="bg-[#20433C] text-white rounded-3xl p-6 flex-1 flex flex-col justify-between min-h-[250px] text-center ">
+              
+                  <h3 className="text-xl font-bold mb-4 leading-tight">
+                    {data.title}
+                  </h3>
+                  <p className="text-red-100 text-sm mb-6 text-center ">
+                    {data.subtitle}
+                  </p>
+                
+                
+              </div>
+                <button className="bg-[#20433C] hover:bg-[#346256] text-white font-semibold p-3 rounded-full transition-colors duration-200 mt-5 w-full">
+                  {data.buttonText}
+                </button>
+            </div>
 
 
               
@@ -166,7 +142,7 @@ const AssessmentTests = () => {
                 </div>
 
                 {/* Right side - Content */}
-                <div className=" rounded-3xl p-4 shadow-2xl hover:shadow-3xl transition-shadow duration-500 max-w-5xl  ">
+                <div className=" p-6 pr-6  hover:shadow-3xl transition-shadow duration-500 w-3/4 text-center">
                   <div className="mb-8">
                     <div className="mb-8">
                     {data.description.map((para, i) => (
@@ -174,14 +150,10 @@ const AssessmentTests = () => {
                       {para}
                     </p>
                     ))}
-                  
                   </div>
-                   
                   </div>
-                    
-                    
                   <div className="text-center">
-                    <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-10 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1">
+                    <button className="bg-gradient-to-r from-[#20433C] to-[#284a43] hover:from-[#20433C] hover:to-[#24453e] text-white font-semibold py-3 px-10 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1">
                      {data.buttonText}
                     </button>
                   </div>
@@ -207,40 +179,31 @@ const AssessmentTests = () => {
           <div className="bg-gradient-to-br from-gray-50 to-white py-20 px-4">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold text-gray-900 mb-8">Why Take This Test?</h2>
-                <p className="text-lg text-gray-800 leading-relaxed mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 mb-8">Why Take This Test?</h2>
+                <p className="text-lg text-gray-800 leading-relaxed mb-6 font-bold">
                  {data.featureDesc}
                 </p>
                
                 <div className="mt-12">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-10 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg">
+                  <button className="bg-[#20433c] hover:bg-[#2b534b] text-white font-bold py-2 px-10 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-md">
                     Start Your Assessment
                   </button>
                 </div>
               </div>
 
               {/* Feature cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-                <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-8 text-white shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
-                  <h3 className="text-2xl font-bold mb-6 text-center">Personalised Career Guidance</h3>
-                  <p className="text-orange-100 text-center">Our expert counsellors evaluate each student's personality, interests, skills, and values to provide tailored advice, ensuring career choices align perfectly with their unique strengths and future aspirations.</p>
+              <div className="flex  justify-center items-center gap-8">
+                <div className="bg-gradient-to-br from-[#d97831] to-[#d97831]  p-2 text-white shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 max-w-[300px] h-[180px]">
+                  <h3 className="text-md font-bold mb-6 text-center">Personalised Career Guidance</h3>
+                  <p className="text-orange-100 text-center text-sm">Our expert counsellors evaluate each student's personality, interests, skills, and values to provide tailored advice, ensuring career choices align perfectly with their unique strengths and future aspirations.</p>
                 </div>
-                <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-8 text-white shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
-                  <h3 className="text-2xl font-bold mb-6 text-center">Strategic Career Planning</h3>
-                  <p className="text-orange-100 text-center">From selecting the right college major to navigating career transitions or overcoming job dissatisfaction, our counsellors offer structured guidance and actionable strategies at every stage of the career journey</p>
+                <div className="bg-gradient-to-br from-[#d97831] to-[#d97831] p-2 text-white shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 max-w-[300px] h-[180px]">
+                  <h3 className="text-md font-bold mb-6 text-center">Strategic Career Planning</h3>
+                  <p className="text-orange-100 text-center text-sm">From selecting the right college major to navigating career transitions or overcoming job dissatisfaction, our counsellors offer structured guidance and actionable strategies at every stage of the career journey</p>
                 </div>
               </div>
 
-              {/* Additional CTA */}
-              <div className="text-center mt-16">
-                <div className="bg-white rounded-2xl p-8 shadow-xl max-w-3xl mx-auto">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Discover Your Path?</h3>
-                  <p className="text-gray-600 mb-6">Take the first step towards a confident future.</p>
-                  <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-4 px-10 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg">
-                    Begin Assessment Now
-                  </button>
-                </div>
-              </div>
+           
             </div>
           </div>
          
