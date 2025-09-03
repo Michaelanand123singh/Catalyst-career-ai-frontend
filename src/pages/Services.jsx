@@ -150,11 +150,14 @@ const Services = () => {
       {/* Call to Action Section */}
       <div className="relative py-24 px-6 bg-gradient-to-br from-emerald-50 via-teal-50 to-green-50 overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: radial-gradient(circle at 2px 2px, #059669 1px, transparent 0),
-            backgroundSize: '40px 40px'
-          }}></div>
+       <div
+  className="absolute inset-0"
+  style={{
+    backgroundImage: "radial-gradient(circle at 2px 2px, #059669 1px, transparent 0)",
+    backgroundSize: "40px 40px",
+  }}
+></div>
+
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto text-center">
@@ -232,7 +235,7 @@ const Services = () => {
           </div>
         </div>
       </div>
-    </div>
+  
   );
 };
 
