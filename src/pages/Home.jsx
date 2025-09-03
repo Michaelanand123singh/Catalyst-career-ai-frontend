@@ -285,10 +285,10 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-emerald-50 via-white to-green-50 py-16 min-h-screen">
+     <section className="relative bg-gradient-to-br from-amber-50 via-white to-blue-50 py-20 min-h-screen">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 ">
           <div className="flex  gap-12 items-center">
-            <div className="space-y-6 w-1/2">
+            <div className="space-y-8 w-1/2">
               <div className="space-y-4 p-8">
                 <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
                   Your Career, Your Future – Let's Find the Perfect Path Together
@@ -312,16 +312,18 @@ const Home = () => {
                   BOOK YOUR 1-1 COUNSELLING
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
+
+            
               </div>
             </div>
             <div className="relative w-1/2 mx-auto flex flex-col items-center justify-center">
               {/* Heading */}
-              <p className="text-xl md:text-2xl pb-8 text-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-emerald-600 to-green-500 ">
+              <p className="text-xl md:text-2xl pb-8 text-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-pink-600 to-amber-500 ">
                 Scientific Psychometric Career Assessment Test for School , College Students and for Working Professionals
               </p>
               {/* Card */}
               <div className="bg-white rounded-2xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500 hover:scale-105 max-w-[900px] ">
-                <div className="bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl p-6 shadow-inner ">
+                <div className="bg-gradient-to-br from-amber-100 to-blue-100 rounded-xl p-6 shadow-inner ">
                   {/* Header */}
                   <div className="flex items-center justify-between mb-6 p-4 gap-6">
                     <h3 className="font-semibold text-gray-900 text-lg">Career Assessment Results</h3>
@@ -336,20 +338,20 @@ const Home = () => {
                     <div>
                       <div className="flex justify-between mb-1">
                         <span className="text-sm font-medium text-gray-700">Analytical Skills</span>
-                        <span className="text-sm text-green-600 font-semibold">85%</span>
+                        <span className="text-sm text-amber-600 font-semibold">85%</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                        <div className="bg-green-500 h-2 rounded-full animate-[progress_2s_ease-in-out_forwards]" style={{ width: '85%' }}></div>
+                        <div className="bg-amber-500 h-2 rounded-full animate-[progress_2s_ease-in-out_forwards]" style={{ width: '85%' }}></div>
                       </div>
                     </div>
                     {/* Creative Thinking */}
                     <div>
                       <div className="flex justify-between mb-1">
                         <span className="text-sm font-medium text-gray-700">Creative Thinking</span>
-                        <span className="text-sm text-emerald-600 font-semibold">92%</span>
+                        <span className="text-sm text-blue-600 font-semibold">92%</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                        <div className="bg-emerald-500 h-2 rounded-full animate-[progress_2.5s_ease-in-out_forwards]" style={{ width: '92%' }}></div>
+                        <div className="bg-blue-500 h-2 rounded-full animate-[progress_2.5s_ease-in-out_forwards]" style={{ width: '92%' }}></div>
                       </div>
                     </div>
                     {/* Leadership */}
