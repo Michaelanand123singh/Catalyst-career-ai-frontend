@@ -238,11 +238,20 @@ const Navbar = () => {
                 onMouseEnter={() => handleMegaMenuEnter(key)}
                 onMouseLeave={handleMegaMenuLeave}
               >
-                <button className={`${baseLink} flex items-center gap-1 text-white`}>
-                  {menu.icon}
-                  {menu.title}
-                  <ChevronDown className="h-4 w-4" />
-                </button>
+              <button
+  onClick={() =>
+    setActiveMegaMenu(activeMegaMenu === key ? null : key)
+  }
+  className={`${baseLink} flex items-center gap-1 text-white ${
+    activeMegaMenu === key ? "bg-[#3d5f56] font-bold px-3 py-2 rounded-lg" : ""
+  }`}
+>
+  {menu.icon}
+  {menu.title}
+  <ChevronDown className="h-4 w-4" />
+</button>
+
+
                 
                 {activeMegaMenu === key && (
                   <div className="absolute top-full left-0 w-80 rounded-lg  text-sm font-medium hover:text-white bg-[#20433C] hover:font-bold hover:px-2  shadow-xl z-50 mt-1">
