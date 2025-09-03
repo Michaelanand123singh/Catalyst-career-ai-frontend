@@ -6,7 +6,6 @@ import {
   Users, 
   BookOpen, 
   Lightbulb, 
-  Heart, 
   CheckCircle, 
   ArrowRight,
   Calendar,
@@ -20,29 +19,71 @@ import {
 import bg from "../images/bg.png"
 import vision from "../images/vision.png"
 import mission from "../images/mission.png"
+
+// Custom SVG Icons
+const StudentCentricIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="30" fill="currentColor" fillOpacity="0.1"/>
+    <path d="M25 20L39 32L25 44M28 32H45" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <circle cx="20" cy="32" r="8" stroke="currentColor" strokeWidth="2" fill="none"/>
+  </svg>
+);
+
+const TrustCredibilityIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="30" fill="currentColor" fillOpacity="0.1"/>
+    <path d="M25 25L32 20L39 25V35C39 38.866 35.866 42 32 42C28.134 42 25 38.866 25 35V25Z" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <circle cx="28" cy="30" r="2" fill="currentColor"/>
+    <circle cx="36" cy="30" r="2" fill="currentColor"/>
+    <path d="M28 35L32 38L36 35" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
+const InnovationIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="30" fill="currentColor" fillOpacity="0.1"/>
+    <circle cx="32" cy="25" r="8" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <path d="M28 33H36M30 36H34M32 41V44" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M24 22L26 24M40 22L38 24M22 30H20M44 30H42" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
+const InclusivityIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="30" fill="currentColor" fillOpacity="0.1"/>
+    <circle cx="28" cy="26" r="4" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <circle cx="36" cy="26" r="4" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <path d="M22 38C22 34.686 24.686 32 28 32H36C39.314 32 42 34.686 42 38V42H22V38Z" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <path d="M18 35L22 38M46 35L42 38" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
 const About = () => {
   const values = [
     {
-      icon: <Heart className="h-8 w-8" />,
+      icon: <StudentCentricIcon />,
       title: "Student-Centric Approach",
       description: "Every decision we make is focused on empowering students to reach their full potential."
     },
     {
-      icon: <Shield className="h-8 w-8" />,
+      icon: <TrustCredibilityIcon />,
       title: "Trust & Credibility",
       description: "Built on the foundation of experienced educators and proven methodologies."
     },
     {
-      icon: <Zap className="h-8 w-8" />,
+      icon: <InnovationIcon />,
       title: "Innovation",
       description: "Continuously evolving our methods to stay ahead of educational trends."
     },
     {
-      icon: <Globe className="h-8 w-8" />,
+      icon: <InclusivityIcon />,
       title: "Inclusivity",
       description: "Ensuring no child is left behind due to lack of educational resources."
     }
   ];
+
+
+
   const teamHighlights = [
     {
       icon: <GraduationCap className="h-6 w-6" />,
@@ -84,7 +125,7 @@ const About = () => {
               At <span className="font-semibold text-[#20433C]">Catalyst</span>, 
                 we believe that every student's potential is unique - and so should be their career path.
 In today's competitive world, most career choices in India are influenced by peer pressure, trends, or incomplete advice.
-This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - We're here to change that!
+This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - We're here to change that!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
              <Link
@@ -107,60 +148,52 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
       </section>
 
       <section className="relative bg-gradient-to-br from-blue-50 via-white to-green-50 py-20 overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-10 right-10 w-32 h-32 bg-blue-200 rounded-full opacity-30"></div>
-      <div className="absolute top-32 right-32 w-24 h-24 bg-white rounded-full opacity-60"></div>
-      <div className="absolute top-20 right-20 w-16 h-16 bg-blue-300 rounded-full opacity-40"></div>
-    
+        {/* Decorative background elements */}
+        <div className="absolute top-10 right-10 w-32 h-32 bg-blue-200 rounded-full opacity-30"></div>
+        <div className="absolute top-32 right-32 w-24 h-24 bg-white rounded-full opacity-60"></div>
+        <div className="absolute top-20 right-20 w-16 h-16 bg-blue-300 rounded-full opacity-40"></div>
       
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex  gap-2 items-center justify-center ">
-          {/* Text Content */}
-          <div className="space-y-6 w-1/2 p-3">
-            <div className="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium">
-              <Award className="h-4 w-4 mr-2" />
-              Founded in 2019
-            </div>
-         
-            
-            <div className="space-y-6  items-center flex justify-center flex-col">
-              <p className="text-lg text-gray-700 leading-relaxed ">
-                 <span className="font-semibold text-amber-600">Haryug Singh</span>  —  with dual MBAs, one in Product and Brand Management from IIM Rohtak and another in Business Management from Narsee Monjee Institute of Management Studies, Mumbai — Catalyst was built on a mission to ensure no child ever suffers from the lack of proper guidance. Backed by years of experience in teaching, mentoring, and educational leadership, our platform careerwithcatalyst.in offers the Scientific Psychometric Career Assessment Test (SPCAT), designed to help students discover their true strengths, interests, and ideal career pathways.
-              </p>
-              <div className=' mt-2 max-w-[550px] text-center'>
-
-              <p className="text-md text-gray-700 leading-relaxed mb-4">
-                But we don't stop at assessment. We provide personalised reports, one-on-one counselling sessions, and actionable career roadmaps that balance what 
-                students love with what will last.
-              </p>
-              <p className="text-md text-gray-700 leading-relaxed">
-                 Over the years, Catalyst has partnered with leading schools, conducted 
-                impactful seminars, and guided hundreds of families toward informed career 
-                decisions — creating a generation of confident, future-ready individuals.
-              </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
+            {/* Text Content */}
+            <div className="flex-1 max-w-2xl">
+              <div className="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-8">
+                <Award className="h-4 w-4 mr-2" />
+                Founded in 2019
               </div>
               
-              
+              <div className="space-y-6">
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  <span className="font-semibold text-amber-600">Haryug Singh</span> — with dual MBAs, one in Product and Brand Management from IIM Rohtak and another in Business Management from Narsee Monjee Institute of Management Studies, Mumbai — Catalyst was built on a mission to ensure no child ever suffers from the lack of proper guidance. Backed by years of experience in teaching, mentoring, and educational leadership, our platform careerwithcatalyst.in offers the Scientific Psychometric Career Assessment Test (SPCAT), designed to help students discover their true strengths, interests, and ideal career pathways.
+                </p>
+                
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  But we don't stop at assessment. We provide personalised reports, one-on-one counselling sessions, and actionable career roadmaps that balance what students love with what will last.
+                </p>
+                
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Over the years, Catalyst has partnered with leading schools, conducted impactful seminars, and guided hundreds of families toward informed career decisions — creating a generation of confident, future-ready individuals.
+                </p>
+              </div>
             </div>
             
-     
-          </div>
-          
-          {/* Quote Section */}
-          <div className="relative w-1/2 items-center content-center flex flex-col">
-            <img src={bg} alt="" srcset="" className='w-90 h-90 mb-10'/>
-              <blockquote className="text-md lg:text-lg font-bold text-gray-800 text-center leading-tight">
-                "Because at Catalyst, your future isn't a guess — it's a{' '}
-                <span className="text-amber-600">guided journey</span>"
-              </blockquote>
-            
-            {/* Decorative elements around quote */}
-            <div className="absolute -top-4 -left-4 w-20 h-20 bg-blue-200 rounded-full opacity-60"></div>
-            <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-amber-200 rounded-full opacity-70"></div>
+            {/* Quote Section */}
+            <div className="flex-1 max-w-lg">
+              <div className="relative flex flex-col items-center text-center">
+                <img src={bg} alt="" className="w-80 h-80 mb-8 object-contain" />
+                <blockquote className="text-xl lg:text-2xl font-bold text-gray-800 leading-tight">
+                  "Because at Catalyst, your future isn't a guess — it's a{' '}
+                  <span className="text-amber-600">guided journey</span>"
+                </blockquote>
+                
+                {/* Decorative elements around quote */}
+                <div className="absolute -top-4 -left-4 w-20 h-20 bg-blue-200 rounded-full opacity-60"></div>
+                <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-amber-200 rounded-full opacity-70"></div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* Vision & Mission Section */}
      <section className="py-20 bg-white">
