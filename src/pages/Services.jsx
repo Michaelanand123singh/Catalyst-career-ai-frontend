@@ -90,17 +90,16 @@ const Services = () => {
       {/* Service-Specific Section */}
       <div className="min-h-screen relative py-20">
         {/* Content */}
-        <div className="relative z-10  top-0 bottom-0    h-full justify-center content-center">
-          <img src={bigb} alt="" srcset="" className='h-full w-full mb-6 ' />
-          <div className=" flex justify-between  px-6">
-            {/* Left side - Assessment card */}
-            <div className="flex justify-center w-1/4 h-full">
-
-
-              <div key={data.id} className="flex flex-col items-center max-w-[250px] hover:rotate-1 transition-transform duration-500 ">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full max-w-7xl mx-auto">
+            
+            {/* Left side - Service card */}
+            <div className="lg:col-span-4 flex justify-center">
+              <div className="max-w-sm w-full">
                 {/* Category Tag */}
-                <div className="mb-4 content-center w-full text-center">
-                  <span className="inline-block bg-[#20433C] text-amber-300 px-4 py-2 rounded-full text-sm font-medium w-full">
+                <div className="mb-6">
+                  <span className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg w-full">
+                    <IconComponent size={18} />
                     {data.tag}
                   </span>
                 </div>
@@ -113,55 +112,52 @@ const Services = () => {
                   <h3 className="text-xl font-bold mb-6 leading-tight text-center">
                     {data.title}
                   </h3>
-                  <p className="text-amber-300  text-sm mb-6 text-center ">
+                  <p className="text-emerald-100 text-sm mb-8 text-center leading-relaxed">
                     {data.subtitle}
                   </p>
                 </div>
-                <button className="bg-[#20433C] hover:bg-[#346256] text-amber-300  font-semibold p-3 rounded-full transition-colors duration-200 mt-5 w-full">
+                
+                <button className="w-full mt-6 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-4 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
+                  <IconComponent size={20} />
                   {data.buttonText}
                 </button>
               </div>
             </div>
 
             {/* Right side - Content */}
-            <div className=" p-6 pr-6  hover:shadow-3xl transition-shadow duration-500 w-3/4 ">
-              <div className="mb-8">
-                <div className="mb-8">
-
+            <div className="lg:col-span-8">
+              <div className="bg-white rounded-3xl p-10 lg:p-12 shadow-2xl border border-gray-100">
+                <div className="space-y-8">
                   {data.description.map((para, i) => (
-                    <p key={i} className="text-black text-lg leading-relaxed mb-2 font-semibold">
+                    <p key={i} className="text-gray-800 text-lg leading-relaxed font-medium">
                       {para}
                     </p>
                   ))}
                 </div>
-              </div>
-              <div className="text-center">
-                <button className="bg-gradient-to-r from-[#20433C] to-[#284a43] hover:from-[#20433C] hover:to-[#24453e] text-amber-300  font-semibold py-3 px-10 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1">
-                  Sart Your Assessement
-                </button>
+                
+                <div className="text-center mt-10">
+                  <button className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg inline-flex items-center gap-2">
+                    <IconComponent size={20} />
+                    {data.buttonText}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Call to Action Section */}
+      <div className="relative py-24 px-6 bg-gradient-to-br from-emerald-50 via-teal-50 to-green-50 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: radial-gradient(circle at 2px 2px, #059669 1px, transparent 0),
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
 
-      <style>
-        {`
-    @keyframes bounce-slow {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(8px); }
-       }
-    .animate-bounce-slow {
-    animation: bounce-slow 6s infinite ease-in-out;
-      }
-    `}
-      </style>
-
-
-      <div className="relative z-10 py-10 px-4 bg-white/60 backdrop-blur-sm  items-center justify-center content-center flex mt-12">
-        <div className="max-w-5xl mx-auto text-center">
-
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
           {/* Main Message */}
           <div className="mb-16">
             <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight">
@@ -240,4 +236,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Services;
