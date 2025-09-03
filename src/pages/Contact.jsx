@@ -342,36 +342,6 @@ const Contact = () => {
           )}
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-amber-500 to-orange-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-            Ready to Start Your Career Journey?
-          </h2>
-          <p className="text-xl text-amber-100 mb-8">
-            Get in touch today and let us help you discover your true potential
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:+917277277477"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
-            >
-              Call Now
-              <Phone className="ml-2 h-5 w-5" />
-            </a>
-            <a
-              href="https://wa.me/917277277477"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-amber-600 transition-colors"
-            >
-              WhatsApp
-              <MessageCircle className="ml-2 h-5 w-5" />
-            </a>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
