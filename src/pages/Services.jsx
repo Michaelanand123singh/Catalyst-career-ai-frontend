@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { Star } from 'lucide-react';
 import bigb from "../images/bigb.png"
 
-
 const assessments = {
   "/ai-career": {
     tag: "AI Career Assistant",

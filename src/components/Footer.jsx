@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from "../images/Artboard3.png"
 import { 
   Phone, 
   Mail, 
@@ -125,14 +126,14 @@ const resources = [
           </div>
         </div>
       </section>
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-[#20433C] text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-amber-500 mb-2">CATALYST</h3>
+              <img src={logo} alt="" className='w-40 h-30 object-contain mb-3'/>
               <p className="text-gray-300 text-sm">
                 Empowering students with practical learning while uniting students, parents, teachers, and schools.
               </p>
@@ -141,20 +142,20 @@ const resources = [
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-center text-gray-300 text-sm">
-                <Phone className="h-4 w-4 mr-3 text-amber-500" />
+                <Phone className="h-4 w-4 mr-3 text-white" />
                 <a href="tel:+917277277477" className="hover:text-amber-400 transition-colors">
                   +91 7277277477
                 </a>
               </div>
               <div className="flex items-center text-gray-300 text-sm">
-                <Mail className="h-4 w-4 mr-3 text-amber-500" />
+                <Mail className="h-4 w-4 mr-3 text-white" />
                 <a href="mailto:yug@careerwithcatalyst.com" className="hover:text-amber-400 transition-colors">
                   yug@careerwithcatalyst.com
                 </a>
               </div>
            
               <div className="flex items-center text-gray-300 text-sm">
-                <MessageCircle className="h-4 w-4 mr-3 text-amber-500" />
+                <MessageCircle className="h-4 w-4 mr-3 text-white" />
                 <a href="https://wa.me/917277277477" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">
                   WhatsApp Quick Chat
                 </a>

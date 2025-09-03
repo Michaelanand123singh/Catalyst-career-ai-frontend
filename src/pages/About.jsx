@@ -18,6 +18,8 @@ import {
 } from 'lucide-react';
 
 import bg from "../images/bg.png"
+import vision from "../images/vision.png"
+import mission from "../images/mission.png"
 const About = () => {
   const values = [
     {
@@ -74,31 +76,34 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center px-4 py-2 bg-[#20433c]-100 text-amber-700 rounded-full text-sm font-medium mb-6">
-              <Award className="h-4 w-4 mr-2" />
+             
               Founded in 2019
             </div>
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+            <h1 className="text-4xl lg:text-6xl font-bold text-amber-600 leading-tight mb-6">
               About Us –{" "}
-              <span className="text-amber-600">The Catalyst Story</span>
+              <span className="text-[#20433C]">The Catalyst Story</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              At <span className="font-semibold text-amber-600">Catalyst</span>, 
+              At <span className="font-semibold text-[#20433C]">Catalyst</span>, 
                 we believe that every student's potential is unique - and so should be their career path.
 In today's competitive world, most career choices in India are influenced by peer pressure, trends, or incomplete advice.
-This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - We're here to change that
+This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - We're here to change that!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/assessment-tests"
-                className="inline-flex items-center justify-center px-8 py-4 bg-[#20433c] text-white font-semibold rounded-3xl hover:bg-[#20433c] transition-colors shadow-lg"
-              >
-                Take Our Assessment
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#20433c] text-[#20433c] font-semibold rounded-3xl hover:bg-[#20433c] transition-colors">
-                <Calendar className="mr-2 h-5 w-5" />
-                Book Consultation
-              </button>
+             <Link
+                               to="/assessment-tests"
+                               className="inline-flex items-center justify-center px-3 py-3 bg-[#20433C] text-white font-semibold rounded-3xl hover:bg-[#4d756b] hover:font-bold transition-colors shadow-lg animate-pulse"
+                             >
+                               START YOUR ASSESSEMENT
+                               <ArrowRight className="ml-2 h-5 w-5" />
+                             </Link>
+                             <Link
+                               to="/assessment-tests"
+                               className="inline-flex items-center justify-center px-3 py-3 bg-[#20433C] text-white font-semibold rounded-3xl hover:bg-[#568075] hover:font-bold transition-colors shadow-lg animate-pulse"
+                             >
+                               BOOK YOUR 1-1 COUNSELLING
+                               <ArrowRight className="ml-2 h-5 w-5" />
+                             </Link>
             </div>
           </div>
         </div>
@@ -161,44 +166,50 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
     </section>
 
       {/* Vision & Mission Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Our Vision & Mission
-            </h2>
-            <p className="text-xl text-gray-600">
-              Driving educational transformation through innovation and personalized guidance
+     <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h1 className="text-2xl text-gray-600 font-medium">
+            Driving educational transformation through innovation and personalized guidance
+          </h1>
+        </div>
+        
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Vision Card */}
+            <div>
+<h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Vision</h3>
+          <div className="border-4 border-black p-8 bg-white">
+            <p className="text-lg text-gray-700 text-center leading-relaxed mb-8">
+              "To ensure no child suffers from lack of educational resources. We believe every student deserves access to quality career guidance and the tools to discover true potential."
             </p>
+            
+            {/* Icon - Person with magnifying glass */}
+            <div className=" flex justify-center">
+
+            <img src={vision} alt="" className='w-20 h-20'/>
+            </div>
           </div>
-          
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Vision Card */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Target className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Our Vision</h3>
-              <p className="text-lg text-gray-700 text-center leading-relaxed">
-                To ensure <span className="font-semibold text-blue-600">no child suffers from lack of educational resources</span>. 
-                We believe every student deserves access to quality career guidance and the tools to discover their true potential.
-              </p>
             </div>
 
-            {/* Mission Card */}
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Lightbulb className="h-8 w-8 text-amber-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Our Mission</h3>
-              <p className="text-lg text-gray-700 text-center leading-relaxed">
-                Empowering students with <span className="font-semibold text-amber-600">practical learning</span> while 
-                uniting students, parents, teachers, and schools in a collaborative journey towards educational excellence.
-              </p>
+          {/* Mission Card */}
+          <div>
+
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Mission</h3>
+          <div className="border-4 border-black p-8 bg-white">
+            <p className="text-lg text-gray-700 text-center leading-relaxed mb-8">
+              "Our mission is to inspire and equip individuals with the tools, knowledge, and resources needed to unlock their potential and achieve success."
+            </p>
+            
+            {/* Icon - Person with puzzle pieces */}
+            <div className=" flex justify-center">
+
+            <img src={mission} alt="" className='w-20 h-20'/>
             </div>
           </div>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Our Values */}
       <section className="py-20 bg-gray-50">

@@ -3,6 +3,8 @@ import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { Sparkles, Menu, X, ChevronDown, BookOpen, Calendar, Lightbulb, User, LogOut, Settings } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import AuthModal from './AuthModal';
+import logo from "../images/Artboard1.png"
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -211,10 +213,10 @@ const Navbar = () => {
     <nav className="border-2  relative p-1">
       <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 content-center">
         <div className="flex  items-center justify-around ">
-          <div className="flex items-center gap-3 font-bold">
+          <div className="flex items-center gap-3 font-bold p-2">
             <Link to="/" className="flex items-center gap-2" onClick={close}>
-              <div className="h-8 w-8 grid place-items-center rounded-md bg-amber-500 text-white font-bold">C</div>
-              <div className=" font-sans tracking-tight text-lg">CATALYST</div>
+              
+              <img src={logo} alt="" className='w-[8rem] h-[3rem] rounded-full'/>
             </Link>
           </div>
 
