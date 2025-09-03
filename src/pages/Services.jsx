@@ -14,7 +14,7 @@ const assessments = {
       "AI Career Assistant - Your 24×7 Career Guide",
       `"One Assistant. Every Career Answer. Anytime."`,
       "From a student confused about subjects, to a parent worried about a child's future, to a professional stuck in the wrong job — our AI Career Assistant is here to guide you with clarity, confidence, and science-backed solutions.",
-      "Backed by Catalyst's vision: No child or professional should suffer due to lack of guidance.
+      "Backed by Catalyst's vision: No child or professional should suffer due to lack of guidance., we bring you an intelligent assistant that understands your unique career journey and provides personalized advice, resources, and strategies to help you succeed.",
     ]
   },
   "/ai-job": {
