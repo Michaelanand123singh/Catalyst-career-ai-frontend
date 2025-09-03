@@ -303,19 +303,19 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">What Sets Us Apart</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
                     Scientific psychometric assessments
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
                     Personalized career roadmaps
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
                     Expert one-on-one counseling
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
                     NEP-aligned guidance
                   </li>
                 </ul>
@@ -323,19 +323,19 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
               <div>
                 <ul className="space-y-3">
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
                     Practical learning approach
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
                     Comprehensive support system
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
                     Proven success stories
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-amber-500 mr-3" />
+                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
                     Continuous innovation
                   </li>
                 </ul>
