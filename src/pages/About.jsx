@@ -110,14 +110,14 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-amber-50 via-white to-blue-50 py-20">
+      <section className="relative bg-gradient-to-br from-emerald-50 via-white to-green-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center px-4 py-2 bg-[#20433c]-100 text-amber-700 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-6">
              
               Founded in 2019
             </div>
-            <h1 className="text-4xl lg:text-6xl font-bold text-amber-600 leading-tight mb-6">
+            <h1 className="text-4xl lg:text-6xl font-bold text-green-600 leading-tight mb-6">
               About Us –{" "}
               <span className="text-[#20433C]">The Catalyst Story</span>
             </h1>
@@ -147,24 +147,24 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
         </div>
       </section>
 
-      <section className="relative bg-gradient-to-br from-blue-50 via-white to-green-50 py-20 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-green-50 via-white to-emerald-50 py-20 overflow-hidden">
         {/* Decorative background elements */}
-        <div className="absolute top-10 right-10 w-32 h-32 bg-blue-200 rounded-full opacity-30"></div>
+        <div className="absolute top-10 right-10 w-32 h-32 bg-green-200 rounded-full opacity-30"></div>
         <div className="absolute top-32 right-32 w-24 h-24 bg-white rounded-full opacity-60"></div>
-        <div className="absolute top-20 right-20 w-16 h-16 bg-blue-300 rounded-full opacity-40"></div>
+        <div className="absolute top-20 right-20 w-16 h-16 bg-emerald-300 rounded-full opacity-40"></div>
       
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
             {/* Text Content */}
             <div className="flex-1 max-w-2xl">
-              <div className="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-8">
+              <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-8">
                 <Award className="h-4 w-4 mr-2" />
                 Founded in 2019
               </div>
               
               <div className="space-y-6">
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  <span className="font-semibold text-amber-600">Haryug Singh</span> — with dual MBAs, one in Product and Brand Management from IIM Rohtak and another in Business Management from Narsee Monjee Institute of Management Studies, Mumbai — Catalyst was built on a mission to ensure no child ever suffers from the lack of proper guidance. Backed by years of experience in teaching, mentoring, and educational leadership, our platform careerwithcatalyst.in offers the Scientific Psychometric Career Assessment Test (SPCAT), designed to help students discover their true strengths, interests, and ideal career pathways.
+                  <span className="font-semibold text-green-600">Haryug Singh</span> — with dual MBAs, one in Product and Brand Management from IIM Rohtak and another in Business Management from Narsee Monjee Institute of Management Studies, Mumbai — Catalyst was built on a mission to ensure no child ever suffers from the lack of proper guidance. Backed by years of experience in teaching, mentoring, and educational leadership, our platform careerwithcatalyst.in offers the Scientific Psychometric Career Assessment Test (SPCAT), designed to help students discover their true strengths, interests, and ideal career pathways.
                 </p>
                 
                 <p className="text-lg text-gray-700 leading-relaxed">
@@ -183,12 +183,12 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
                 <img src={bg} alt="" className="w-80 h-80 mb-8 object-contain" />
                 <blockquote className="text-xl lg:text-2xl font-bold text-gray-800 leading-tight">
                   "Because at Catalyst, your future isn't a guess — it's a{' '}
-                  <span className="text-amber-600">guided journey</span>"
+                  <span className="text-green-600">guided journey</span>"
                 </blockquote>
                 
                 {/* Decorative elements around quote */}
-                <div className="absolute -top-4 -left-4 w-20 h-20 bg-blue-200 rounded-full opacity-60"></div>
-                <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-amber-200 rounded-full opacity-70"></div>
+                <div className="absolute -top-4 -left-4 w-20 h-20 bg-green-200 rounded-full opacity-60"></div>
+                <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-emerald-200 rounded-full opacity-70"></div>
               </div>
             </div>
           </div>
@@ -256,8 +256,8 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-amber-600">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="text-green-600">
                     {value.icon}
                   </div>
                 </div>
@@ -286,8 +286,8 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {teamHighlights.map((highlight, index) => (
               <div key={index} className="text-center p-6">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-amber-600">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="text-green-600">
                     {highlight.icon}
                   </div>
                 </div>
@@ -297,25 +297,25 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
             ))}
           </div>
           
-          <div className="bg-gradient-to-r from-amber-50 to-blue-50 rounded-2xl p-8">
+          <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">What Sets Us Apart</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
                     Scientific psychometric assessments
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
                     Personalized career roadmaps
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
                     Expert one-on-one counseling
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
                     NEP-aligned guidance
                   </li>
                 </ul>
@@ -323,55 +323,25 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
               <div>
                 <ul className="space-y-3">
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
                     Practical learning approach
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
                     Comprehensive support system
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
                     Proven success stories
                   </li>
                   <li className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-[#20433c] mr-3" />
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
                     Continuous innovation
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#20433C] to-[#274e46]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-amber-600 mb-6">
-            Ready to Transform Your Career Journey?
-          </h2>
-          <p className="text-xl text-amber-600 mb-8">
-            Join thousands of students who have discovered their true potential with Catalyst
-          </p>
-         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link
-                               to="/assessment-tests"
-                               className="inline-flex items-center justify-center px-3 py-3 bg-orange-500 text-white font-semibold rounded-3xl hover:bg-orange-400 hover:font-bold transition-colors shadow-lg animate-pulse"
-                             >
-                               START YOUR ASSESSEMENT
-                               <ArrowRight className="ml-2 h-5 w-5" />
-                             </Link>
-                             <Link
-                               to="/assessment-tests"
-                               className="inline-flex items-center justify-center px-3 py-3 bg-orange-500 text-white font-semibold rounded-3xl hover:bg-orange-400 hover:font-bold transition-colors shadow-lg animate-pulse"
-                             >
-                               BOOK YOUR 1-1 COUNSELLING
-                               <ArrowRight className="ml-2 h-5 w-5" />
-                             </Link>
-            </div>
         </div>
       </section>
     </div>
