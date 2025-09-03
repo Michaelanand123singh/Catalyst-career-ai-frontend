@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from "react-router-dom";
-import { Star } from 'lucide-react';
+import { Star, MessageCircle, Search } from 'lucide-react';
 import bigb from "../images/bigb.png"
 
 const assessments = {
@@ -9,7 +9,7 @@ const assessments = {
     title: "Looking for Personal Career Assistant?",
     subtitle: "ask anything & anytime to scale-up your career",
     buttonText: "Chat Now",
-
+    icon: MessageCircle,
     description: [
       "Career confusion doesn’t come with fixed hours — it can strike a student unsure about subjects, a parent worried about future stability, or a professional questioning their career choices. ",
       `To solve this, Catalyst introduces the Personal 24x7 AI Career Assistant — your always-available career mentor. Powered by advanced psychometric science, real-world career data, and years of educational expertise, the AI Assistant gives instant, personalised answers to everyday career dilemmas.`,
@@ -19,19 +19,18 @@ const assessments = {
     ]
   },
   "/ai-job": {
-    tag: "Career Selection",
+    tag: "Job Search Assistant",
     title: "So many hiring websites, so many confusing job descriptions?",
-    subtitle: "find the best opportunitiesin market currently available as per your resume",
-    buttonText: "Search Now  ",
+    subtitle: "find the best opportunities in market currently available as per your resume",
+    buttonText: "Search Now",
+    icon: Search,
     description: [
       "For graduates and working professionals, finding the right job is one of the most crucial turning points in their career journey. Often, applications are sent blindly to dozens of companies without knowing whether the role truly matches one’s skills and strengths. This leads to repeated rejections, mismatched roles, and long-term frustration at work",
       `To address this, Catalyst’s AI Job Search Assistant uses advanced algorithms to analyse your resume, skills, and experience and instantly match them with company job descriptions that best fit your profile. Instead of guesswork, you receive science-driven, personalised job recommendations that align with your career aspirations and growth potential.`,
       "By bridging the gap between what you offer and what companies seek, Catalyst’s AI Job Search ensures that every application you make is purposeful, targeted, and future-ready — helping you land the job where you can truly thrive."
     ]
-
   },
 };
-
 
 const Services = () => {
   const location = useLocation(); // get current path
@@ -39,15 +38,57 @@ const Services = () => {
   const data = assessments[path];
   if (!data) return null;
 
+  const IconComponent = data.icon;
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
+      {/* Common Hero Section */}
+      <div className="h-screen relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img src={bigb} alt="AI Services Background" className='h-full w-full object-cover' />
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/70 via-teal-800/60 to-green-900/70"></div>
+        </div>
 
-      <div className="min-h-screen relative overflow-hidden font-sans">
-        {/* Sky + clouds */}
+        {/* Hero Content */}
+        <div className="relative z-10 h-full flex items-center justify-center">
+          <div className="text-center px-6 max-w-5xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
+              AI-Powered
+              <span className="block bg-gradient-to-r from-emerald-300 to-teal-300 bg-clip-text text-transparent">
+                Career Solutions
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-white/90 font-medium mb-12 leading-relaxed max-w-4xl mx-auto">
+              Experience the future of career guidance with our intelligent AI assistants. 
+              Get personalized recommendations, find perfect job matches, and accelerate your professional journey.
+            </p>
 
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <button className="bg-white/20 backdrop-blur-md border border-white/30 hover:bg-white/30 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg inline-flex items-center gap-2">
+                <MessageCircle size={20} />
+                Try AI Career Assistant
+              </button>
+              
+              <button className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg inline-flex items-center gap-2">
+                <Search size={20} />
+                Explore Job Search
+              </button>
+            </div>
+          </div>
+        </div>
 
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
+          </div>
+        </div>
+      </div>
 
-
+      {/* Service-Specific Section */}
+      <div className="min-h-screen relative py-20">
         {/* Content */}
         <div className="relative z-10  top-0 bottom-0    h-full justify-center content-center">
           <img src={bigb} alt="" srcset="" className='h-full w-full mb-6 ' />
@@ -63,24 +104,23 @@ const Services = () => {
                     {data.tag}
                   </span>
                 </div>
-
+                
                 {/* Card */}
-                <div className="bg-[#20433C] text-white rounded-3xl p-6 flex-1 flex flex-col justify-between min-h-[250px] text-center ">
-
-                  <h3 className="text-xl font-bold mb-4 leading-tight">
+                <div className="bg-gradient-to-br from-emerald-600 to-teal-600 text-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 transform hover:-translate-y-1">
+                  <div className="text-center mb-6">
+                    <IconComponent size={48} className="mx-auto mb-4 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-6 leading-tight text-center">
                     {data.title}
                   </h3>
                   <p className="text-amber-300  text-sm mb-6 text-center ">
                     {data.subtitle}
                   </p>
-
-
                 </div>
                 <button className="bg-[#20433C] hover:bg-[#346256] text-amber-300  font-semibold p-3 rounded-full transition-colors duration-200 mt-5 w-full">
                   {data.buttonText}
                 </button>
               </div>
-
             </div>
 
             {/* Right side - Content */}
@@ -93,7 +133,6 @@ const Services = () => {
                       {para}
                     </p>
                   ))}
-
                 </div>
               </div>
               <div className="text-center">
@@ -125,9 +164,9 @@ const Services = () => {
 
           {/* Main Message */}
           <div className="mb-16">
-            <h2 className="text-4xl md:text-6xl font-black text-gray-800 mb-8 leading-tight">
+            <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight">
               Don't Let Confusion <br />
-              <span className="bg-gradient-to-br from-[#6b8e23] to-[#a5d2af] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 bg-clip-text text-transparent">
                 Decide Your Future.
               </span>
             </h2>
@@ -137,24 +176,67 @@ const Services = () => {
             </p>
 
             {/* AI Assistant CTA */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-              <span className="text-xl md:text-2xl text-gray-600 font-medium">
-                Try the AI Career Assistant Now →
-              </span>
-              <button className="bg-[#20433c] hover:bg-[#264a43] text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 text-lg">
-                Chat Now
-              </button>
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-emerald-100 max-w-4xl mx-auto">
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div className="flex-1 text-left">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    Try the AI Career Assistant Now
+                  </h3>
+                  <p className="text-lg text-gray-600">
+                    Get personalized guidance tailored to your unique career journey
+                  </p>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-lg inline-flex items-center gap-2">
+                    <MessageCircle size={20} />
+                    Chat Now
+                  </button>
+                  
+                  <button className="bg-white border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-lg inline-flex items-center gap-2">
+                    <Search size={20} />
+                    Explore Jobs
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
+          {/* Feature Highlights */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-emerald-100 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+              <div className="w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <MessageCircle className="text-white" size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">24/7 AI Guidance</h4>
+              <p className="text-gray-600 text-center">
+                Get instant answers to your career questions anytime, anywhere with our intelligent assistant
+              </p>
+            </div>
 
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-emerald-100 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+              <div className="w-12 h-12 bg-gradient-to-r from-teal-600 to-green-600 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <Search className="text-white" size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Smart Job Matching</h4>
+              <p className="text-gray-600 text-center">
+                Find opportunities that perfectly align with your skills, experience, and career goals
+              </p>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-emerald-100 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+              <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <Star className="text-white" size={24} />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Personalized Strategy</h4>
+              <p className="text-gray-600 text-center">
+                Receive customized career roadmaps based on your unique strengths and aspirations
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* ✅ Testimonials always visible */}
-
     </div>
-
   );
 };
 
