@@ -192,7 +192,7 @@ const Navbar = () => {
 
   return (
     <>
-  <div className="relative w-full bg-white text-[#2d4d45] shadow-lg">
+  <div className="relative w-full bg-white text-[#2d4d45] shadow-md">
     <div className="flex items-center justify-end  px-6 py-3">
       <div className="flex items-center space-x-4">
 
@@ -210,7 +210,7 @@ const Navbar = () => {
   </div>
 
 
-    <nav className="border-2  relative p-1">
+    <nav className="border-2  p-1 sticky top-0 z-40 bg-white border-b ">
       <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 content-center">
         <div className="flex  items-center justify-around ">
           <div className="flex items-center gap-3 font-bold p-2">
@@ -395,7 +395,7 @@ const Navbar = () => {
              animate-pulse transition-all duration-900"
 >
   {/* Rainbow Glow Effect */}
-  <span className="absolute -inset-1 rounded-md bg-gradient-to-r from-green-800 via-[#20433C] to-green-800 opacity-75 blur-md animate-pulse py-4"></span>
+  <span className="absolute -inset-1 rounded-md  opacity-80 blur-md animate-pulse py-4"></span>
 
   {/* Actual button content (above glow) */}
   <span className="relative flex items-center gap-2">
