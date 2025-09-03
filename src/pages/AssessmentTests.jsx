@@ -105,22 +105,22 @@ const AssessmentTests = () => {
               <div className="max-w-sm w-full">
                 {/* Category Tag */}
                 <div className="mb-6">
-                  <span className="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg w-full text-center">
+                  <span className="inline-block bg-white/20 backdrop-blur-md border border-white/30 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg w-full text-center">
                     {data.tag}
                   </span>
                 </div>
                 
                 {/* Card */}
-                <div className="bg-gradient-to-br from-emerald-700 to-teal-700 text-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                   <h3 className="text-2xl font-bold mb-6 leading-tight text-center">
                     {data.title}
                   </h3>
-                  <p className="text-emerald-100 text-base mb-8 text-center leading-relaxed">
+                  <p className="text-white/90 text-base mb-8 text-center leading-relaxed">
                     {data.subtitle}
                   </p>
                 </div>
                 
-                <button className="w-full mt-6 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-4 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg">
+                <button className="w-full mt-6 bg-white/20 backdrop-blur-md border border-white/30 hover:bg-white/30 text-white font-semibold py-4 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg">
                   {data.buttonText}
                 </button>
               </div>
