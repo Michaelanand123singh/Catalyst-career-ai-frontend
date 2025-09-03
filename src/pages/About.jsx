@@ -43,9 +43,6 @@ const About = () => {
       description: "Ensuring no child is left behind due to lack of educational resources."
     }
   ];
-
-
-
   const teamHighlights = [
     {
       icon: <GraduationCap className="h-6 w-6" />,
@@ -215,7 +212,7 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-[#20433c] mb-4">
               Our Core Values
             </h2>
             <p className="text-xl text-gray-600">
@@ -318,23 +315,29 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
 
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-amber-500 to-orange-500">
+      <section className="py-20 bg-gradient-to-r from-[#20433C] to-[#274e46]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+          <h2 className="text-3xl lg:text-4xl font-bold text-amber-600 mb-6">
             Ready to Transform Your Career Journey?
           </h2>
-          <p className="text-xl text-amber-100 mb-8">
+          <p className="text-xl text-amber-600 mb-8">
             Join thousands of students who have discovered their true potential with Catalyst
           </p>
          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="inline-flex items-center justify-center px-8 py-4 bg-[#20433c] text-white  rounded-3xl hover:bg-amber-600 transition-colors shadow-lg  font-bold">
-                Take Our Assessment
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
-              <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#20433c] text-[#20433c] font-semibold rounded-3xl hover:bg-green-700 transition-colors  hover:text-white ">
-                <Calendar className="mr-2 h-5 w-5" />
-                Book Consultation
-              </button>
+              <Link
+                               to="/assessment-tests"
+                               className="inline-flex items-center justify-center px-3 py-3 bg-orange-500 text-white font-semibold rounded-3xl hover:bg-orange-400 hover:font-bold transition-colors shadow-lg animate-pulse"
+                             >
+                               START YOUR ASSESSEMENT
+                               <ArrowRight className="ml-2 h-5 w-5" />
+                             </Link>
+                             <Link
+                               to="/assessment-tests"
+                               className="inline-flex items-center justify-center px-3 py-3 bg-orange-500 text-white font-semibold rounded-3xl hover:bg-orange-400 hover:font-bold transition-colors shadow-lg animate-pulse"
+                             >
+                               BOOK YOUR 1-1 COUNSELLING
+                               <ArrowRight className="ml-2 h-5 w-5" />
+                             </Link>
             </div>
         </div>
       </section>

@@ -80,7 +80,6 @@ const assessments = {
 };
 
 
-
 const AssessmentTests = () => {
   const location = useLocation(); // get current path
   const path = location.pathname;
