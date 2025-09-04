@@ -99,12 +99,20 @@ const resources = [
   return (
     <>
      <section className="py-20 bg-gray-50">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-{/* <!-- Elfsight Google Reviews | Untitled Google Reviews  */}
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-64502bac-6a51-4521-bf12-58dcc8f39827" data-elfsight-app-lazy></div>
+<div className="relative">
+  {/* Elfsight Google Reviews */}
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-2">
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div
+      className="elfsight-app-64502bac-6a51-4521-bf12-58dcc8f39827"
+      data-elfsight-app-lazy
+    ></div>
   </div>
+
+  {/* White overlapping bar */}
+  <div className="absolute bottom-1 left-0 w-screen h-10 bg-gray-50 z-20"></div>
+</div>
+
 </section>
 
     <footer className="bg-[#20433C] text-white">

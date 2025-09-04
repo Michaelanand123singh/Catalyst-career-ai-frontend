@@ -176,46 +176,7 @@ const Chat = () => {
             ))}
           </div>
         </div>
-        <div className="mt-auto p-4 border-t">
-          <div className="flex items-start gap-2 text-xs text-slate-500">
-            <Info className="h-4 w-4 mt-0.5" />
-            <div>
-              Toggle comprehensive to use multi-agent endpoint.
-            </div>
-          </div>
-          <button 
-            onClick={async () => {
-              console.log('🧪 Testing API connection...');
-              const [health] = await api.getHealth();
-              console.log('🧪 Health check result:', health);
-              if (health) {
-                alert(`API is working! Status: ${health.status}`);
-              } else {
-                alert('API connection failed. Check console for details.');
-              }
-            }}
-            className="mt-2 w-full text-xs px-2 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded"
-          >
-            Test API Connection
-          </button>
-          <button 
-            onClick={async () => {
-              console.log('🌐 Testing network connectivity...');
-              try {
-                const response = await fetch('https://catalyst-career-ai-backend.onrender.com/api/health');
-                const data = await response.json();
-                console.log('🌐 Direct fetch result:', data);
-                alert(`Network test: ${response.status} - ${data.status || 'Unknown'}`);
-              } catch (error) {
-                console.error('🌐 Network test failed:', error);
-                alert(`Network test failed: ${error.message}`);
-              }
-            }}
-            className="mt-2 w-full text-xs px-2 py-1 bg-green-100 hover:bg-green-200 text-green-700 rounded"
-          >
-            Test Network
-          </button>
-        </div>
+       
       </aside>
 
       <main className="flex-1 flex flex-col">
