@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Users, Target, BookOpen, Calendar, Clock, User,Briefcase,Cpu,MessageCircle,Wrench, Bot, Search, Star, TrendingUp, Award,   } from 'lucide-react';
 import api from '../services/api';
-
+import SchoolStudents from '../components/SchoolStudents'
+import CollegeStudents from '../components/CollegeStudents'
+import WorkingProfessinal from '../components/WorkingProfessinal'
+import ProblemSolutionGrid from '../components/ProblemSolutionGrid'
 const Home = () => {
   const [recentBlogs, setRecentBlogs] = useState([]);
   const [loadingBlogs, setLoadingBlogs] = useState(true);
@@ -32,29 +35,7 @@ const Home = () => {
 
     fetchRecentBlogs();
   }, []);
-  const testimonials = [
-    {
-      name: "Priya Sharma",
-      role: "Student, Class 12",
-      content: "Catalyst helped me discover my passion for psychology. The assessment was incredibly accurate!",
-      rating: 5,
-      photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      name: "Rajesh Kumar",
-      role: "Parent",
-      content: "As a parent, I was worried about my son's career choice. Catalyst provided clear guidance and peace of mind.",
-      rating: 5,
-      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      name: "Anjali Patel",
-      role: "College Student",
-      content: "The personalized career roadmap helped me choose the right subjects and now I'm confident about my future.",
-      rating: 5,
-      photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
-    }
-  ];
+  
   const features = [
     {
       icon: <CheckCircle className="h-6 w-6" />,
@@ -77,177 +58,9 @@ const Home = () => {
       description: "Founded by experienced educators passionate about your growth."
     }
   ];
-  const [hoveredCard, setHoveredCard] = useState(null);
-  const services = [
-    {
-      id: 'subject-selection',
-      title: 'Subject Selection',
-      description: 'Which subject is best for me?',
-      subtitle: 'For Class X students',
-      gradient: 'from-rose-400 to-pink-600',
-      bgGradient: 'from-rose-50 to-rose-100',
-      icon: BookOpen,
-      buttonText: 'Start Your Assessment',
-      features: ['Aptitude Analysis', 'Interest Mapping', 'Future Scope'],
-      popularity: '95%'
-    },
-    {
-      id: 'career-selection',
-      title: 'Career Selection',
-      description: 'Which career is best for me?',
-      subtitle: 'For school students',
-      gradient: 'from-blue-400 to-blue-600',
-      bgGradient: 'from-blue-50 to-blue-100',
-      icon: Briefcase,
-      buttonText: 'Start Your Assessment',
-      features: ['Personality Test', 'Skills Assessment', 'Market Trends'],
-      popularity: '92%'
-    },
-    {
-      id: 'engineering-branch',
-      title: 'Engineering Branch',
-      description: 'Which branch of Engineering suits me?',
-      subtitle: 'For engineering aspirants',
-      gradient: 'from-green-400 to-emerald-600',
-      bgGradient: 'from-green-50 to-green-100',
-      icon: Cpu,
-      buttonText: 'Start Your Assessment',
-      features: ['Technical Aptitude', 'Industry Insights', 'Placement Stats'],
-      popularity: '88%'
-    },
-    {
-      id: 'career-cluster',
-      title: 'Career Cluster',
-      description: 'Identify the best career cluster',
-      subtitle: 'For Class 7th / 8th / 9th',
-      gradient: 'from-purple-400 to-violet-600',
-      bgGradient: 'from-purple-50 to-purple-100',
-      icon: Target,
-      buttonText: 'Start Your Assessment',
-      features: ['Early Guidance', 'Broad Categories', 'Foundation Building'],
-      popularity: '90%'
-    },
-    {
-      id: 'counselling',
-      title: '1-1 Counselling',
-      description: 'Discuss directly with experts',
-      subtitle: 'Quick career guidance',
-      gradient: 'from-pink-400 to-rose-600',
-      bgGradient: 'from-pink-50 to-pink-100',
-      icon: MessageCircle,
-      buttonText: 'Book Counselling',
-      features: ['Expert Guidance', 'Personalized Advice', 'Instant Clarity'],
-      popularity: '97%'
-    },
-    {
-      id: 'vocational-training',
-      title: 'Vocational Training',
-      description: 'Select your vocational trade',
-      subtitle: 'For skill development',
-      gradient: 'from-cyan-400 to-teal-600',
-      bgGradient: 'from-cyan-50 to-cyan-100',
-      icon: Wrench,
-      buttonText: 'Explore Trades',
-      features: ['Hands-on Skills', 'Industry Ready', 'Quick Employment'],
-      popularity: '85%'
-    },
-    {
-      id: 'ai-career-assistant',
-      title: 'AI Career Assistant',
-      description: 'Looking for Personal Career assistant?',
-      subtitle: 'Ask anything & anytime to scale-up your career',
-      gradient: 'from-indigo-400 to-purple-600',
-      bgGradient: 'from-indigo-50 to-indigo-100',
-      icon: Bot,
-      buttonText: 'Chat Now',
-      features: ['24/7 Available', 'Instant Responses', 'Personalized AI'],
-      popularity: '94%',
-      badge: 'NEW'
-    },
-    {
-      id: 'ai-job-assistant',
-      title: 'AI Job Assistant',
-      description: 'So many hiring websites, so many confusing job descriptions?',
-      subtitle: 'Find the best opportunities in market currently available as per your resume',
-      gradient: 'from-amber-400 to-orange-600',
-      bgGradient: 'from-amber-50 to-amber-100',
-      icon: Search,
-      buttonText: 'Search Now',
-      features: ['Resume Matching', 'Market Analysis', 'Real-time Jobs'],
-      popularity: '89%',
-      badge: 'HOT'
-    }
-  ];
-  const cards = [
-    {
-      id: 1,
-      category: "Subject Selection",
-      title: "Which subject is best for me?",
-      description: "for school students currently studying in Class 8th",
-      buttonText: "Start Your Assessment"
-    },
-    {
-      id: 2,
-      category: "Subject Selection",
-      title: "Which subject is best for me?",
-      description: "for school students currently studying in Class 9th/10th",
-      buttonText: "Start Your Assessment"
-    },
-    {
-      id: 3,
-      category: "Subject Selection",
-      title: "Which subject is best for me?",
-      description: "for school students currently studying in Class 11th/12th",
-      buttonText: "Start Your Assessment"
-    },
-    {
-      id: 4,
-      category: "Career Selection",
-      title: "Which career is best for me?",
-      description: "for students wants to or pursue Diploma/IT",
-      buttonText: "Start Your Assessment"
-    },
+ 
+ 
 
-    {
-      id: 5,
-      category: "Vocational Training",
-      title: "Vocational Trade Selector",
-      description: "For Skill Development Courses selection",
-      buttonText: "Book Your 1-1 Counselling"
-    }
-  ];
-  const cards2 = [
-    {
-      id: 1,
-      category: "Bachelors Degree Selection",
-      title: "Which Graduation Degree/Career is best for me?",
-      description: "for school students",
-      buttonText: "Start Your Assessment"
-    },
-    {
-      id: 2,
-      category: "Engineering Branch Selection",
-      title: "Which branch of Engineering is best for me?",
-      description: "for engineering education aspirants ",
-      buttonText: "Start Your Assessment"
-    },
-    {
-      id: 3,
-      category: "Masters Degree Selection",
-      title: "Which Post Graduation Degree/Career  is best for me?",
-      description: "for graduate students ",
-      buttonText: "Start Your Assessment"
-    },
-    {
-      id: 4,
-      category: "Creer Cluster Analysis",
-      title: "Identify the best Career Cluster",
-      description: "Identify the best Career",
-      buttonText: "Start Your Assessment"
-    },
-
-    
-  ];
   const cards1 = [
     {
       id: 1,
@@ -265,23 +78,7 @@ const Home = () => {
     },
  
   ];
-  const cards3 = [
-    {
-      id: 1,
-      category: "Career Progression in Corporate",
-      title: "Just joined a Job in the previous 12 months",
-      description: "for working professionals",
-      buttonText: "Chat Now"
-    },
-    {
-      id: 2,
-      category: "Change Job Profile",
-      title: "Which type of Job is best for me? ",
-      description: "for best fitment job role in the specific industry",
-      buttonText: "Search Now"
-    },
  
-  ];
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -372,200 +169,13 @@ const Home = () => {
         </div>
       </section>
       {/* Academic Problem-Solution Grid  for schools*/}
-      <div className="bg-white py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header */}
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-gray-800 mb-4">
-                Academic Career Problem-Solution Grid for School Students
-              </h1>
-              <p className="text-lg text-gray-600">
-                Identify the Best Subject, and career that align with you
-              </p>
-            </div>
-
-            {/* Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
-              {cards.map((card) => (
-                <div key={card.id} className="flex flex-col items-center max-w-[250px] mx-auto">
-                  {/* Category Tag */}
-                  <div className="mb-4 w-full text-center">
-                    <span className="inline-block bg-[#20433C] text-green-300 px-4 py-2 rounded-full text-sm font-medium w-full">
-                      {card.category}
-                    </span>
-                  </div>
-                  
-                  {/* Card */}
-                  <div className="bg-[#20433C] text-white rounded-3xl p-6 flex-1 flex flex-col justify-between min-h-[250px] text-center">
-                      <h3 className="text-xl font-bold mb-4 leading-tight">
-                        {card.title}
-                      </h3>
-                      <p className="text-green-300 text-sm mb-6 text-center">
-                        {card.description}
-                      </p>
-                  </div>
-                    <button className="bg-[#20433C] hover:bg-[#346256] text-white font-semibold p-3 rounded-full transition-colors duration-200 mt-4 w-full">
-                      {card.buttonText}
-                    </button>
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom Text */}
-            <div className="text-center">
-              <p className="text-gray-600 text-lg">
-                Get matched with Careers that offer long-term stability and growth through our Advanced Psychometric Assessment
-              </p>
-            </div>
-          </div>
-        </div>
+      <SchoolStudents/>
         {/* Academic Problem-Solution Grid  for college*/}
-      <div className="bg-gray-50 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header */}
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-gray-800 mb-4">
-                Academic Career Problem-Solution Grid for College Students
-              </h1>
-              <p className="text-lg text-gray-600">
-                Identify the Best Subject, and career that align with you
-              </p>
-            </div>
-
-            {/* Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              {cards2.map((card) => (
-                <div key={card.id} className="flex flex-col items-center mx-auto">
-                  {/* Category Tag */}
-                  <div className="mb-4 w-full text-center">
-                    <span className="inline-block bg-[#20433C] text-green-300 px-4 py-2 rounded-full text-sm font-medium w-full">
-                      {card.category}
-                    </span>
-                  </div>
-                  
-                  {/* Card */}
-                  <div className="bg-[#20433C] text-white rounded-3xl p-6 flex-1 flex flex-col justify-between min-h-[250px] text-center">
-                      <h3 className="text-xl font-bold mb-4 leading-tight">
-                        {card.title}
-                      </h3>
-                      <p className="text-green-300 text-sm mb-6 text-center">
-                        {card.description}
-                      </p>
-                  </div>
-                    <button className="bg-[#20433C] hover:bg-[#346256] text-white font-semibold p-3 rounded-full transition-colors duration-200 mt-4 w-full">
-                      {card.buttonText}
-                    </button>
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom Text */}
-            <div className="text-center">
-              <p className="text-gray-600 text-lg">
-                Get matched with Careers that offer long-term stability and growth through our Advanced Psychometric Assessment
-              </p>
-            </div>
-          </div>
-        </div>
-        {/* AI-based Problem-Solution Grid */}
-      <div className="bg-white py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header */}
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-gray-800 mb-4">
-                Professional Career Scale Problem-Solution Grid
-              </h1>
-              <p className="text-lg text-gray-600 mb-2">
-                Identify the best career that align with you 
-              </p>
-            </div>
-
-            {/* Cards Grid */}
-            <div className="flex justify-center items-center gap-6 mb-8">
-              {cards3.map((card) => (
-                <div key={card.id} className="flex flex-col items-center max-w-[250px]">
-                  {/* Category Tag */}
-                  <div className="mb-4 w-full text-center">
-                    <span className="inline-block bg-[#20433C] text-green-300 px-4 py-2 rounded-full text-sm font-medium w-full">
-                      {card.category}
-                    </span>
-                  </div>
-                  
-                  {/* Card */}
-                  <div className="bg-[#20433C] text-white rounded-3xl p-6 flex-1 flex flex-col justify-between min-h-[250px] text-center">
-                      <h3 className="text-xl font-bold mb-4 leading-tight">
-                        {card.title}
-                      </h3>
-                      <p className="text-green-300 text-sm mb-6 text-center">
-                        {card.description}
-                      </p>
-                  </div>
-                    <button className="bg-[#20433C] hover:bg-[#346256] text-green-300 font-semibold p-3 rounded-full transition-colors duration-200 mt-4 w-full">
-                      {card.buttonText}
-                    </button>
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom Text */}
-            <div className="text-center">
-              <p className="text-gray-600 text-lg">
-                Get matched with Careers offering long-term stability and growth
-              </p>
-            </div>
-          </div>
-        </div>
+      <CollegeStudents/>
+        {/* AI-based Problem-Solution Grid for working professional*/}
+      <WorkingProfessinal/>
         {/* Problem-Solution Grid */}
-      <div className="bg-gray-50 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header */}
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-gray-800 mb-4">
-                AI based Problem-Solution Grid
-              </h1>
-              <p className="text-2xl font-bold text-gray-500 mb-2">
-                Struggling to decide best opportunity for you?
-              </p>
-              <p className="text-lg text-gray-600">
-                Identify the best career that align with you 
-              </p>
-            </div>
-
-            {/* Cards Grid */}
-            <div className="flex justify-center items-center gap-6 mb-8">
-              {cards1.map((card) => (
-                <div key={card.id} className="flex flex-col items-center max-w-[250px]">
-                  {/* Category Tag */}
-                  <div className="mb-4 w-full text-center">
-                    <span className="inline-block bg-[#20433C] text-green-300 px-4 py-2 rounded-full text-sm font-medium w-full">
-                      {card.category}
-                    </span>
-                  </div>
-                  
-                  {/* Card */}
-                  <div className="bg-[#20433C] text-white rounded-3xl p-6 flex-1 flex flex-col justify-between min-h-[250px] text-center">
-                      <h3 className="text-xl font-bold mb-4 leading-tight">
-                        {card.title}
-                      </h3>
-                      <p className="text-green-300 text-sm mb-6 text-center">
-                        {card.description}
-                      </p>
-                  </div>
-                    <button className="bg-[#20433C] hover:bg-[#346256] text-green-300 font-semibold p-3 rounded-full transition-colors duration-200 mt-4 w-full">
-                      {card.buttonText}
-                    </button>
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom Text */}
-            <div className="text-center">
-              <p className="text-gray-600 text-lg">
-                Get matched with Careers offering long-term stability and growth
-              </p>
-            </div>
-          </div>
-        </div>
+      <ProblemSolutionGrid/>
       {/* How Catalyst Works */}
       <section className="py-16 bg-white">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,6 +1,6 @@
 import React from 'react';
-import { useLocation } from "react-router-dom";
-import { Star, MessageCircle, Search } from 'lucide-react';
+import { useLocation, useNavigate } from "react-router-dom";
+import { Star, MessageCircle, Search,ArrowLeft,ArrowRight } from 'lucide-react';
 import bigb from "../images/bigb.png"
 
 const assessments = {
@@ -31,14 +31,23 @@ const assessments = {
     ]
   },
 };
+const assessmentPaths = [
+  "/ai-career",
+  "/ai-job",
+];
 
 const Services = () => {
   const location = useLocation(); // get current path
   const path = location.pathname;
+    const navigate = useNavigate();   // ✅ inside component
+
   const data = assessments[path];
   if (!data) return null;
 
   const IconComponent = data.icon;
+   const currentIndex = assessmentPaths.indexOf(path);
+  const prevPath = currentIndex > 0 ? assessmentPaths[currentIndex - 1] : null;
+  const nextPath = currentIndex < assessmentPaths.length - 1 ? assessmentPaths[currentIndex + 1] : null;
 
   return (
     <div className="min-h-screen bg-white">
@@ -87,8 +96,30 @@ const Services = () => {
         </div>
       </div>
 
+     <div className="flex justify-between items-center max-w-6xl mx-auto px-6 py-6">
+              {prevPath ? (
+                <button
+                  onClick={() => navigate(prevPath)}
+                  className="flex items-center gap-2 bg-white border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  <ArrowLeft size={20} />
+                  Back
+                </button>
+              ) : <div></div>}
+      
+              {nextPath ? (
+                <button
+                  onClick={() => navigate(nextPath)}
+                  className="flex items-center gap-2 bg-gradient-to-r from-[#20433C] to-[#3A6B5E] hover:from-[#163029] hover:to-[#20433C] text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  Next
+                  <ArrowRight size={20} />
+                </button>
+              ) : <div></div>}
+            </div>
+
       {/* Service-Specific Section */}
-      <div className="min-h-screen relative py-20">
+       <div className=" relative pb-20">
         {/* Content */}
         <div className="container mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full max-w-7xl mx-auto">
@@ -96,16 +127,16 @@ const Services = () => {
             {/* Left side - Service card */}
             <div className="lg:col-span-4 flex justify-center">
               <div className="max-w-sm w-full">
-                {/* Category Tag */}
+                {/* category category */}
                 <div className="mb-6">
-                  <span className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg w-full">
+                  <span className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#20433C] to-[#3A6B5E] hover:from-[#163029] hover:to-[#20433C] text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg w-full">
                     <IconComponent size={18} />
                     {data.tag}
                   </span>
                 </div>
                 
                 {/* Card */}
-                <div className="bg-gradient-to-br from-emerald-600 to-teal-600 text-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 transform hover:-translate-y-1">
+                <div className="bg-gradient-to-br from-[#20433C] to-[#3A6B5E] hover:from-[#163029] hover:to-[#20433C] text-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-1">
                   <div className="text-center mb-6">
                     <IconComponent size={48} className="mx-auto mb-4 text-white" />
                   </div>
@@ -117,7 +148,7 @@ const Services = () => {
                   </p>
                 </div>
                 
-                <button className="w-full mt-6 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-4 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
+                <button className="w-full mt-6 bg-gradient-to-r from-[#20433C] to-[#3A6B5E] hover:from-[#163029] hover:to-[#20433C] text-white font-semibold py-4 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
                   <IconComponent size={20} />
                   {data.buttonText}
                 </button>
@@ -136,7 +167,7 @@ const Services = () => {
                 </div>
                 
                 <div className="text-center mt-10">
-                  <button className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg inline-flex items-center gap-2">
+                  <button className="bg-gradient-to-r from-[#20433C] to-[#3A6B5E] hover:from-[#163029] hover:to-[#20433C] text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg inline-flex items-center gap-2">
                     <IconComponent size={20} />
                     {data.buttonText}
                   </button>

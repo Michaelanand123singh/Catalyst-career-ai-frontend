@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from "../images/Artboard3.png"
 import { 
   Phone, 
   Mail, 
@@ -110,7 +109,7 @@ const resources = [
               <div key={index} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-amber-400 fill-current" />
+                    <Star key={i} className="h-5 w-5 text-amber-300 fill-current" />
                   ))}
                 </div>
                 <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
@@ -133,7 +132,7 @@ const resources = [
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <img src={logo} alt="" className='w-40 h-30 object-contain mb-3'/>
+              <img src="/images/Artboard3.png" alt="" className='w-40 h-30 object-contain mb-3'/>
               <p className="text-gray-300 text-sm">
                 Empowering students with practical learning while uniting students, parents, teachers, and schools.
               </p>
@@ -143,20 +142,20 @@ const resources = [
             <div className="space-y-3 mb-6">
               <div className="flex items-center text-gray-300 text-sm">
                 <Phone className="h-4 w-4 mr-3 text-white" />
-                <a href="tel:+917277277477" className="hover:text-amber-400 transition-colors">
+                <a href="tel:+917277277477" className="hover:text-green-300 transition-colors">
                   +91 7277277477
                 </a>
               </div>
               <div className="flex items-center text-gray-300 text-sm">
                 <Mail className="h-4 w-4 mr-3 text-white" />
-                <a href="mailto:yug@careerwithcatalyst.com" className="hover:text-amber-400 transition-colors">
+                <a href="mailto:yug@careerwithcatalyst.com" className="hover:text-green-300 transition-colors">
                   yug@careerwithcatalyst.com
                 </a>
               </div>
            
               <div className="flex items-center text-gray-300 text-sm">
                 <MessageCircle className="h-4 w-4 mr-3 text-white" />
-                <a href="https://wa.me/917277277477" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">
+                <a href="https://wa.me/917277277477" target="_blank" rel="noopener noreferrer" className="hover:text-green-300 transition-colors">
                   WhatsApp Quick Chat
                 </a>
               </div>
@@ -190,7 +189,7 @@ const resources = [
                 <li key={index}>
                   <Link
                     to={link.path}
-                    className="text-gray-300 hover:text-amber-400 transition-colors text-sm flex items-center"
+                    className="text-gray-300 hover:text-green-300 transition-colors text-sm flex items-center"
                   >
                     <ArrowRight className="h-3 w-3 mr-2" />
                     {link.name}
@@ -208,7 +207,7 @@ const resources = [
                 <li key={index}>
                   <Link
                     to={service.path}
-                    className="text-gray-300 hover:text-amber-400 transition-colors text-sm flex items-center"
+                    className="text-gray-300 hover:text-green-300 transition-colors text-sm flex items-center"
                   >
                     <ArrowRight className="h-3 w-3 mr-2" />
                     {service.name}
@@ -226,7 +225,7 @@ const resources = [
                 <li key={index}>
                   <Link
                     to={resource.path}
-                    className="text-gray-300 hover:text-amber-400 transition-colors text-sm flex items-center"
+                    className="text-gray-300 hover:text-green-300 transition-colors text-sm flex items-center"
                   >
                     <ArrowRight className="h-3 w-3 mr-2" />
                     {resource.name}
@@ -248,13 +247,13 @@ const resources = [
               © {currentYear} CATALYST. All rights reserved.
             </div>
             <div className="flex items-center space-x-6 text-sm">
-              <Link to="/privacy" className="text-gray-300 hover:text-amber-400 transition-colors">
+              <Link to="/privacy" className="text-gray-300 hover:text-green-300 transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="text-gray-300 hover:text-amber-400 transition-colors">
+              <Link to="/terms" className="text-gray-300 hover:text-green-300 transition-colors">
                 Terms of Service
               </Link>
-              <Link to="/contact" className="text-gray-300 hover:text-amber-400 transition-colors">
+              <Link to="/contact" className="text-gray-300 hover:text-green-300 transition-colors">
                 Contact Us
               </Link>
             </div>

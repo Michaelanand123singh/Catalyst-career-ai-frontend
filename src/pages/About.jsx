@@ -15,10 +15,18 @@ import {
   Shield,
   Zap
 } from 'lucide-react';
+  import Img1 from "../assets/icons/1.png";
+import Img2 from "../assets/icons/2.png";
+import Img3 from "../assets/icons/3.png";
+import Img4 from "../assets/icons/4.png";
+import Img5 from "../assets/icons/5.png";
+import Img6 from "../assets/icons/6.png";
+import Img7 from "../assets/icons/7.png";
+import Img8 from "../assets/icons/8.png";
 
-import bg from "../images/bg.png"
-import vision from "../images/vision.png"
-import mission from "../images/mission.png"
+import bg from "../assets/images/bg.png"
+import vision from "../assets/images/vision.png"
+import mission from "../assets/images/mission.png"
 
 // Custom SVG Icons
 const StudentCentricIcon = () => (
@@ -59,53 +67,56 @@ const InclusivityIcon = () => (
 );
 
 const About = () => {
+
+
   const values = [
-    {
-      icon: <StudentCentricIcon />,
-      title: "Student-Centric Approach",
-      description: "Every decision we make is focused on empowering students to reach their full potential."
-    },
-    {
-      icon: <TrustCredibilityIcon />,
-      title: "Trust & Credibility",
-      description: "Built on the foundation of experienced educators and proven methodologies."
-    },
-    {
-      icon: <InnovationIcon />,
-      title: "Innovation",
-      description: "Continuously evolving our methods to stay ahead of educational trends."
-    },
-    {
-      icon: <InclusivityIcon />,
-      title: "Inclusivity",
-      description: "Ensuring no child is left behind due to lack of educational resources."
-    }
-  ];
+  {
+    icon: <img src={Img1} alt="Student-Centric" className="w-16 h-16" />,
+    title: "Student-Centric Approach",
+    description: "Every decision we make is focused on empowering students to reach their full potential."
+  },
+  {
+    icon: <img src={Img2} alt="Trust & Credibility" className="w-16 h-16" />,
+    title: "Trust & Credibility",
+    description: "Built on the foundation of experienced educators and proven methodologies."
+  },
+  {
+    icon: <img src={Img3} alt="Innovation" className="w-16 h-16" />,
+    title: "Innovation",
+    description: "Continuously evolving our methods to stay ahead of educational trends."
+  },
+  {
+    icon: <img src={Img4} alt="Inclusivity" className="w-16 h-16" />,
+    title: "Inclusivity",
+    description: "Ensuring no child is left behind due to lack of educational resources."
+  }
+];
 
 
 
-  const teamHighlights = [
-    {
-      icon: <GraduationCap className="h-6 w-6" />,
-      title: "Expert Counselors",
-      description: "Team of experienced career counselors"
-    },
-    {
-      icon: <BookOpen className="h-6 w-6" />,
-      title: "Research-Based",
-      description: "All assessments backed by scientific research and validation"
-    },
-    {
-      icon: <Users className="h-6 w-6" />,
-      title: "Personalized Approach",
-      description: "Individual attention and customized guidance for every student"
-    },
-    {
-      icon: <Target className="h-6 w-6" />,
-      title: "Proven Results",
-      description: "Thousands of success stories and satisfied families"
-    }
-  ];
+
+const teamHighlights = [
+  {
+    icon: <img src={Img5} alt="Expert Counselors" className="w-16 h-16" />,
+    title: "Expert Counselors",
+    description: "Team of experienced career counselors"
+  },
+  {
+    icon: <img src={Img6} alt="Research-Based" className="w-16 h-16" />,
+    title: "Research-Based",
+    description: "All assessments backed by scientific research and validation"
+  },
+  {
+    icon: <img src={Img7} alt="Personalized Approach" className="w-16 h-16" />,
+    title: "Personalized Approach",
+    description: "Individual attention and customized guidance for every student"
+  },
+  {
+    icon: <img src={Img8} alt="Proven Results" className="w-16 h-16" />,
+    title: "Proven Results",
+    description: "Thousands of success stories and satisfied families"
+  }
+];
 
   return (
     <div className="min-h-screen bg-white">
@@ -256,10 +267,8 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-green-600">
+                <div className="w-20 h-20  rounded-full flex items-center justify-center mx-auto mb-4">
                     {value.icon}
-                  </div>
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">{value.title}</h3>
                 <p className="text-gray-600 text-sm">{value.description}</p>
@@ -287,9 +296,7 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
             {teamHighlights.map((highlight, index) => (
               <div key={index} className="text-center p-6">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-green-600">
                     {highlight.icon}
-                  </div>
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{highlight.title}</h3>
                 <p className="text-gray-600 text-sm">{highlight.description}</p>

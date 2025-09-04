@@ -16,6 +16,12 @@ import BlogPost from './pages/BlogPost';
 import Chat from './components/Chat';
 import RequireAuth from './components/RequireAuth';
 import LoginRedirect from './pages/LoginRedirect';
+import SchoolStudents from './components/SchoolStudents';
+import CollegeStudents from './components/CollegeStudents';
+import WorkingProfessinal from './components/WorkingProfessinal';
+import SchoolLayout from './components/SchoolLayout';
+import CollegeLayout from './components/CollegeLayout';
+import WorkingLayout from './components/WorkingLayout';
 
 const App = () => {
   useEffect(() => {
@@ -57,54 +63,123 @@ const App = () => {
             </Layout>
           }
         />
+      
         <Route
-          path="/subject-selection"
+          path="/school-students"
           element={
             <Layout>
+              <SchoolStudents/>             
+            </Layout>
+          }
+        />
+       
+        <Route
+          path="/for8th"
+          element={
+            <Layout>
+              <SchoolLayout/>
+            </Layout>
+          }
+        />
+        <Route
+          path="/for10th"
+          element={
+            <Layout>
+              <SchoolLayout/>
+            </Layout>
+          }
+        />
+        <Route
+          path="/for12th"
+          element={
+            <Layout>
+              <SchoolLayout/>
+            </Layout>
+          }
+        />
+        <Route
+          path="/diploma"
+          element={
+            <Layout>
+              <SchoolLayout/>
+            </Layout>
+          }
+        />
+        <Route
+          path="/skilldevelopment"
+          element={
+            <Layout>
+              <SchoolLayout/>
+            </Layout>
+          }
+        />
+        
+        <Route
+          path="/college-students"
+          element={
+            <Layout>
+              <CollegeStudents/>
               <AssessmentTests />
             </Layout>
           }
         />
         <Route
-          path="/career-selection"
+          path="/bachelors"
           element={
             <Layout>
-              <AssessmentTests />
+              <CollegeLayout />
             </Layout>
           }
         />
         <Route
-          path="/eng-branch-selection"
+          path="/engineeringbranch"
           element={
             <Layout>
-              <AssessmentTests />
+              <CollegeLayout />
             </Layout>
           }
         />
         <Route
-          path="/career-cluster-selection"
+          path="/masterdegree"
           element={
             <Layout>
-              <AssessmentTests />
+              <CollegeLayout />
             </Layout>
           }
         />
         <Route
-          path="/couseling-one"
+          path="/careercluster"
           element={
             <Layout>
-              <AssessmentTests />
+              <CollegeLayout />
             </Layout>
           }
         />
         <Route
-          path="/vocational-training"
+          path="/working-professional"
           element={
             <Layout>
-              <AssessmentTests />
+              <WorkingProfessinal/>
             </Layout>
           }
         />
+        <Route
+          path="/coorparateprogress"
+          element={
+            <Layout>
+              <WorkingLayout/>
+            </Layout>
+          }
+        />
+        <Route
+          path="/changejob"
+          element={
+            <Layout>
+              <WorkingLayout/>
+            </Layout>
+          }
+        />
+        
         <Route
           path="/ai-career"
           element={
