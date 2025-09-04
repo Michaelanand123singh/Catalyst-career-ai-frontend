@@ -150,7 +150,7 @@ const Navbar = () => {
           <div className="flex items-center justify-around">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2" onClick={close}>
-              <img src="/images/Artboard1.png" alt="Catalyst" className="w-[8rem] h-[3rem] rounded-full" />
+              <img src="/images/CATT.png" alt="Catalyst" className="w-[9rem] h-[3rem] rounded-full" />
             </Link>
 
             {/* Desktop Nav */}

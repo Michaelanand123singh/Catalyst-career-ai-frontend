@@ -251,30 +251,6 @@ const resources = [
         </div>
       </div>
 
-      {/* Sticky CTA Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-amber-500 text-white py-3 px-4 z-50 transform translate-y-full hover:translate-y-0 transition-transform duration-300">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <span className="font-semibold">Take Career Fit Test</span>
-            <span className="text-amber-200">|</span>
-            <span className="font-semibold">Talk to a Counsellor</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Link
-              to="/assessment-tests"
-              className="px-4 py-2 bg-white text-amber-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-sm"
-            >
-              Start Test
-            </Link>
-            <a
-              href="tel:+917277277477"
-              className="px-4 py-2 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-amber-600 transition-colors text-sm"
-            >
-              Call Now
-            </a>
-          </div>
-        </div>
-      </div>
     </footer>
     
     </>
