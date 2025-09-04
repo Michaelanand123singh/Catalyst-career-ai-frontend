@@ -119,7 +119,6 @@ const App = () => {
           element={
             <Layout>
               <CollegeStudents/>
-              <AssessmentTests />
             </Layout>
           }
         />

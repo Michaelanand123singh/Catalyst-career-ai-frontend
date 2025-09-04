@@ -32,15 +32,7 @@ const SuccessStories = () => {
     // ... other stories (same as your original array)
   ];
 
-  const categories = [
-    { name: "All", count: successStories.length },
-    { name: "Stream Selection", count: 2 },
-    { name: "Parent Guidance", count: 1 },
-    { name: "Career Transition", count: 1 },
-    { name: "Early Career Planning", count: 1 },
-    { name: "Career Switch", count: 1 },
-    { name: "Subject Selection", count: 1 }
-  ];
+ 
 
   const filteredStories = selectedCategory === "All" 
     ? successStories 
@@ -70,21 +62,7 @@ const SuccessStories = () => {
       {/* Category Filter */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedCategory(category.name)}
-                className={`px-6 py-3 rounded-full text-sm font-medium transition-colors ${
-                  selectedCategory === category.name
-                    ? 'bg-[#20433C] text-green-200'
-                    : 'bg-white text-[#20433C] hover:bg-[#20433C]/10'
-                }`}
-              >
-                {category.name} ({category.count})
-              </button>
-            ))}
-          </div>
+         
 
           {/* Stories Grid */}
           <div className="grid lg:grid-cols-2 gap-8">
