@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import { Star, MessageCircle, Search,ArrowLeft,ArrowRight } from 'lucide-react';
-import bigb from "../images/bigb.png"
+import bigb from "../assets/images/bigb.png"
 
 const assessments = {
   "/ai-career": {
