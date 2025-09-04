@@ -1,286 +1,136 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  Calendar, 
-  User, 
-  Tag, 
-  ArrowRight, 
-  Search,
-  Filter,
-  Clock,
-  BookOpen
-} from 'lucide-react';
-import api from '../services/api';
+import { Clock, Sparkles, Bell, Users, MapPin, Calendar } from 'lucide-react';
 
 const Blog = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedTag, setSelectedTag] = useState('all');
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    fetchPosts();
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
   }, []);
 
-  const fetchPosts = async () => {
-    try {
-      setLoading(true);
-      setError('');
-      
-      console.log('🔍 Fetching blog posts...');
-      const [data, error] = await api.getBlogPosts();
-      
-      if (error) {
-        console.error('❌ Failed to fetch blog posts:', error);
-        
-        // Provide more specific error messages based on the error type
-        if (error.message?.includes('timeout')) {
-          setError('The server is taking too long to respond. This might be due to high traffic or server maintenance. Please try again in a few minutes.');
-        } else if (error.status === 503) {
-          setError('The blog service is temporarily unavailable. Please try again later.');
-        } else if (error.status === 500) {
-          setError('There was a server error. Our team has been notified and is working to fix this issue.');
-        } else {
-          setError('Failed to load blog posts. Please try again later.');
-        }
-        setPosts([]);
-      } else {
-        console.log('✅ Blog posts fetched successfully:', data);
-        setPosts(data || []);
-      }
-    } catch (err) {
-      console.error('❌ Error fetching blog posts:', err);
-      setError('An unexpected error occurred. Please try refreshing the page.');
-      setPosts([]);
-    } finally {
-      setLoading(false);
-    }
+  const formatTime = (date) => {
+    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
   };
-
-  // Extract all unique tags from posts
-  const allTags = [...new Set(posts.flatMap(post => post.tags || []))];
-
-  const filteredPosts = posts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         (post.excerpt?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
-                         (post.content?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
-                         (post.author?.toLowerCase() || '').includes(searchTerm.toLowerCase());
-    const matchesTag = selectedTag === 'all' || (post.tags || []).includes(selectedTag);
-    return matchesSearch && matchesTag;
-  });
-
-  const formatDate = (dateString) => {
-    if (!dateString) return 'No date';
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
-  };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading blog posts...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-amber-50 via-white to-blue-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-6">
-              <BookOpen className="h-4 w-4 mr-2" />
-              Career Blog
-            </div>
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Career Insights &{" "}
-              <span className="text-amber-600">Guidance</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Discover expert advice, industry insights, and practical tips to advance your career
-            </p>
+    <div className="relative min-h-[70vh] flex flex-col items-center justify-center bg-gradient-to-br from-emerald-50 via-white to-green-50 px-6 py-20 overflow-hidden">
+
+      {/* Background */}
+      <div className="absolute inset-0">
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-[#20433C]/20 to-green-600/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-32 -right-24 w-80 h-80 bg-gradient-to-tl from-teal-400/20 to-emerald-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-r from-green-300/15 to-emerald-400/15 rounded-full blur-2xl animate-pulse delay-500"></div>
+        <div className="absolute top-20 left-1/4 w-2 h-2 bg-[#20433C]/40 rounded-full animate-bounce delay-200"></div>
+        <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-green-500/40 rounded-full animate-bounce delay-700"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-[#20433C] rounded-full animate-bounce delay-1200"></div>
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: `linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px)`, backgroundSize: '40px 40px' }}></div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto">
+        
+        {/* Header */}
+        <div className="flex flex-col items-center mb-8">
+          <div className="flex items-center gap-2 text-sm text-emerald-600/70 mb-4 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-emerald-100">
+            <Clock size={16} />
+            <span className="font-mono">{formatTime(currentTime)}</span>
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#20433C] via-green-600 to-teal-600 bg-clip-text text-transparent mb-4 tracking-tight">
+            Blog
+          </h1>
+          <div className="flex items-center gap-2 text-emerald-600/80">
+            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-emerald-400"></div>
+            <Calendar className="text-emerald-500" size={24} />
+            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-emerald-400"></div>
           </div>
         </div>
-      </section>
 
-      {/* Search and Filters */}
-      <section className="py-12 bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="flex-1">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search articles..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                />
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <Filter className="h-5 w-5 text-gray-400" />
-              <select
-                value={selectedTag}
-                onChange={(e) => setSelectedTag(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
-              >
-                <option value="all">All Topics</option>
-                {allTags.map(tag => (
-                  <option key={tag} value={tag}>{tag}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-      </section>
+        {/* Blog Card */}
+        <div
+          className={`relative group cursor-pointer transition-all duration-500 transform ${isHovered ? 'scale-105 rotate-1' : 'scale-100 rotate-0'}`}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <div className="absolute -inset-1 bg-gradient-to-r from-[#20433C] to-green-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
 
-      {/* Blog Posts */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {error ? (
-            <div className="text-center py-12">
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-8 max-w-lg mx-auto">
-                <div className="mb-4">
-                  <svg className="h-12 w-12 text-amber-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">Unable to Load Blog Posts</h3>
-                <p className="text-gray-600 mb-6">{error}</p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <button 
-                    onClick={fetchPosts}
-                    className="px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors font-medium"
-                  >
-                    Try Again
-                  </button>
-                  <button 
-                    onClick={() => window.location.reload()}
-                    className="px-6 py-3 border border-amber-300 text-amber-700 rounded-lg hover:bg-amber-50 transition-colors font-medium"
-                  >
-                    Refresh Page
-                  </button>
+          <div className="relative bg-white/80 backdrop-blur-xl border border-emerald-100/50 rounded-2xl p-12 shadow-xl hover:shadow-2xl transition-all duration-500">
+            <div className="absolute top-4 right-4">
+              <Sparkles className="text-emerald-400 animate-pulse" size={20} />
+            </div>
+
+            <div className="text-center">
+              <div className="flex justify-center mb-6">
+                <div className="p-4 bg-gradient-to-br from-emerald-100 to-green-100 rounded-2xl shadow-inner">
+                  <Bell className="text-emerald-600 animate-swing" size={48} />
                 </div>
               </div>
-            </div>
-          ) : filteredPosts.length > 0 ? (
-            <div className="grid lg:grid-cols-2 gap-8">
-              {filteredPosts.map((post) => (
-                <article key={post.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
-                  {post.featured_image && (
-                    <div className="relative h-48">
-                      <img
-                        src={post.featured_image}
-                        alt={post.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-amber-500 text-white text-xs font-medium rounded-full">
-                          Blog
-                        </span>
-                      </div>
-                    </div>
-                  )}
-                  
-                  <div className="p-6">
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                      <div className="flex items-center">
-                        <User className="h-4 w-4 mr-1" />
-                        {post.author || 'Anonymous'}
-                      </div>
-                      <div className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        {formatDate(post.published_at || post.created_at)}
-                      </div>
-                    </div>
 
-                    <h2 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
-                      {post.title}
-                    </h2>
-                    
-                    {post.excerpt && (
-                      <p className="text-gray-600 mb-4 line-clamp-3">
-                        {post.excerpt}
-                      </p>
-                    )}
+              <h2 className="text-2xl md:text-3xl font-bold text-emerald-800 mb-4">
+                Something Amazing is Coming
+              </h2>
 
-                    {(post.tags || []).length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {post.tags.map((tag, index) => (
-                          <span
-                            key={index}
-                            className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-amber-100 text-amber-800"
-                          >
-                            <Tag className="h-3 w-3 mr-1" />
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-
-                    <Link
-                      to={`/blog/${post.id}`}
-                      className="inline-flex items-center text-amber-600 hover:text-amber-700 font-medium"
-                    >
-                      Read More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <BookOpen className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No articles found</h3>
-              <p className="text-gray-500">
-                {searchTerm || selectedTag !== 'all' 
-                  ? 'Try adjusting your search or filter criteria'
-                  : 'No blog posts available yet. Check back soon for new articles!'
-                }
+              <p className="text-lg text-emerald-700/80 mb-8 leading-relaxed">
+                Our blog will feature insights, guides, and stories that inspire and inform. Get ready for exciting content updates!
               </p>
-            </div>
-          )}
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-amber-500 to-orange-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-            Stay Updated with Career Insights
-          </h2>
-          <p className="text-xl text-amber-100 mb-8">
-            Get the latest career advice and industry trends delivered to your inbox
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
-            >
-              Get Career Guidance
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-            <Link
-              to="/assessment-tests"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-amber-600 transition-colors"
-            >
-              Take Assessment
-            </Link>
+              {/* Feature Icons */}
+              <div className="flex justify-center gap-8 mb-8 text-emerald-600/60">
+                <div className="flex flex-col items-center gap-2">
+                  <MapPin size={24} />
+                  <span className="text-sm">Diverse Topics</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <Users size={24} />
+                  <span className="text-sm">Community Focused</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <Calendar size={24} />
+                  <span className="text-sm">Regular Updates</span>
+                </div>
+              </div>
+
+              {/* Call to Action */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button className="group px-8 py-4 bg-gradient-to-r from-[#20433C] to-green-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                  <span className="flex items-center gap-2">
+                    <Bell size={18} />
+                    Notify Me
+                    <div className="w-0 group-hover:w-2 h-2 bg-white/50 rounded-full transition-all duration-300"></div>
+                  </span>
+                </button>
+
+                <div className="flex items-center gap-2 px-6 py-3 bg-emerald-50 text-emerald-700 rounded-xl border border-emerald-200">
+                  <div className="w-2 h-2 bg-[#20433C] rounded-full animate-pulse"></div>
+                  <span className="font-medium text-sm">Stay Tuned</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+
+        {/* Bottom Decorative Elements */}
+        <div className="mt-12 flex items-center gap-4 opacity-50">
+          <div className="w-8 h-px bg-gradient-to-r from-transparent to-emerald-400"></div>
+          <div className="w-2 h-2 bg-[#20433C] rounded-full animate-pulse"></div>
+          <div className="w-16 h-px bg-[#20433C]/30"></div>
+          <div className="w-2 h-2 bg-[#20433C] rounded-full animate-pulse delay-500"></div>
+          <div className="w-8 h-px bg-gradient-to-l from-transparent to-emerald-400"></div>
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes swing {
+          0%, 100% { transform: rotate(0deg); }
+          25% { transform: rotate(5deg); }
+          75% { transform: rotate(-5deg); }
+        }
+        .animate-swing {
+          animation: swing 2s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 };
