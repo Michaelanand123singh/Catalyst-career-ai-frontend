@@ -15,7 +15,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="relative min-h-[70vh] flex flex-col items-center justify-center bg-gradient-to-br from-emerald-50 via-white to-green-50 px-6 py-20 overflow-hidden">
+    <div className="relative min-h-[70vh] flex flex-col items-center justify-center bg-gradient-to-br from-emerald-50 via-white to-green-50 px-6 py-20 overflow-hidden ">
 
       {/* Background */}
       <div className="absolute inset-0">
@@ -29,16 +29,15 @@ const Blog = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto">
+      <div className="relative z-10 flex flex-col items-center max-w-2xl mx-auto">
         
         {/* Header */}
         <div className="flex flex-col items-center mb-8">
           <div className="flex items-center gap-2 text-sm text-emerald-600/70 mb-4 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-emerald-100">
-            <Clock size={16} />
             <span className="font-mono">{formatTime(currentTime)}</span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#20433C] via-green-600 to-teal-600 bg-clip-text text-transparent mb-4 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#20433C] via-green-600 to-teal-600 bg-clip-text text-transparent mb-4 tracking-tight">
             Blog
           </h1>
           <div className="flex items-center gap-2 text-emerald-600/80">

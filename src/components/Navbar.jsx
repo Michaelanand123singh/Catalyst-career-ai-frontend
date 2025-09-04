@@ -234,92 +234,97 @@ const Navbar = () => {
             </div>
 
             {/* Right Section */}
-            <div className="flex items-center gap-2">
-              {user ? (
-                // User Dropdown
-                <div className="relative" ref={userDropdownRef}>
-                  <button
-                    id="user-menu-button"
-                    onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                    className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-amber-500 text-white text-lg font-semibold hover:bg-amber-600"
-                    aria-expanded={userDropdownOpen}
-                  >
-                    <div className="h-6 w-6 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">
-                      {user.profile_picture ? (
-                        <img src={user.profile_picture} alt={user.name || 'User'}
-                          className="h-6 w-6 rounded-full object-cover" />
-                      ) : (
-                        (user.name || user.email || 'U').charAt(0).toUpperCase()
-                      )}
-                    </div>
-                    {user.name || user.email?.split('@')[0] || 'User'}
-                    <ChevronDown className="h-4 w-4" />
-                  </button>
+          <div className="flex items-center gap-2">
+  {user ? (
+    // User Dropdown
+    <div className="relative" ref={userDropdownRef}>
+      <button
+        id="user-menu-button"
+        onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+        className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-[#20433C] text-white text-lg font-semibold hover:bg-[#1b382f]"
+        aria-expanded={userDropdownOpen}
+      >
+        <div className="h-6 w-6 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">
+          {user.profile_picture ? (
+            <img
+              src={user.profile_picture}
+              alt={user.name || 'User'}
+              className="h-6 w-6 rounded-full object-cover"
+            />
+          ) : (
+            (user.name || user.email || 'U').charAt(0).toUpperCase()
+          )}
+        </div>
+        {user.name || user.email?.split('@')[0] || 'User'}
+        <ChevronDown className="h-4 w-4" />
+      </button>
 
-                  {userDropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-xl z-50"
-                      role="menu" aria-orientation="vertical">
-                      <div className="py-2">
-                        <div className="px-4 py-3 border-b border-gray-100">
-                          <div className="text-lg font-medium text-gray-900">
-                            {user.name || 'User'}
-                          </div>
-                          <div className="text-md text-gray-500">
-                            {user.email}
-                          </div>
-                        </div>
-                        <div className="py-1">
-                          <button
-                            onClick={() => { setUserDropdownOpen(false); close(); navigate('/chat'); }}
-                            className="w-full flex items-center gap-3 px-4 py-2 text-md text-gray-700 hover:bg-amber-50"
-                            role="menuitem"
-                          >
-                            <Sparkles className="h-4 w-4" />
-                            Career AI Chat
-                          </button>
-                          <button
-                            onClick={() => { setUserDropdownOpen(false); close(); }}
-                            className="w-full flex items-center gap-3 px-4 py-2 text-md text-gray-700 hover:bg-amber-50"
-                            role="menuitem"
-                          >
-                            <Settings className="h-4 w-4" />
-                            Profile Settings
-                          </button>
-                          <div className="border-t border-gray-100 my-1"></div>
-                          <button
-                            onClick={handleLogout}
-                            disabled={isLoggingOut}
-                            className="w-full flex items-center gap-3 px-4 py-2 text-md text-red-600 hover:bg-red-50 disabled:opacity-50"
-                            role="menuitem"
-                          >
-                            <LogOut className="h-4 w-4" />
-                            {isLoggingOut ? 'Signing out...' : 'Sign Out'}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                // Login Button
-                <button
-                  onClick={() => setAuthOpen(true)}
-                  className="relative inline-flex items-center gap-2 px-4 py-3 rounded-full
-                             bg-gradient-to-r from-green-900 via-[#20433C] to-[#20433C]
-                             text-white text-md font-semibold shadow-lg hover:shadow-2xl animate-pulse"
-                >
-                  <span className="relative flex items-center gap-2">
-                    <Sparkles className="h-6 w-6 animate-bounce" />
-                    Catalyst AI
-                  </span>
-                </button>
-              )}
-
-              {/* Mobile Toggle */}
-              <button onClick={toggle} className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-md border text-[#20433C]">
-                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+      {userDropdownOpen && (
+        <div
+          className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-xl z-50"
+          role="menu"
+          aria-orientation="vertical"
+        >
+          <div className="py-2">
+            <div className="px-4 py-3 border-b border-gray-100">
+              <div className="text-lg font-medium text-gray-900">{user.name || 'User'}</div>
+              <div className="text-md text-gray-500">{user.email}</div>
+            </div>
+            <div className="py-1">
+              <button
+                onClick={() => { setUserDropdownOpen(false); close(); navigate('/chat'); }}
+                className="w-full flex items-center gap-3 px-4 py-2 text-md text-[#20433C] hover:bg-[#20433C]/10"
+                role="menuitem"
+              >
+                <Sparkles className="h-4 w-4" />
+                Career AI Chat
+              </button>
+              <button
+                onClick={() => { setUserDropdownOpen(false); close(); }}
+                className="w-full flex items-center gap-3 px-4 py-2 text-md text-[#20433C] hover:bg-[#20433C]/10"
+                role="menuitem"
+              >
+                <Settings className="h-4 w-4" />
+                Profile Settings
+              </button>
+              <div className="border-t border-gray-100 my-1"></div>
+              <button
+                onClick={handleLogout}
+                disabled={isLoggingOut}
+                className="w-full flex items-center gap-3 px-4 py-2 text-md text-red-600 hover:bg-red-50 disabled:opacity-50"
+                role="menuitem"
+              >
+                <LogOut className="h-4 w-4" />
+                {isLoggingOut ? 'Signing out...' : 'Sign Out'}
               </button>
             </div>
+          </div>
+        </div>
+      )}
+    </div>
+  ) : (
+    // Login Button
+    <button
+      onClick={() => setAuthOpen(true)}
+      className="relative inline-flex items-center gap-2 px-4 py-3 rounded-full
+                 bg-[#20433C] text-white text-md font-semibold shadow-lg hover:shadow-2xl animate-pulse"
+    >
+      <span className="relative flex items-center gap-2">
+        <Sparkles className="h-6 w-6 animate-bounce" />
+        Catalyst AI
+      </span>
+    </button>
+  )}
+
+  {/* Mobile Toggle */}
+  <button
+    onClick={toggle}
+    className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-md border text-[#20433C]"
+  >
+    {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+  </button>
+</div>
+
           </div>
         </div>
 
