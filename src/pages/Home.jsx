@@ -83,7 +83,7 @@ const Home = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
      <section className="relative bg-gradient-to-br from-amber-50 via-white to-blue-50 py-20 min-h-screen">
-        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 ">
+        <div className="max-w-[90vw] mx-auto px-4 sm:px-6">
           <div className="flex  gap-12 items-center">
             <div className="space-y-8 w-1/2">
               <div className="space-y-4 p-8">

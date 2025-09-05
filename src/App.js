@@ -63,7 +63,6 @@ const App = () => {
             </Layout>
           }
         />
-      
         <Route
           path="/school-students"
           element={
@@ -72,7 +71,6 @@ const App = () => {
             </Layout>
           }
         />
-       
         <Route
           path="/for8th"
           element={
@@ -113,7 +111,6 @@ const App = () => {
             </Layout>
           }
         />
-        
         <Route
           path="/college-students"
           element={
@@ -178,7 +175,6 @@ const App = () => {
             </Layout>
           }
         />
-        
         <Route
           path="/ai-career"
           element={
@@ -195,7 +191,6 @@ const App = () => {
             </Layout>
           }
         />
-        
         <Route
           path="/seminars-workshops"
           element={
@@ -250,5 +245,4 @@ const App = () => {
     </BrowserRouter>
   );
 };
-
 export default App;
