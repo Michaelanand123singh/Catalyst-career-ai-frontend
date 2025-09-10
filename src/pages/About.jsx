@@ -1,21 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Award, 
-  Target, 
-  Users, 
-  BookOpen, 
-  Lightbulb, 
-  CheckCircle, 
-  ArrowRight,
-  Calendar,
-  Star,
-  GraduationCap,
-  Globe,
-  Shield,
-  Zap
-} from 'lucide-react';
-  import Img1 from "../assets/icons/1.png";
+import { Award, ArrowRight, CheckCircle } from 'lucide-react';
+import { motion } from "framer-motion";
+
+
+import Img1 from "../assets/icons/1.png";
 import Img2 from "../assets/icons/2.png";
 import Img3 from "../assets/icons/3.png";
 import Img4 from "../assets/icons/4.png";
@@ -24,10 +13,10 @@ import Img6 from "../assets/icons/6.png";
 import Img7 from "../assets/icons/7.png";
 import Img8 from "../assets/icons/8.png";
 
-import bg from "../assets/images/bg.png"
-import vision from "../assets/images/vision.png"
-import mission from "../assets/images/mission.png"
-
+import bg from "../assets/images/bg.png";
+import about from "../assets/images/about.png";
+import vision from "../assets/images/vision.png";
+import mission from "../assets/images/mission.png";
 // Custom SVG Icons
 const StudentCentricIcon = () => (
   <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,244 +56,221 @@ const InclusivityIcon = () => (
 );
 
 const About = () => {
-
-
   const values = [
-  {
-    icon: <img src={Img1} alt="Student-Centric" className="w-16 h-16" />,
-    title: "Student-Centric Approach",
-    description: "Every decision we make is focused on empowering students to reach their full potential."
-  },
-  {
-    icon: <img src={Img2} alt="Trust & Credibility" className="w-16 h-16" />,
-    title: "Trust & Credibility",
-    description: "Built on the foundation of experienced educators and proven methodologies."
-  },
-  {
-    icon: <img src={Img3} alt="Innovation" className="w-16 h-16" />,
-    title: "Innovation",
-    description: "Continuously evolving our methods to stay ahead of educational trends."
-  },
-  {
-    icon: <img src={Img4} alt="Inclusivity" className="w-16 h-16" />,
-    title: "Inclusivity",
-    description: "Ensuring no child is left behind due to lack of educational resources."
-  }
-];
+    { icon: <img src={Img1} alt="Student-Centric" className="w-14 h-14 md:w-16 md:h-16" />, title: "Student-Centric Approach", description: "Every decision we make is focused on empowering students to reach their full potential." },
+    { icon: <img src={Img2} alt="Trust & Credibility" className="w-14 h-14 md:w-16 md:h-16" />, title: "Trust & Credibility", description: "Built on the foundation of experienced educators and proven methodologies." },
+    { icon: <img src={Img3} alt="Innovation" className="w-14 h-14 md:w-16 md:h-16" />, title: "Innovation", description: "Continuously evolving our methods to stay ahead of educational trends." },
+    { icon: <img src={Img4} alt="Inclusivity" className="w-14 h-14 md:w-16 md:h-16" />, title: "Inclusivity", description: "Ensuring no child is left behind due to lack of educational resources." }
+  ];
 
-
-
-
-const teamHighlights = [
-  {
-    icon: <img src={Img5} alt="Expert Counselors" className="w-16 h-16" />,
-    title: "Expert Counselors",
-    description: "Team of experienced career counselors"
-  },
-  {
-    icon: <img src={Img6} alt="Research-Based" className="w-16 h-16" />,
-    title: "Research-Based",
-    description: "All assessments backed by scientific research and validation"
-  },
-  {
-    icon: <img src={Img7} alt="Personalized Approach" className="w-16 h-16" />,
-    title: "Personalized Approach",
-    description: "Individual attention and customized guidance for every student"
-  },
-  {
-    icon: <img src={Img8} alt="Proven Results" className="w-16 h-16" />,
-    title: "Proven Results",
-    description: "Thousands of success stories and satisfied families"
-  }
-];
+  const teamHighlights = [
+    { icon: <img src={Img5} alt="Expert Counselors" className="w-14 h-14 md:w-16 md:h-16" />, title: "Expert Counselors", description: "Team of experienced career counselors" },
+    { icon: <img src={Img6} alt="Research-Based" className="w-14 h-14 md:w-16 md:h-16" />, title: "Research-Based", description: "All assessments backed by scientific research and validation" },
+    { icon: <img src={Img7} alt="Personalized Approach" className="w-14 h-14 md:w-16 md:h-16" />, title: "Personalized Approach", description: "Individual attention and customized guidance for every student" },
+    { icon: <img src={Img8} alt="Proven Results" className="w-14 h-14 md:w-16 md:h-16" />, title: "Proven Results", description: "Thousands of success stories and satisfied families" }
+  ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-emerald-50 via-white to-green-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-6">
-             
-              Founded in 2019
-            </div>
-            <h1 className="text-4xl lg:text-6xl font-bold text-green-600 leading-tight mb-6">
-              About Us –{" "}
-              <span className="text-[#20433C]">The Catalyst Story</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              At <span className="font-semibold text-[#20433C]">Catalyst</span>, 
-                we believe that every student's potential is unique - and so should be their career path.
-In today's competitive world, most career choices in India are influenced by peer pressure, trends, or incomplete advice.
-This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - We're here to change that!
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-             <Link
-                               to="/assessment-tests"
-                               className="inline-flex items-center justify-center px-3 py-3 bg-[#20433C] text-white font-semibold rounded-3xl hover:bg-[#4d756b] hover:font-bold transition-colors shadow-lg animate-pulse"
-                             >
-                               START YOUR ASSESSEMENT
-                               <ArrowRight className="ml-2 h-5 w-5" />
-                             </Link>
-                             <Link
-                               to="/assessment-tests"
-                               className="inline-flex items-center justify-center px-3 py-3 bg-[#20433C] text-white font-semibold rounded-3xl hover:bg-[#568075] hover:font-bold transition-colors shadow-lg animate-pulse"
-                             >
-                               BOOK YOUR 1-1 COUNSELLING
-                               <ArrowRight className="ml-2 h-5 w-5" />
-                             </Link>
-            </div>
+      <section className="relative bg-gradient-to-br from-emerald-50 via-white to-green-50 py-16 sm:py-20 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="inline-flex items-center px-3 py-1 sm:px-4 sm:py-2 bg-green-100 text-green-700 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+            Founded in 2019
+          </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-green-600 leading-snug mb-4 sm:mb-6">
+            About Us –{" "}
+            <span className="text-[#20433C]">The Catalyst Story</span>
+          </h1>
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8 leading-relaxed">
+            At <span className="font-semibold text-[#20433C]">Catalyst</span>, 
+            we believe that every student's potential is unique - and so should be their career path.
+            In today's competitive world, most career choices in India are influenced by peer pressure, trends, or incomplete advice.
+            This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - We're here to change that!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <Link
+              to="/assessment-tests"
+              className="inline-flex items-center justify-center px-4 py-3 bg-[#20433C] text-white font-semibold rounded-3xl hover:bg-[#4d756b] transition-colors shadow-lg w-full sm:w-auto"
+            >
+              START YOUR ASSESSMENT
+              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+            </Link>
+            <Link
+              to="/assessment-tests"
+              className="inline-flex items-center justify-center px-4 py-3 bg-[#20433C] text-white font-semibold rounded-3xl hover:bg-[#568075] transition-colors shadow-lg w-full sm:w-auto"
+            >
+              BOOK YOUR 1-1 COUNSELLING
+              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="relative bg-gradient-to-br from-green-50 via-white to-emerald-50 py-20 overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-10 right-10 w-32 h-32 bg-green-200 rounded-full opacity-30"></div>
-        <div className="absolute top-32 right-32 w-24 h-24 bg-white rounded-full opacity-60"></div>
-        <div className="absolute top-20 right-20 w-16 h-16 bg-emerald-300 rounded-full opacity-40"></div>
-      
+      {/* About + Quote */}
+      <section className="relative bg-gradient-to-br from-green-50 via-white to-emerald-50 py-16 sm:py-20 px-4">
+  {/* Large green circle */}
+  <div className="absolute top-[3%] right-[5%] w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-green-200 rounded-full opacity-30"></div>
+
+  {/* White circle */}
+  <div className="absolute top-[10%] right-[20%] w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white rounded-full opacity-60"></div>
+
+  {/* Emerald circle */}
+  <div className="absolute top-[5%] right-[6%] w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-emerald-300 rounded-full opacity-40"></div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
-            {/* Text Content */}
-            <div className="flex-1 max-w-2xl">
-              <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-8">
-                <Award className="h-4 w-4 mr-2" />
-                Founded in 2019
-              </div>
-              
-              <div className="space-y-6">
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  <span className="font-semibold text-green-600">Haryug Singh</span> — with dual MBAs, one in Product and Brand Management from IIM Rohtak and another in Business Management from Narsee Monjee Institute of Management Studies, Mumbai — Catalyst was built on a mission to ensure no child ever suffers from the lack of proper guidance. Backed by years of experience in teaching, mentoring, and educational leadership, our platform careerwithcatalyst.in offers the Scientific Psychometric Career Assessment Test (SPCAT), designed to help students discover their true strengths, interests, and ideal career pathways.
-                </p>
-                
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  But we don't stop at assessment. We provide personalised reports, one-on-one counselling sessions, and actionable career roadmaps that balance what students love with what will last.
-                </p>
-                
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  Over the years, Catalyst has partnered with leading schools, conducted impactful seminars, and guided hundreds of families toward informed career decisions — creating a generation of confident, future-ready individuals.
-                </p>
-              </div>
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+          
+          {/* Text */}
+          <div className="flex-1">
+            <div className="inline-flex items-center px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs sm:text-sm font-medium mb-6">
+              <Award className="h-4 w-4 mr-2" />
+              Founded in 2019
             </div>
-            
-            {/* Quote Section */}
-            <div className="flex-1 max-w-lg">
-              <div className="relative flex flex-col items-center text-center">
-                <img src={bg} alt="" className="w-80 h-80 mb-8 object-contain" />
-                <blockquote className="text-xl lg:text-2xl font-bold text-gray-800 leading-tight">
-                  "Because at Catalyst, your future isn't a guess — it's a{' '}
-                  <span className="text-green-600">guided journey</span>"
-                </blockquote>
-                
-                {/* Decorative elements around quote */}
-                <div className="absolute -top-4 -left-4 w-20 h-20 bg-green-200 rounded-full opacity-60"></div>
-                <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-emerald-200 rounded-full opacity-70"></div>
-              </div>
+            <div className="space-y-4 sm:space-y-6 text-justify">
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                <span className="font-semibold text-green-600">Haryug Singh</span> — with dual MBAs, one in Product and Brand Management from IIM Rohtak and another in Business Management from Narsee Monjee Institute of Management Studies, Mumbai — Catalyst was built on a mission to ensure no child ever suffers from the lack of proper guidance. Backed by years of experience in teaching, mentoring, and educational leadership, our platform careerwithcatalyst.in offers the Scientific Psychometric Career Assessment Test (SPCAT), designed to help students discover their true strengths, interests, and ideal career pathways.
+              </p>
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+But we don't stop at assessment. We provide personalised reports, one-on-one counselling sessions, and actionable career roadmaps that balance what students love with what will last.              </p>
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+ Over the years, Catalyst has partnered with leading schools, conducted impactful seminars, and guided hundreds of families toward informed career decisions — creating a generation of confident, future-ready individuals.              </p>
             </div>
           </div>
+
+          {/* Quote */}
+
+<div className="flex-1 text-center relative px-4">
+  {/* Image with Framer Motion */}
+  <motion.div
+    className="relative inline-block group"
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: true }}
+  >
+    <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
+    <motion.img
+      src={about}
+      alt="About Catalyst"
+      className="relative w-48 sm:w-60 md:w-72 lg:w-80 mx-auto mb-6 object-contain rounded-2xl shadow-xl group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500"
+      whileHover={{ scale: 1.05, rotate: 1 }}
+      transition={{ type: "spring", stiffness: 200, damping: 15 }}
+    />
+  </motion.div>
+
+  {/* Quote with Animation */}
+  <motion.blockquote
+    className="relative text-lg sm:text-xl lg:text-2xl font-extrabold leading-snug sm:leading-tight text-gray-800 max-w-2xl mx-auto"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
+    viewport={{ once: true }}
+  >
+    "Because at Catalyst, your future isn't a guess — it's a{" "}
+    <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
+      guided journey
+    </span>
+    "
+  </motion.blockquote>
+
+  {/* Decorative Circles */}
+  <motion.div
+    className="absolute -top-6 -left-6 w-16 sm:w-20 h-16 sm:h-20 bg-green-300 rounded-full opacity-50 blur-xl"
+    animate={{ y: [0, -10, 0] }}
+    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+  />
+  <motion.div
+    className="absolute -bottom-6 -right-4 w-8 sm:w-10 h-8 sm:h-10 bg-emerald-300 rounded-full opacity-40 blur-lg"
+    animate={{ y: [0, 8, 0] }}
+    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+  />
+</div>
+
+
+          
+        </div>
+        </div>
         </div>
       </section>
 
-      {/* Vision & Mission Section */}
-     <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-2xl text-gray-600 font-medium">
-            Driving educational transformation through innovation and personalized guidance
-          </h1>
-        </div>
-        
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Vision Card */}
-            <div>
-<h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Vision</h3>
-          <div className="border-4 border-black p-8 bg-white">
-            <p className="text-lg text-gray-700 text-center leading-relaxed mb-8">
-              "To ensure no child suffers from lack of educational resources. We believe every student deserves access to quality career guidance and the tools to discover true potential."
-            </p>
-            
-            {/* Icon - Person with magnifying glass */}
-            <div className=" flex justify-center">
-
-            <img src={vision} alt="" className='w-20 h-20'/>
-            </div>
-          </div>
-            </div>
-
-          {/* Mission Card */}
-          <div>
-
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Mission</h3>
-          <div className="border-4 border-black p-8 bg-white">
-            <p className="text-lg text-gray-700 text-center leading-relaxed mb-8">
-              "Our mission is to inspire and equip individuals with the tools, knowledge, and resources needed to unlock their potential and achieve success."
-            </p>
-            
-            {/* Icon - Person with puzzle pieces */}
-            <div className=" flex justify-center">
-
-            <img src={mission} alt="" className='w-20 h-20'/>
-            </div>
-          </div>
-          </div>
+{/* Vision & Mission */}
+<section className="py-16 sm:py-20 bg-white px-4">
+  <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-2">
+    {/* Vision */}
+    <div>
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 text-center">
+        Our Vision
+      </h3>
+      <div className="border-2 sm:border-4 border-black p-6 sm:p-8 bg-white">
+        <p className="text-base sm:text-lg text-gray-700 text-center mb-6 leading-relaxed">
+          To ensure no child suffers from lack of educational resources. We
+          believe every student deserves access to quality career guidance and
+          the tools to discover true potential.
+        </p>
+        <div className="flex justify-center">
+          <img src={vision} alt="Vision Icon" className="w-16 h-16 sm:w-20 sm:h-20" />
         </div>
       </div>
-    </section>
+    </div>
 
-      {/* Our Values */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#20433c] mb-4">
-              Our Core Values
-            </h2>
-            <p className="text-xl text-gray-600">
-              The principles that guide everything we do at Catalyst
-            </p>
+    {/* Mission */}
+    <div>
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 text-center">
+        Our Mission
+      </h3>
+      <div className="border-2 sm:border-4 border-black p-6 sm:p-8 bg-white">
+        <p className="text-base sm:text-lg text-gray-700 text-center mb-6 leading-relaxed">
+          Our mission is to inspire and equip individuals with the tools,
+          knowledge, and resources needed to unlock their potential and achieve
+          success.
+        </p>
+        <div className="flex justify-center">
+          <img src={mission} alt="Mission Icon" className="w-16 h-16 sm:w-20 sm:h-20" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      {/* Core Values */}
+      <section className="py-16 sm:py-20 bg-gray-50 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#20433c] mb-3">Our Core Values</h2>
+            <p className="text-base sm:text-lg text-gray-600">The principles that guide everything we do</p>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center">
-                <div className="w-20 h-20  rounded-full flex items-center justify-center mx-auto mb-4">
-                    {value.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600 text-sm">{value.description}</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {values.map((value, idx) => (
+              <div key={idx} className="bg-white p-5 sm:p-6 rounded-xl shadow hover:shadow-xl text-center transition">
+                <div className="flex justify-center mb-4">{value.icon}</div>
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">{value.title}</h3>
+                <p className="text-sm sm:text-base text-gray-600">{value.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
- 
-
-      {/* Team & Expertise */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Why Trust Catalyst?
-            </h2>
-            <p className="text-xl text-gray-600">
-              Our expertise and commitment to excellence
-            </p>
+      {/* Team Highlights */}
+      <section className="py-16 sm:py-20 bg-gray-50 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">Why Trust Catalyst?</h2>
+            <p className="text-base sm:text-lg text-gray-600">Our expertise and commitment to excellence</p>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {teamHighlights.map((highlight, index) => (
-              <div key={index} className="text-center p-6">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    {highlight.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{highlight.title}</h3>
-                <p className="text-gray-600 text-sm">{highlight.description}</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-10">
+            {teamHighlights.map((highlight, idx) => (
+              <div key={idx} className="text-center p-5 sm:p-6">
+                <div className="flex justify-center mb-4">{highlight.icon}</div>
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">{highlight.title}</h3>
+                <p className="text-sm sm:text-base text-gray-600">{highlight.description}</p>
               </div>
             ))}
           </div>
-          
-          <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8">
+           <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">What Sets Us Apart</h3>
@@ -350,6 +316,7 @@ This often leads to misplaced ambitions, wasted years, and unfulfilled dreams - 
             </div>
           </div>
         </div>
+        
       </section>
     </div>
   );

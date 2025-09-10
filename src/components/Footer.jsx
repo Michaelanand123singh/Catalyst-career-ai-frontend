@@ -1,45 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import WhatsAppButton from './whatsappchat'
 import { 
   Phone, 
   Mail, 
-  MapPin, 
   MessageCircle,
   Instagram,
   Facebook,
   Linkedin,
   Youtube,
-  ArrowRight,
-  Star
+  ArrowRight
 } from 'lucide-react';
 
-const testimonials = [
-  {
-    name: "Priya Sharma",
-    role: "Student, Class 12",
-    content: "Catalyst helped me discover my passion for psychology. The assessment was incredibly accurate!",
-    rating: 5,
-    photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
-  },
-  {
-    name: "Rajesh Kumar",
-    role: "Parent",
-    content: "As a parent, I was worried about my son's career choice. Catalyst provided clear guidance and peace of mind.",
-    rating: 5,
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-  },
-  {
-    name: "Anjali Patel",
-    role: "College Student",
-    content: "The personalized career roadmap helped me choose the right subjects and now I'm confident about my future.",
-    rating: 5,
-    photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
-  }
-];
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  // Navbar Main Links
   const quickLinks = [
+    { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
     { name: "Services", path: "/services" },
     { name: "Assessment Tests", path: "/assessment-tests" },
@@ -49,25 +27,24 @@ const Footer = () => {
     { name: "Contact Us", path: "/contact" }
   ];
 
-  // Services - updated as per screenshot
-const services = [
-  { name: "Subject Selection", path: "/services" },
-  { name: "Career Selection", path: "/services" },
-  { name: "Engineering Branch Selection", path: "/services" },
-  { name: "Career Cluster Analysis", path: "/services" },
-  { name: "1-1 Counselling", path: "/contact" },
-  { name: "Vocational Training", path: "/services" },
-  { name: "AI Career Assistant", path: "/services" },
-  { name: "AI Job Search", path: "/services" }
-];
+  // Services dropdown from navbar
+  const services = [
+    { name: "Subject Selection", path: "/services/subject-selection" },
+    { name: "Career Selection", path: "/services/career-selection" },
+    { name: "Engineering Branch Selection", path: "/services/engineering-branch" },
+    { name: "Career Cluster Analysis", path: "/services/career-cluster" },
+    { name: "1-1 Counselling", path: "/services/counselling" },
+    { name: "Vocational Training", path: "/services/vocational-training" },
+    { name: "AI Career Assistant", path: "/services/ai-career" },
+    { name: "AI Job Search", path: "/services/ai-job" }
+  ];
 
-// Resources - removed Career Guides & FAQs
-const resources = [
-  { name: "Blog & Articles", path: "/blog" },
-  { name: "Study Materials", path: "/resources" },
-  { name: "Success Stories", path: "/success-stories" }
-];
-
+  // Resources dropdown from navbar
+  const resources = [
+    { name: "Blog & Articles", path: "/blog" },
+    { name: "Study Materials", path: "/resources/study-materials" },
+    { name: "Success Stories", path: "/success-stories" }
+  ];
 
   const socialLinks = [
     { 
@@ -98,27 +75,13 @@ const resources = [
 
   return (
     <>
-     <section className="py-20 bg-gray-50">
-<div className="relative">
-  {/* Elfsight Google Reviews */}
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-2">
-    <script src="https://elfsightcdn.com/platform.js" async></script>
-    <div
-      className="elfsight-app-64502bac-6a51-4521-bf12-58dcc8f39827"
-      data-elfsight-app-lazy
-    ></div>
-  </div>
 
-  {/* White overlapping bar */}
-  <div className="absolute bottom-1 left-0 w-screen h-10 bg-gray-50 z-20"></div>
-</div>
-
-</section>
-
+    <section className="py-20 bg-gray-50"> <div className="relative"> {/* Elfsight Google Reviews */} <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-2"> <script src="https://elfsightcdn.com/platform.js" async></script> <div className="elfsight-app-64502bac-6a51-4521-bf12-58dcc8f39827" data-elfsight-app-lazy ></div> </div> {/* White overlapping bar */} <div className="absolute bottom-1 left-0 w-screen h-10 bg-gray-50 z-20"></div> </div> </section>
     <footer className="bg-[#20433C] text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
+          
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="mb-6">
@@ -127,7 +90,7 @@ const resources = [
                 Empowering students with practical learning while uniting students, parents, teachers, and schools.
               </p>
             </div>
-            
+
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-center text-gray-300 text-sm">
@@ -142,12 +105,12 @@ const resources = [
                   yug@careerwithcatalyst.com
                 </a>
               </div>
-           
               <div className="flex items-center text-gray-300 text-sm">
                 <MessageCircle className="h-4 w-4 mr-3 text-white" />
-                <a href="https://wa.me/917277277477" target="_blank" rel="noopener noreferrer" className="hover:text-green-300 transition-colors">
+                {/* <a href="https://wa.me/917277277477" target="_blank" rel="noopener noreferrer" className="hover:text-green-300 transition-colors">
                   WhatsApp Quick Chat
-                </a>
+                </a> */}
+                <WhatsAppButton/>
               </div>
             </div>
 
@@ -227,8 +190,6 @@ const resources = [
         </div>
       </div>
 
-    
-
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -250,13 +211,9 @@ const resources = [
           </div>
         </div>
       </div>
-
     </footer>
-    
     </>
   );
 };
 
 export default Footer;
-
-

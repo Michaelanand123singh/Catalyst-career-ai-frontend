@@ -60,16 +60,15 @@ const SuccessStories = () => {
       </section>
 
       {/* Category Filter */}
-      <section className="py-16">
+      <section className="">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
          
 
           {/* Stories Grid */}
-          <div className="grid lg:grid-cols-2 gap-8">
+          {/* <div className="grid lg:grid-cols-2 gap-8">
             {filteredStories.map((story) => (
               <div key={story.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden border border-[#20433C]/20">
                 <div className="p-8">
-                  {/* Header */}
                   <div className="flex items-start justify-between mb-6">
                     <div className="flex items-center">
                       <img
@@ -93,14 +92,12 @@ const SuccessStories = () => {
                     </div>
                   </div>
 
-                  {/* Category Badge */}
                   <div className="mb-4">
                     <span className="px-3 py-1 bg-[#20433C]/10 text-[#20433C] text-sm font-medium rounded-full">
                       {story.category}
                     </span>
                   </div>
 
-                  {/* Story */}
                   <div className="mb-6">
                     <div className="flex items-start mb-4">
                       <Quote className="h-6 w-6 text-green-300 mr-3 mt-1 flex-shrink-0" />
@@ -110,7 +107,6 @@ const SuccessStories = () => {
                     </div>
                   </div>
 
-                  {/* Before & After */}
                   <div className="grid md:grid-cols-2 gap-4 mb-6">
                     <div className="bg-red-50 p-4 rounded-lg">
                       <h4 className="font-semibold text-red-700 mb-2 flex items-center">
@@ -128,7 +124,6 @@ const SuccessStories = () => {
                     </div>
                   </div>
 
-                  {/* Achievement */}
                   <div className="bg-[#20433C]/10 p-4 rounded-lg mb-6">
                     <h4 className="font-semibold text-[#20433C] mb-2 flex items-center">
                       <CheckCircle className="h-5 w-5 mr-2 text-green-300" />
@@ -137,7 +132,6 @@ const SuccessStories = () => {
                     <p className="text-[#20433C]/90 font-medium">{story.achievement}</p>
                   </div>
 
-                  {/* Testimonial */}
                   <div className="border-l-4 border-green-300 pl-4">
                     <p className="text-[#20433C]/90 font-medium">"{story.testimonial}"</p>
                     <p className="text-[#20433C]/60 text-sm mt-2">- {story.name}</p>
@@ -145,7 +139,7 @@ const SuccessStories = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 

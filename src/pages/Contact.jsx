@@ -1,351 +1,254 @@
-import React, { useState } from 'react';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  MessageCircle, 
-  Clock, 
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  MessageCircle,
   Send,
   CheckCircle,
-  ArrowRight,
-  AlertCircle
-} from 'lucide-react';
-import api from '../services/api';
+  AlertCircle,
+} from "lucide-react";
+import contactbg from "../assets/images/contactbg.png";
 
 const Contact = () => {
-  const [form, setForm] = useState({ 
-    name: '', 
-    email: '', 
-    phone: '',
-    subject: '',
-    message: '' 
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
+  const [glowEffect, setGlowEffect] = useState(0);
+
+  const containerRef = useRef(null);
+  const smallRef = useRef(null); // small whatsapp button
+  const bigRef = useRef(null); // big quick response circle
+  const [coords, setCoords] = useState({
+    sx: 0,
+    sy: 0,
+    bx: 0,
+    by: 0,
+    width: 0,
+    height: 0,
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGlowEffect((prev) => (prev + 1) % 100);
+    }, 50);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Calculate connector coordinates
+  const updateConnector = () => {
+    if (!containerRef.current || !smallRef.current || !bigRef.current) return;
+    const cRect = containerRef.current.getBoundingClientRect();
+    const sRect = smallRef.current.getBoundingClientRect();
+    const bRect = bigRef.current.getBoundingClientRect();
+
+    const sx = sRect.left - cRect.left + sRect.width / 2;
+    const sy = sRect.top - cRect.top + sRect.height / 2;
+    const bx = bRect.left - cRect.left + bRect.width / 2;
+    const by = bRect.top - cRect.top + bRect.height / 2;
+
+    setCoords({
+      sx,
+      sy,
+      bx,
+      by,
+      width: Math.max(cRect.width, 1),
+      height: Math.max(cRect.height, 1),
+    });
+  };
+
+  useEffect(() => {
+    // Update on mount and on resize
+    updateConnector();
+    const onResize = () => requestAnimationFrame(updateConnector);
+    window.addEventListener("resize", onResize);
+    // Also update if fonts/images load after mount
+    const img = new Image();
+    img.src = contactbg;
+    img.onload = () => requestAnimationFrame(updateConnector);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-  
+
   const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
 
-    try {
-      console.log('📧 Submitting contact form...');
-      const [data, error] = await api.submitContact(form);
-
-      if (error) {
-        console.error('❌ Contact form submission failed:', error);
-        setError(error.message || 'Failed to submit form. Please try again or contact us directly.');
-      } else {
-        console.log('✅ Contact form submitted successfully:', data);
-        setSubmitted(true);
-        // Reset form after 3 seconds
-        setTimeout(() => {
-          setSubmitted(false);
-          setForm({ name: '', email: '', phone: '', subject: '', message: '' });
-        }, 3000);
-      }
-    } catch (err) {
-      console.error('❌ Contact form error:', err);
-      setError('Failed to submit form. Please try again or contact us directly.');
-    } finally {
+    setTimeout(() => {
+      setSubmitted(true);
       setLoading(false);
-    }
+      setTimeout(() => {
+        setSubmitted(false);
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      }, 3000);
+    }, 2000);
   };
 
-  const contactInfo = [
-    {
-      icon: <Phone className="h-6 w-6" />,
-      title: "Call Us",
-      value: "+91 7277277477",
-      link: "tel:+917277277477",
-      color: "text-green-600",
-      bgColor: "bg-green-100"
-    },
-    {
-      icon: <Mail className="h-6 w-6" />,
-      title: "Email Us",
-      value: "yug@careerwithcatalyst.com",
-      link: "mailto:yug@careerwithcatalyst.com",
-      color: "text-blue-600",
-      bgColor: "bg-blue-100"
-    },
-    {
-      icon: <MessageCircle className="h-6 w-6" />,
-      title: "WhatsApp",
-      value: "Quick Chat",
-      link: "https://wa.me/917277277477",
-      color: "text-green-600",
-      bgColor: "bg-green-100"
-    },
-    {
-      icon: <MapPin className="h-6 w-6" />,
-      title: "Visit Us",
-      value: "Gandhidham Office",
-      link: "#",
-      color: "text-purple-600",
-      bgColor: "bg-purple-100"
-    }
-  ];
+  // phone used in href (keeps your previous literal number)
+  const WA_NUMBER = "917277277477";
+  const waText = encodeURIComponent(
+    "Hello Catalyst, I’d like to know more about career guidance!"
+  );
+
+  // Only render svg when we have measurements
+  const shouldRenderSVG = coords.width > 0 && coords.height > 0;
+
+  // Create a smooth cubic path between centers
+  const pathD =
+    shouldRenderSVG
+      ? `M ${coords.sx} ${coords.sy} C ${coords.sx} ${(coords.sy + coords.by) / 2} , ${coords.bx} ${(coords.sy + coords.by) / 2} , ${coords.bx} ${coords.by}`
+      : "";
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-amber-50 via-white to-blue-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Get in{" "}
-              <span className="text-amber-600">Touch</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              We would love to hear from you. Send us a message and we will respond promptly.
-            </p>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center z-0"
+        style={{ backgroundImage: `url(${contactbg})` }}
+      ></div>
 
-      {/* Contact Information */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Contact Information
-            </h2>
-            <p className="text-xl text-gray-600">
-              Multiple ways to reach us for your career guidance needs
-            </p>
+      {/* Content */}
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 z-10">
+        <div className="max-w-6xl mx-auto items-center justify-center flex flex-col">
+          {/* Hero box */}
+          <div className="text-center mb-12 ">
+            <div className="relative inline-block">
+              <div className="relative text-center p-8 w-[600px]">
+                <div className="absolute inset-0 border-4 border-green-800 clip-futuristic pointer-events-none"></div>
+                <p className="text-emerald-900 font-bold text-xl leading-relaxed">
+                  We would love to process your thought. <br />
+                  Send us a message and we will respond promptly
+                </p>
+              </div>
+              <div className="absolute -top-2 -left-2 w-4 h-4 border-l-2 border-t-2 border-emerald-400"></div>
+              <div className="absolute -top-2 -right-2 w-4 h-4 border-r-2 border-t-2 border-emerald-400"></div>
+              <div className="absolute -bottom-2 -left-2 w-4 h-4 border-l-2 border-b-2 border-emerald-400"></div>
+              <div className="absolute -bottom-2 -right-2 w-4 h-4 border-r-2 border-b-2 border-emerald-400"></div>
+            </div>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {contactInfo.map((info, index) => (
-              <a
-                key={index}
-                href={info.link}
-                target={info.link.startsWith('http') ? "_blank" : "_self"}
-                rel={info.link.startsWith('http') ? "noopener noreferrer" : ""}
-                className="group"
+
+          {/* Container for stacked items + connector */}
+          <div
+            ref={containerRef}
+            className="flex flex-col items-center justify-center relative mb-12"
+            onClick={() => {
+              // ensure connector updates on user interaction if layout shifted
+              requestAnimationFrame(updateConnector);
+            }}
+          >
+            {/* Top: small WhatsApp button */}
+            <div ref={smallRef} className="relative mb-8 z-20 -right-20">
+              <div
+                className="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center"
+                style={{ animation: "glow 2s ease-in-out infinite" }}
               >
-                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-center border border-gray-100">
-                  <div className={`w-16 h-16 ${info.bgColor} rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform`}>
-                    <div className={info.color}>
-                      {info.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{info.title}</h3>
-                  <p className={`text-sm ${info.color} font-medium`}>{info.value}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-
-          {/* Office Location */}
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 lg:p-12">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                  Our Office Location
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <MapPin className="h-6 w-6 text-amber-600 mr-3 mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-gray-900">Gandhidham Office</p>
-                      <p className="text-gray-600">Kutch, Gujarat, India</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
-                    <Clock className="h-6 w-6 text-amber-600 mr-3 mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-gray-900">Business Hours</p>
-                      <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                      <p className="text-gray-600">Saturday: 9:00 AM - 2:00 PM</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="relative">
-                <div className="bg-white rounded-2xl shadow-2xl p-8 transform rotate-2 hover:rotate-0 transition-transform duration-300">
-                  <div className="bg-gradient-to-br from-amber-100 to-blue-100 rounded-xl p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <h4 className="font-semibold text-gray-800">Quick Response</h4>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-600">Response Time</span>
-                        <span className="font-semibold text-amber-600">Within 24h</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-600">Support Available</span>
-                        <span className="font-semibold text-green-600">24/7</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-600">Languages</span>
-                        <span className="font-semibold text-blue-600">EN/HI/GJ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Send Us a Message
-            </h2>
-            <p className="text-xl text-gray-600">
-              Fill out the form below and we'll get back to you as soon as possible
-            </p>
-          </div>
-
-          {submitted ? (
-            <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="h-8 w-8 text-green-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Thank You!</h3>
-              <p className="text-gray-600 mb-6">
-                Your message has been received. We will get back to you within 24 hours.
-              </p>
-              <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
-                <div className="flex items-center">
-                  <Phone className="h-4 w-4 mr-2" />
-                  +91 7277277477
-                </div>
-                <div className="flex items-center">
-                  <Mail className="h-4 w-4 mr-2" />
-                  yug@careerwithcatalyst.com
-                </div>
-              </div>
-            </div>
-          ) : (
-            <form onSubmit={onSubmit} className="bg-white rounded-2xl shadow-lg p-8 lg:p-12">
-              {error && (
-                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                  <div className="flex items-center">
-                    <AlertCircle className="h-5 w-5 text-red-600 mr-2" />
-                    <p className="text-red-800">{error}</p>
-                  </div>
-                </div>
-              )}
-              
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    name="name"
-                    type="text"
-                    value={form.name}
-                    onChange={onChange}
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                    required
-                    disabled={loading}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={onChange}
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                    required
-                    disabled={loading}
-                  />
-                </div>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    name="phone"
-                    type="tel"
-                    value={form.phone}
-                    onChange={onChange}
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                    disabled={loading}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject *
-                  </label>
-                  <input
-                    name="subject"
-                    type="text"
-                    value={form.subject}
-                    onChange={onChange}
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                    required
-                    disabled={loading}
-                  />
-                </div>
-              </div>
-              
-              <div className="mb-8">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  name="message"
-                  rows={6}
-                  value={form.message}
-                  onChange={onChange}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent resize-none"
-                  placeholder="Tell us about your career guidance needs..."
-                  required
-                  disabled={loading}
-                />
-              </div>
-              
-              <div className="text-center">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className={`inline-flex items-center justify-center px-8 py-4 font-semibold rounded-lg transition-colors shadow-lg ${
-                    loading 
-                      ? 'bg-gray-400 text-gray-200 cursor-not-allowed' 
-                      : 'bg-amber-500 text-white hover:bg-amber-600'
-                  }`}
+                <a
+                  href={`https://wa.me/${WA_NUMBER}?text=${waText}`}
+                  className="text-xl font-bold text-emerald-800 hover:text-emerald-400 transition-colors"
                 >
-                  {loading ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      Send Message
-                      <Send className="ml-2 h-5 w-5" />
-                    </>
-                  )}
-                </button>
+                  <MessageCircle className="h-8 w-8 text-white" />
+                </a>
               </div>
-            </form>
-          )}
+
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 border-2 border-emerald-400 rounded-full"></div>
+              <div className="absolute -bottom-2 right-0 w-4 h-4 border-2 border-emerald-400 rounded-full"></div>
+            </div>
+
+            {/* SVG connector placed absolute over container */}
+           {shouldRenderSVG && (
+  <svg
+    className="absolute inset-0 pointer-events-none z-0 rotate-5"
+    width={coords.width}
+    height={coords.height}
+    viewBox={`0 0 ${coords.width} ${coords.height}`}
+    preserveAspectRatio="none"
+    aria-hidden
+  >
+    <line
+      x1={coords.sx}
+      y1={coords.sy}
+      x2={coords.bx}
+      y2={coords.by}
+      stroke="#10b981"   // emerald green
+      strokeWidth="3"
+      strokeLinecap="round"
+      opacity="0.8"
+    />
+  </svg>
+)}
+
+
+            {/* Bottom: big quick-response circle */}
+            <div ref={bigRef} className="relative mt-20">
+              <div className="bg-white rounded-full p-6 glow-border border-2 border-green-800 w-56 h-56 text-center items-center relative z-20 ">
+                <div className="flex items-center justify-center h-full">
+                  <div className="text-center">
+                    <p className="text-emerald-800 font-bold text-xl mb-1">
+                      Quick Response
+                    </p>
+                    <a
+                      href={`https://wa.me/${WA_NUMBER}?text=${waText}`}
+                      className="text-xl font-bold text-emerald-800 hover:text-emerald-400 transition-colors"
+                    >
+                      +91 7277277477
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* ripple rings */}
+              <span className="ring ring1"></span>
+              <span className="ring ring2"></span>
+              <span className="ring ring3"></span>
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* Ripple CSS */}
+      <style>{`
+        .ring {
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          border: 1px solid rgba(16,185,129,0.6);
+          opacity: 0;
+          animation: ripple 3s linear infinite;
+        }
+        .ring1 { animation-delay: 0s; }
+        .ring2 { animation-delay: 1s; }
+        .ring3 { animation-delay: 2s; }
+
+        @keyframes ripple {
+          0% { transform: scale(1); opacity: 0.2; }
+          20% { opacity: 0.15; }
+          50% { transform: scale(2); opacity: 0; }
+        }
+
+        /* small helper to keep the svg above ripples but below content */
+        svg { z-index: 15; }
+      `}</style>
     </div>
   );
 };
 
 export default Contact;
-
-
