@@ -158,18 +158,20 @@ const Navbar = () => {
   return (
     <>
       {/* Top Info Bar */}
-      <div className="relative w-full bg-gray-50 text-[#2d4d45] shadow-lg">
-        <div className="flex items-center justify-end px-6 py-3">
-          <div className="flex items-center space-x-6">
-            <i className="font-semibold text-md sm:text-lg md:text-xl text-[#20433C]">
-              Queries: <span className="font-bold">help@catalystcareers.in</span>
-            </i>
-            <i className="font-semibold text-md sm:text-lg md:text-xl text-[#20433C]">
-              Direct Appointment: <span className="font-bold">+91 7277277477</span>
-            </i>
-          </div>
-        </div>
-      </div>
+<div className="relative w-full bg-gray-50 text-[#2d4d45] shadow-lg">
+  <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2 px-4 py-3 text-center sm:text-left">
+    <i className="font-semibold text-sm sm:text-base md:text-lg text-[#20433C]">
+      Queries: <span className="font-bold">help@catalystcareers.in</span>
+    </i>
+    <span className="hidden sm:inline">|</span>
+    <i className="font-semibold text-sm sm:text-base md:text-lg text-[#20433C]">
+      Direct Appointment: <span className="font-bold">+91 7277277477</span>
+    </i>
+  </div>
+</div>
+
+
+
 
       {/* Main Navbar */}
       <nav className="border-b-2 sticky top-0 z-50 bg-white">
