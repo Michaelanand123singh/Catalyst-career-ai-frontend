@@ -23,6 +23,9 @@ import SchoolLayout from "./components/SchoolLayout";
 import CollegeLayout from "./components/CollegeLayout";
 import WorkingLayout from "./components/WorkingLayout";
 import Loader from "./components/Loader";
+import useScrollToTop from "./hooks/useScrollToTop";
+import ScrollToTopWrapper from "./components/ScrollToTopWrapper";
+
 
 const App = () => {
   const [loading, setLoading] = useState(true); // ✅ fix
@@ -41,12 +44,14 @@ const App = () => {
     api.getApiStatus();
   }, []);
 
+
   if (loading) {
     return <Loader />; // ✅ show loader
   }
 
   return (
     <BrowserRouter>
+ <ScrollToTopWrapper />
       <Routes>
         <Route
           path="/"
