@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, Users, Bell, Sparkles } from 'lucide-react';
+import Crausal from '../components/Crausal';
 
 const UpcomingEvents = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -22,7 +23,7 @@ const UpcomingEvents = () => {
 
   return (
     <div className="relative min-h-[70vh] flex flex-col items-center justify-center bg-gradient-to-br from-emerald-50 via-white to-green-50 px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-28 overflow-hidden">
-      
+     <Crausal/>
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute -top-32 -left-32 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-gradient-to-br from-[#20433C]/20 to-green-600/20 rounded-full blur-3xl animate-pulse"></div>
@@ -46,9 +47,9 @@ const UpcomingEvents = () => {
           }}
         ></div>
       </div>
-
+ 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center max-w-3xl md:max-w-4xl mx-auto text-center">
+      <div className="relative z-10 flex flex-col items-center max-w-3xl md:max-w-4xl mx-auto text-center pt-10">
         
         {/* header */}
         <div className="flex flex-col items-center mb-6 sm:mb-8">

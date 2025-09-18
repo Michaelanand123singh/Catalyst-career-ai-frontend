@@ -9,7 +9,8 @@ import {
   Facebook,
   Linkedin,
   Youtube,
-  ArrowRight
+  ArrowRight,
+  Twitter
 } from 'lucide-react';
 
 const Footer = () => {
@@ -48,29 +49,30 @@ const Footer = () => {
 
   const socialLinks = [
     { 
+      name: "YouTube", 
+      icon: <Youtube className="h-5 w-5" />, 
+      url: " https://youtube.com/@catalystcareersindia?si=_4MD50aYLIpQ3U9n",
+      color: "hover:text-red-600"
+    },
+    { 
       name: "Instagram", 
       icon: <Instagram className="h-5 w-5" />, 
-      url: "https://instagram.com/careerwithcatalyst",
+      url: "https://www.instagram.com/catalyst_yugsingh?igsh=MXkyb202a2Y1cDdrYg==",
       color: "hover:text-pink-500"
     },
     { 
       name: "Facebook", 
       icon: <Facebook className="h-5 w-5" />, 
-      url: "https://facebook.com/careerwithcatalyst",
+      url: "https://www.facebook.com/share/17GGn6aBmt/?mibextid=wwXIfr",
       color: "hover:text-blue-600"
     },
     { 
-      name: "LinkedIn", 
-      icon: <Linkedin className="h-5 w-5" />, 
-      url: "https://linkedin.com/company/careerwithcatalyst",
+      name: "Twitter", 
+      icon: <Twitter className="h-5 w-5" />, 
+      url: "https://x.com/catalyst_career",
       color: "hover:text-blue-700"
     },
-    { 
-      name: "YouTube", 
-      icon: <Youtube className="h-5 w-5" />, 
-      url: "https://youtube.com/@careerwithcatalyst",
-      color: "hover:text-red-600"
-    }
+    
   ];
 
   return (
